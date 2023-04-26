@@ -1,3 +1,6 @@
 // Import all of Bootstrap's CSS
 @import "./variables.scss";
 @import "~bootstrap/scss/bootstrap.scss";
+
+// 字型 poppin, 字重 400, 500, 800
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;800&display=swap');
