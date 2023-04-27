@@ -55,7 +55,7 @@
         </nav>
       </div>
       <!-- landing page -->
-      <div class="col-12 mt-1" style="background-color: #C1DCDC; border-radius: 24px;">
+      <div class="col-12 mt-1" style="height: 512px; background-color: #C1DCDC; border-radius: 24px;">
         <div class="row">
           <!-- landing 左側元素 -->
           <div class="col-6">
