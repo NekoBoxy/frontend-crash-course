@@ -55,7 +55,8 @@
         </nav>
       </div>
       <!-- landing page -->
-      <div class="col-12 mt-1" style="height: 512px; background-color: #C1DCDC; border-radius: 24px;">
+      <div class="col-12 mt-1 mb-4"
+        style="width: 100%; height: 512px; background-color: #C1DCDC; border-radius: 24px; position: relative;">
         <div class="row">
           <!-- landing 左側元素 -->
           <div class="col-6">
@@ -74,7 +75,7 @@
             </div>
             <div class="mt-4 ms-4" type="text"
               style="width: 450px; height: 64px; background-color: #ffffff; border-radius: 12px;">
-              <input style="width: 368px; border-color: transparent; margin: 14px;"
+              <input class="mouse-focus" style="width: 368px; border: 1px solid rgba(20,81,154,0); margin: 14px;"
                 placeholder="What are you looking for?">
               <button type="button" class="btn btn-primary btn-sm"
                 style="border-radius: 12px; width: 42px; height: 42px;">
@@ -88,27 +89,31 @@
           </div>
           <!-- landing 右側元素 -->
           <div class="col-6">
-            <!-- <img style="height: 514px; width: 411px; color: transparent; float: right; top: 18px; left: 781px;"
-              src="../assets/images/unsplash_cLaaxa4DSnc-removebg-preview 1.png" alt="potplant-with-hand"> -->
             <div
-              style="width: 450px; height: 400px; border-radius: 200px 200px 0px 200px; background-color: #1E1E1E; position: relative; top: 123px; left: ">
+              style="width: 450px; height: 389px; border-radius: 200px 200px 0px 200px; background-color: black; position: absolute; top: 123px; right: 72px;">
             </div>
-            <!-- <div style="float: left;">
-              <img src="../assets/images/Vector186.png" alt="left-arrow">
-            </div>
-            <div style="float: right;">
-              <img src="../assets/images/Vector187.png" alt="right-arrow">
-            </div> -->
+            <img style="position: absolute; right: 56px; top: 18px;"
+              src="../assets/images/unsplash_cLaaxa4DSnc-removebg-preview1.png" alt="">
+            <img style="position: absolute; top: 269px; right: 523px;" src="../assets/images/Vector186.png"
+              alt="left-arrow">
+            <img style="position: absolute; top: 5px; right: 30px;" src="../assets/images/Vector187.png"
+              alt="right-arrow">
           </div>
         </div>
       </div>
       <!-- cards -->
-      <div class="col-12">
+      <div class="col-12 mt-4 mb-4">
         <div class="row">
+          <!-- 左 -->
           <div class="col-3">
-            <h3>Best Selling Plants</h3>
-            <p>Easiest way to healthy life by buying your favorite plants</p>
-            <button type="button" class="btn btn-primary">See more
+            <h3 style="width: 256px;">Best Selling Plants</h3>
+            <p style="font-weight: 500; width: 196px; font-size: 18px; line-height: 27px; color: #1E1E1E80;">
+              Easiest way to healthy life by buying your favorite plants
+            </p>
+            <button type="button" class="btn btn-primary">
+              <span style="font-weight: 500; width: 86px; font-size: 18px; line-height: 27px; color: #1E1E1E;">
+                See more
+              </span>
               <svg width="22" height="13" viewBox="0 0 22 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd"
                   d="M0.5 6.50006C0.5 6.3343 0.579018 6.17533 0.71967 6.05812C0.860322 5.94091 1.05109 5.87506 1.25 5.87506H18.9395L14.219 1.94256C14.0782 1.8252 13.9991 1.66603 13.9991 1.50006C13.9991 1.33409 14.0782 1.17492 14.219 1.05756C14.3598 0.940199 14.5508 0.874268 14.75 0.874268C14.9492 0.874268 15.1402 0.940199 15.281 1.05756L21.281 6.05756C21.3508 6.11561 21.4063 6.18458 21.4441 6.26052C21.4819 6.33645 21.5013 6.41785 21.5013 6.50006C21.5013 6.58227 21.4819 6.66367 21.4441 6.7396C21.4063 6.81553 21.3508 6.8845 21.281 6.94256L15.281 11.9426C15.1402 12.0599 14.9492 12.1258 14.75 12.1258C14.5508 12.1258 14.3598 12.0599 14.219 11.9426C14.0782 11.8252 13.9991 11.666 13.9991 11.5001C13.9991 11.3341 14.0782 11.1749 14.219 11.0576L18.9395 7.12506H1.25C1.05109 7.12506 0.860322 7.05921 0.71967 6.942C0.579018 6.82479 0.5 6.66582 0.5 6.50006Z"
@@ -116,21 +121,22 @@
               </svg>
             </button>
           </div>
-          <div class="col-3 card">
+          <!-- 右 -->
+          <div class="col-3 card noline-card">
             <img src="../assets/images/Frame9.png" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">Natural Plants</h5>
               <p class="card-text">₱ 1,400.00</p>
             </div>
           </div>
-          <div class="col-3 card">
+          <div class="col-3 card noline-card">
             <img src="../assets/images/Frame8.png" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">Artificial Plants</h5>
               <p class="card-text">₱ 900.00</p>
             </div>
           </div>
-          <div class="col-3 card">
+          <div class="col-3 card noline-card">
             <img src="../assets/images/Frame7.png" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">Artificial Plants</h5>
@@ -140,22 +146,30 @@
         </div>
       </div>
       <!-- about us -->
-      <div class="col-12">
+      <div class="col-12 mt-4 mb-4">
         <h3 class="text-center">About us</h3>
         <p class="text-center">Order now and appreciate the beauty of nature</p>
         <div class="row">
           <div class="col-4">
-            <div class="about-circle">
-              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M33.6009 23.0771H18.2604L18.7304 22.6252L22.7425 18.7676C24.363 19.5522 26.1485 19.9706 27.9627 19.9906C29.7888 19.9953 31.5808 19.5148 33.1409 18.6022C37.885 15.8407 40.4271 9.44846 39.9411 1.50241C39.9182 1.12604 39.7524 0.770844 39.4751 0.504257C39.1979 0.23767 38.8285 0.0782541 38.437 0.0562747C30.1728 -0.409104 23.5245 2.03317 20.6525 6.59465C18.7804 9.56576 18.7324 13.1542 20.4785 16.5945L17.6004 19.3618L15.1583 17.0137C16.3583 14.4657 16.2723 11.8215 14.8803 9.61384C12.7062 6.15427 7.72206 4.31006 1.54587 4.65814C1.1551 4.68052 0.786432 4.83987 0.50963 5.10601C0.232829 5.37215 0.0671034 5.72663 0.0438198 6.10235C-0.320192 12.0388 1.59987 16.8311 5.19998 18.9233C6.40441 19.6304 7.78891 20.0032 9.2001 20.0002C10.4804 19.988 11.7432 19.7133 12.9042 19.1945L15.3363 21.5387L13.7362 23.0771H4.79997C4.37561 23.0771 3.96863 23.2392 3.66856 23.5277C3.36849 23.8162 3.19992 24.2075 3.19992 24.6156C3.19992 25.0236 3.36849 25.4149 3.66856 25.7034C3.96863 25.9919 4.37561 26.154 4.79997 26.154H6.71803L9.36011 37.5904C9.51498 38.2753 9.90977 38.8884 10.4784 39.327C11.0471 39.7656 11.7552 40.0032 12.4842 40H25.9186C26.6476 40.0032 27.3557 39.7656 27.9244 39.327C28.4931 38.8884 28.8879 38.2753 29.0427 37.5904L31.6848 26.154H33.6009C34.0252 26.154 34.4322 25.9919 34.7323 25.7034C35.0323 25.4149 35.2009 25.0236 35.2009 24.6156C35.2009 24.2075 35.0323 23.8162 34.7323 23.5277C34.4322 23.2392 34.0252 23.0771 33.6009 23.0771ZM23.4005 8.18886C25.4926 4.86967 30.4488 2.99662 36.801 3.07931C36.883 9.19654 34.9389 13.9599 31.4868 15.9638C29.1847 17.3099 26.4066 17.2214 23.6306 15.7368C22.0845 13.0773 22.0005 10.4023 23.4005 8.18886ZM12.0222 16.1753C10.1821 17.1234 8.36008 17.1676 6.85603 16.2907C4.55596 14.9503 3.22992 11.7907 3.19992 7.69271C7.46205 7.72156 10.7502 8.99654 12.1422 11.208C13.0542 12.6542 13.0002 14.4061 12.0222 16.1753ZM25.9186 36.9231H12.4842L10.0001 26.154H28.4007L25.9186 36.9231Z"
-                  fill="#1E1E1E" />
-              </svg>
+            <div class="row">
+              <div class="col d-flex justify-content-center">
+                <div class="about-circle">
+                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M33.6009 23.0771H18.2604L18.7304 22.6252L22.7425 18.7676C24.363 19.5522 26.1485 19.9706 27.9627 19.9906C29.7888 19.9953 31.5808 19.5148 33.1409 18.6022C37.885 15.8407 40.4271 9.44846 39.9411 1.50241C39.9182 1.12604 39.7524 0.770844 39.4751 0.504257C39.1979 0.23767 38.8285 0.0782541 38.437 0.0562747C30.1728 -0.409104 23.5245 2.03317 20.6525 6.59465C18.7804 9.56576 18.7324 13.1542 20.4785 16.5945L17.6004 19.3618L15.1583 17.0137C16.3583 14.4657 16.2723 11.8215 14.8803 9.61384C12.7062 6.15427 7.72206 4.31006 1.54587 4.65814C1.1551 4.68052 0.786432 4.83987 0.50963 5.10601C0.232829 5.37215 0.0671034 5.72663 0.0438198 6.10235C-0.320192 12.0388 1.59987 16.8311 5.19998 18.9233C6.40441 19.6304 7.78891 20.0032 9.2001 20.0002C10.4804 19.988 11.7432 19.7133 12.9042 19.1945L15.3363 21.5387L13.7362 23.0771H4.79997C4.37561 23.0771 3.96863 23.2392 3.66856 23.5277C3.36849 23.8162 3.19992 24.2075 3.19992 24.6156C3.19992 25.0236 3.36849 25.4149 3.66856 25.7034C3.96863 25.9919 4.37561 26.154 4.79997 26.154H6.71803L9.36011 37.5904C9.51498 38.2753 9.90977 38.8884 10.4784 39.327C11.0471 39.7656 11.7552 40.0032 12.4842 40H25.9186C26.6476 40.0032 27.3557 39.7656 27.9244 39.327C28.4931 38.8884 28.8879 38.2753 29.0427 37.5904L31.6848 26.154H33.6009C34.0252 26.154 34.4322 25.9919 34.7323 25.7034C35.0323 25.4149 35.2009 25.0236 35.2009 24.6156C35.2009 24.2075 35.0323 23.8162 34.7323 23.5277C34.4322 23.2392 34.0252 23.0771 33.6009 23.0771ZM23.4005 8.18886C25.4926 4.86967 30.4488 2.99662 36.801 3.07931C36.883 9.19654 34.9389 13.9599 31.4868 15.9638C29.1847 17.3099 26.4066 17.2214 23.6306 15.7368C22.0845 13.0773 22.0005 10.4023 23.4005 8.18886ZM12.0222 16.1753C10.1821 17.1234 8.36008 17.1676 6.85603 16.2907C4.55596 14.9503 3.22992 11.7907 3.19992 7.69271C7.46205 7.72156 10.7502 8.99654 12.1422 11.208C13.0542 12.6542 13.0002 14.4061 12.0222 16.1753ZM25.9186 36.9231H12.4842L10.0001 26.154H28.4007L25.9186 36.9231Z"
+                      fill="#1E1E1E" />
+                  </svg>
+                </div>
+              </div>
             </div>
-            <h4>Large Assortment</h4>
-            <p>we offer many different types of products with fewer variations in each category.</p>
+            <div class="row">
+              <div class="col text-center">
+                <h4>Large Assortment</h4>
+                <p>we offer many different types of products with fewer variations in each category.</p>
+              </div>
+            </div>
           </div>
-          <div class="col-4">
+          <div class="col-4 d-flex flex-column justify-content-center">
             <div class="about-circle">
               <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -163,8 +177,8 @@
                   fill="#1E1E1E" />
               </svg>
             </div>
-            <h4>Fast & Free Shipping</h4>
-            <p>4-day or less delivery time, free shipping and an expedited delivery option.</p>
+            <h4 style="text-center">Fast & Free Shipping2</h4>
+            <p style="text-center">4-day or less delivery time, free shipping and an expedited delivery option.</p>
           </div>
           <div class="col-4">
             <div class="about-circle">
@@ -336,6 +350,23 @@
 </template>
 
 <style scoped>
+h3 {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 48px;
+}
+
+/* h4{
+
+} */
+
+p {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
+  color: #1E1E1E80;
+}
+
 /* landing page */
 .div-right-line::after {
   content: "";
@@ -348,11 +379,35 @@
   transform: translate(-50%, -50%);
 }
 
+.mouse-focus:focus {
+  outline: none;
+}
+
+/* cards */
+.noline-card {
+  border: none;
+  font-size: 18px;
+}
+
+.noline-card h5 {
+  font-size: 18px;
+}
+
+.noline-card img {
+  height: 365px;
+  border-radius: 12px;
+}
+
+/* about */
+
 .about-circle {
   width: 96px;
   height: 96px;
   background-color: #C1DCDC;
   border-radius: 999em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>
 
