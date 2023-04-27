@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <!-- navbar -->
-      <div class="col-12 pt-4 pb-4" style="padding-left: 0; padding-right: 0px;">
+      <div class="col-12 pt-2 pb-2" style="padding-left: 0; padding-right: 0px;">
         <nav class="navbar navbar-expand-lg bg-body">
           <a class="navbar-brand" href="#" style="padding-right: 96px;">
             <svg width="142" height="39" viewBox="0 0 141 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -55,7 +55,7 @@
         </nav>
       </div>
       <!-- landing page -->
-      <div class="col-12 mt-1 mb-4"
+      <div class="col-12 mb-4"
         style="width: 100%; height: 512px; background-color: #C1DCDC; border-radius: 24px; position: relative;">
         <div class="row">
           <!-- landing 左側元素 -->
