@@ -210,24 +210,24 @@
         </div>
       </div>
       <!-- categories -->
-      <div class="col-12" style="background-color: #C1DCDC;">
-        <h3 class="text-center">Categories</h3>
-        <span class="d-block text-center">Find what you are looking for</span>
+      <h3 class="text-center">Categories</h3>
+      <p class="d-block text-center mb-5">Find what you are looking for</p>
+      <div class="col-12 mt-4" style="height: 841px; background-color: #C1DCDC; position: relative;">
         <div class="cate-cards">
           <div class="row">
-            <div class="col-4 card">
-              <img src="../assets/images/Frame36.png" class="card-img-top" alt="...">
+            <div class="col-4 card noline-card cate-img" style="top: -48px;">
+              <img src="../assets/images/Frame36.png" class="card-img-top " alt="...">
               <div class="card-body">
                 <h5 class="card-title">Natural Plants</h5>
               </div>
             </div>
-            <div class="col-4 card">
+            <div class="col-4 card noline-card cate-img" style="top: 48px;">
               <img src="../assets/images/Frame38.png" class="card-img-top" alt="...">
               <div class="card-body">
                 <h5 class="card-title">Plant Accessories</h5>
               </div>
             </div>
-            <div class="col-4 card">
+            <div class="col-4 card noline-card cate-img" style="top: -48px;">
               <img src="../assets/images/Frame37.png" class="card-img-top" alt="...">
               <div class="card-body">
                 <h5 class="card-title">Artificial Plants</h5>
@@ -372,10 +372,6 @@ h3 {
   line-height: 48px;
 }
 
-/* h4{
-
-} */
-
 p {
   font-weight: 500;
   font-size: 18px;
@@ -388,7 +384,7 @@ p {
   content: "";
   position: absolute;
   width: 1px;
-  right: 100px;
+  right: 80px;
   height: 80%;
   background: #000000;
   top: 50%;
@@ -415,7 +411,6 @@ p {
 }
 
 /* about */
-
 .about-circle {
   width: 96px;
   height: 96px;
@@ -424,6 +419,26 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Categories */
+.cate-cards .noline-card {
+  background-color: transparent;
+}
+
+.cate-cards .cate-img {
+  position: relative;
+}
+
+.cate-cards .cate-img img {
+  height: 512px;
+}
+
+.cate-cards h5 {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 27px;
+  height: 27px;
 }
 </style>
 
