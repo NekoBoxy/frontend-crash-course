@@ -235,11 +235,9 @@
             </div>
           </div>
         </div>
-        <div>
-          <div class="mt-4 mb-3">
-            <span class="d-block text-center">Horem ipsum dolor sit amet,</span>
-            <span class="d-block text-center">consectetur adipiscing elit.</span>
-          </div>
+        <div class="mt-4 mb-3">
+          <span class="d-block text-center">Horem ipsum dolor sit amet,</span>
+          <span class="d-block text-center">consectetur adipiscing elit.</span>
         </div>
         <div class="d-flex justify-content-center">
           <button type="button" class="btn btn-outline-secondary"
