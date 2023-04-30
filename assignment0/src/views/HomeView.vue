@@ -359,21 +359,21 @@
             <div class="col d-flex">
               <div class="d-flex flex-column">
                 <h5>Information</h5>
-                <a>About</a>
-                <a>Product</a>
-                <a>Blog</a>
+                <a href="/">About</a>
+                <a href="/">Product</a>
+                <a href="/">Blog</a>
               </div>
               <div class="d-flex flex-column mx-4">
                 <h5>Company</h5>
-                <a>Community</a>
-                <a>Career</a>
-                <a>Our story</a>
+                <a href="/">Community</a>
+                <a href="/">Career</a>
+                <a href="/">Our story</a>
               </div>
               <div class="d-flex flex-column mx-2">
                 <h5>Contact</h5>
-                <a>Getting Started</a>
-                <a>Pricing</a>
-                <a>Resources</a>
+                <a href="/">Getting Started</a>
+                <a href="/">Pricing</a>
+                <a href="/">Resources</a>
               </div>
             </div>
           </div>
@@ -414,6 +414,7 @@ a {
   line-height: 27px;
   height: 27px;
   color: #1E1E1E80 !important;
+  text-decoration: none;
 }
 
 button {
