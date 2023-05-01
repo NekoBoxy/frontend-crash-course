@@ -9,9 +9,9 @@ npm run build
 cd -
 
 # assignment1
-cd assignment1
-npm run build
-cd -
+# cd assignment1
+# npm run build
+# cd -
 
 cd dist
 echo > .nojekyll

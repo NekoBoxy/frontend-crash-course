@@ -336,8 +336,13 @@
         </div>
       </div>
       <!-- carousel v2 start -->
-      <!-- <div class="col-12">
-      </div> -->
+      <div class="col-12">
+        <swiper :modules="modules" :pagination="{ clickable: true }" @swiper="onSwiper" @slideChange="onSlideChange">
+          <swiper-slide>Slide 2</swiper-slide>
+          <swiper-slide>Slide 2</swiper-slide>
+          <swiper-slide>Slide 3</swiper-slide>
+        </swiper>
+      </div>
     </div>
   </div>
   <!-- footer -->
@@ -562,5 +567,19 @@ button {
 </style>
 
 <script setup>
+import { Swiper, SwiperSlide } from 'swiper/vue'; // swiper所需组件
+// 这是分页器和对应方法，swiper好像在6的时候就已经分离了分页器和一些其他工具
+import { Pagination, A11y } from 'swiper';
+// 对应css 如果使用less或者css只需要把scss改为对应的即可
+import 'swiper/scss';
+import 'swiper/scss/pagination';
+const onSwiper = (swiper) => {
+  console.log(swiper);
+};
+const onSlideChange = (e) => { // swiper切换的时候执行的方法
+  console.log('slide change', e.activeIndex);
+};
+// setup语法糖只需要这样创建一个变量就可以正常使用分页器和对应功能，如果没有这个数组则无法使用对应功能
+const modules = [Pagination, A11y];
 
 </script>
