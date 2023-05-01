@@ -338,9 +338,10 @@
       <!-- carousel v2 start -->
       <div class="col-12">
         <swiper :modules="modules" :pagination="{ clickable: true }" @swiper="onSwiper" @slideChange="onSlideChange">
-          <swiper-slide>Slide 2</swiper-slide>
+          <swiper-slide>Slide 1</swiper-slide>
           <swiper-slide>Slide 2</swiper-slide>
           <swiper-slide>Slide 3</swiper-slide>
+          <swiper-slide>Slide 4</swiper-slide>
         </swiper>
       </div>
     </div>
