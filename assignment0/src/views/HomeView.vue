@@ -318,7 +318,7 @@
     </div>
   </div>
   <!-- footer -->
-  <div style="background-color: #C1DCDC; height: 400px;">
+  <div class="footer-area">
     <div class="container">
       <div class="row">
         <div class="col-7 mt-4 mb-5">
@@ -371,7 +371,7 @@
               </div>
               <div class="d-flex flex-column mx-2">
                 <h5>Contact</h5>
-                <a href="/">Getting Started</a>
+                <a style="width: 138px;" href="/">Getting Started</a>
                 <a href="/">Pricing</a>
                 <a href="/">Resources</a>
               </div>
@@ -415,6 +415,9 @@ a {
   height: 27px;
   color: #1E1E1E80 !important;
   text-decoration: none;
+  margin-top: 1vw;
+  margin-right: 1vw;
+  margin-bottom: 1vw;
 }
 
 button {
@@ -481,6 +484,11 @@ button {
 }
 
 /* footer */
+.footer-area {
+  background-color: #C1DCDC;
+  height: 400px;
+}
+
 .footer-circle {
   width: 48px;
   height: 48px;
