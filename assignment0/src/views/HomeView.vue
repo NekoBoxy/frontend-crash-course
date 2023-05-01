@@ -563,5 +563,4 @@ button {
 
 <script setup>
 
-const swiper = new Swiper();
 </script>
