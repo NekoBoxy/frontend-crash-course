@@ -16,4 +16,7 @@ export default defineConfig({
   base: process.env.NODE_ENV === 'production'
     ? '/frontend-crash-course/assignment0/'
     : '/',
+  build: {
+    outDir: '../dist/assignment0/'
+  }
 })
