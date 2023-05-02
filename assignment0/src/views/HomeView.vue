@@ -348,6 +348,7 @@
               </div>
             </div>
           </div>
+          <div class="swiper-pagination"></div>
         </div>
       </div>
     </div>
@@ -533,42 +534,6 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-/* carousel */
-.carousel-item {
-  background-color: #C1DCDC;
-  width: 800px;
-  height: 330px;
-}
-
-.carousel-item p {
-  color: #1E1E1EBF;
-  margin-top: 48px;
-  margin-left: 48px;
-  margin-right: 48px;
-}
-
-.carousel-pics {
-  float: left;
-  background-image: url(../assets/images/Vector.png);
-  background-repeat: no-repeat;
-  background-position: 50px 40px;
-}
-
-.carousel-pics img {
-  position: relative;
-  top: -20px;
-  left: 20px;
-}
-
-.carousel-title span {
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 18px;
-  color: #1E1E1E80;
-  height: 18px;
-  display: block;
 }
 
 /* swiper */
