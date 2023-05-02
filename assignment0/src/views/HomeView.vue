@@ -496,7 +496,7 @@ button {
 }
 
 /* Categories */
-.cate-cards.noline-card {
+.cate-cards .noline-card {
   background-color: transparent;
 }
 
