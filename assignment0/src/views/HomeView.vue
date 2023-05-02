@@ -261,89 +261,89 @@
   <!-- customers carousel star -->
   <div class="container">
     <div class="row mb-5">
-      <!-- carousel v1 start -->
+      <!-- carousel start -->
       <div class="col-12">
-        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-          <div class="row mt-5 mb-3">
-            <div class="col-6">
-              <h3>What customers say about</h3>
-              <h3>GREEMIND?</h3>
-            </div>
-            <!-- carousel-indicators 指示器 -->
-            <div class="col-2 offset-4 carousel-indicators">
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                aria-current="true" aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                aria-label="Slide 2"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                aria-label="Slide 3"></button>
-            </div>
-            <div class="col-12">
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <p>Jorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum,
-                    ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
-                    inceptos himenaeos.
-                  </p>
-                  <div class="carousel-pics">
-                    <img src="../assets/images/unsplash_5aGUyCW_PJw-removebg-preview.png" alt="customer-img">
+        <div ref="mySwiper" class="swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <p>Jorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum,
+                ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
+                inceptos himenaeos.
+              </p>
+              <div class="swiper-pics">
+                <img src="../assets/images/unsplash_5aGUyCW_PJw-removebg-preview.png" alt="customer-img">
+              </div>
+              <div class="swiper-title">
+                <div class="row">
+                  <div class="col-10 mt-5">
+                    <h5 class="mb-0">John Doe</h5>
+                    <span>Youtuber</span>
                   </div>
-                  <div class="carousel-title">
-                    <div class="row">
-                      <div class="col-10 mt-5">
-                        <h5 class="mb-0">John Doe</h5>
-                        <span>Youtuber</span>
-                      </div>
-                      <div class="col-2 mt-5">
-                        <svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path
-                            d="M4.51503 18.8036C4.03253 19.0511 3.48503 18.6174 3.58253 18.0636L4.62003 12.1511L0.216276 7.95614C-0.194974 7.56364 0.0187758 6.84614 0.570026 6.76864L6.69253 5.89864L9.42253 0.489893C9.66878 0.00239257 10.335 0.00239257 10.5813 0.489893L13.3113 5.89864L19.4338 6.76864C19.985 6.84614 20.1988 7.56364 19.7863 7.95614L15.3838 12.1511L16.4213 18.0636C16.5188 18.6174 15.9713 19.0511 15.4888 18.8036L10 15.9836L4.51503 18.8036Z"
-                            fill="#1E1E1E" />
-                        </svg>
-                        <h5 class="d-inline">4.5</h5>
-                      </div>
-                    </div>
+                  <div class="col-2 mt-5">
+                    <svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M4.51503 18.8036C4.03253 19.0511 3.48503 18.6174 3.58253 18.0636L4.62003 12.1511L0.216276 7.95614C-0.194974 7.56364 0.0187758 6.84614 0.570026 6.76864L6.69253 5.89864L9.42253 0.489893C9.66878 0.00239257 10.335 0.00239257 10.5813 0.489893L13.3113 5.89864L19.4338 6.76864C19.985 6.84614 20.1988 7.56364 19.7863 7.95614L15.3838 12.1511L16.4213 18.0636C16.5188 18.6174 15.9713 19.0511 15.4888 18.8036L10 15.9836L4.51503 18.8036Z"
+                        fill="#1E1E1E" />
+                    </svg>
+                    <h5 class="d-inline">4.5</h5>
                   </div>
                 </div>
-                <div class="carousel-item">
-                  <p>Jorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum,
-                    ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
-                    inceptos himenaeos.
-                  </p>
-                  <div class="carousel-pics">
-                    <img src="../assets/images/unsplash_O3ymvT7Wf9U-removebg-preview.png" alt="customer-img">
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <p>Jorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum,
+                ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
+                inceptos himenaeos.
+              </p>
+              <div class="swiper-pics">
+                <img src="../assets/images/unsplash_O3ymvT7Wf9U-removebg-preview.png" alt="customer-img">
+              </div>
+              <div class="swiper-title">
+                <div class="row">
+                  <div class="col-10 mt-5">
+                    <h5 class="mb-0">John Doe</h5>
+                    <span>Youtuber</span>
                   </div>
-                  <div class="carousel-title">
-                    <div class="row">
-                      <div class="col-10 mt-5">
-                        <h5 class="mb-0">John Doe</h5>
-                        <span>Youtuber</span>
-                      </div>
-                      <div class="col-2 mt-5">
-                        <svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path
-                            d="M4.51503 18.8036C4.03253 19.0511 3.48503 18.6174 3.58253 18.0636L4.62003 12.1511L0.216276 7.95614C-0.194974 7.56364 0.0187758 6.84614 0.570026 6.76864L6.69253 5.89864L9.42253 0.489893C9.66878 0.00239257 10.335 0.00239257 10.5813 0.489893L13.3113 5.89864L19.4338 6.76864C19.985 6.84614 20.1988 7.56364 19.7863 7.95614L15.3838 12.1511L16.4213 18.0636C16.5188 18.6174 15.9713 19.0511 15.4888 18.8036L10 15.9836L4.51503 18.8036Z"
-                            fill="#1E1E1E" />
-                        </svg>
-                        <h5 class="d-inline">4.5</h5>
-                      </div>
-                    </div>
+                  <div class="col-2 mt-5">
+                    <svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M4.51503 18.8036C4.03253 19.0511 3.48503 18.6174 3.58253 18.0636L4.62003 12.1511L0.216276 7.95614C-0.194974 7.56364 0.0187758 6.84614 0.570026 6.76864L6.69253 5.89864L9.42253 0.489893C9.66878 0.00239257 10.335 0.00239257 10.5813 0.489893L13.3113 5.89864L19.4338 6.76864C19.985 6.84614 20.1988 7.56364 19.7863 7.95614L15.3838 12.1511L16.4213 18.0636C16.5188 18.6174 15.9713 19.0511 15.4888 18.8036L10 15.9836L4.51503 18.8036Z"
+                        fill="#1E1E1E" />
+                    </svg>
+                    <h5 class="d-inline">4.5</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <p>Jorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum,
+                ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
+                inceptos himenaeos.
+              </p>
+              <div class="swiper-pics">
+                <img src="../assets/images/unsplash_5aGUyCW_PJw-removebg-preview.png" alt="customer-img">
+              </div>
+              <div class="swiper-title">
+                <div class="row">
+                  <div class="col-10 mt-5">
+                    <h5 class="mb-0">John Doe</h5>
+                    <span>Youtuber</span>
+                  </div>
+                  <div class="col-2 mt-5">
+                    <svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M4.51503 18.8036C4.03253 19.0511 3.48503 18.6174 3.58253 18.0636L4.62003 12.1511L0.216276 7.95614C-0.194974 7.56364 0.0187758 6.84614 0.570026 6.76864L6.69253 5.89864L9.42253 0.489893C9.66878 0.00239257 10.335 0.00239257 10.5813 0.489893L13.3113 5.89864L19.4338 6.76864C19.985 6.84614 20.1988 7.56364 19.7863 7.95614L15.3838 12.1511L16.4213 18.0636C16.5188 18.6174 15.9713 19.0511 15.4888 18.8036L10 15.9836L4.51503 18.8036Z"
+                        fill="#1E1E1E" />
+                    </svg>
+                    <h5 class="d-inline">4.5</h5>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          <div class="swiper-pagination"></div>
         </div>
       </div>
-      <!-- carousel v2 start -->
-      <!-- <div class="col-12">
-        <swiper :modules="modules" :pagination="{ clickable: true }" @swiper="onSwiper" @slideChange="onSlideChange">
-          <swiper-slide>Slide 1</swiper-slide>
-          <swiper-slide>Slide 2</swiper-slide>
-          <swiper-slide>Slide 3</swiper-slide>
-          <swiper-slide>Slide 4</swiper-slide>
-        </swiper>
-      </div> -->
     </div>
   </div>
   <!-- footer -->
@@ -496,7 +496,7 @@ button {
 }
 
 /* Categories */
-.cate-cards .noline-card {
+.cate-cards.noline-card {
   background-color: transparent;
 }
 
@@ -541,7 +541,6 @@ button {
   margin-top: 48px;
   margin-left: 48px;
   margin-right: 48px;
-  /* position: relative; */
 }
 
 .carousel-pics {
@@ -565,18 +564,77 @@ button {
   height: 18px;
   display: block;
 }
+
+/* swiper */
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  background-color: #C1DCDC;
+  width: 800px;
+  height: 330px;
+}
+
+.swiper-slide p {
+  color: #1E1E1EBF;
+  margin-top: 48px;
+  margin-left: 48px;
+  margin-right: 48px;
+}
+
+.swiper-pics {
+  float: left;
+  background-image: url(../assets/images/Vector.png);
+  background-repeat: no-repeat;
+  background-position: 50px 40px;
+}
+
+.swiper-slide img {
+  position: relative;
+  top: -20px;
+  left: 20px;
+
+}
+
+.swiper-title span {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+  color: #1E1E1E80;
+  height: 18px;
+  display: block;
+}
+
+.swiper-slide {
+  width: 72%;
+}
+
+.swiper-slide:nth-child(2n) {
+  width: 72%;
+}
+
+.swiper-slide:nth-child(3n) {
+  width: 72%;
+}
 </style>
 
 <script setup>
-// import { Swiper, SwiperSlide } from 'swiper/vue';
-// import { Pagination, A11y } from 'swiper';
-// import 'swiper/scss';
-// import 'swiper/scss/pagination';
-// const onSwiper = (swiper) => {
-//   console.log(swiper);
-// };
-// const onSlideChange = (e) => {
-//   console.log('slide change', e.activeIndex);
-// };const modules = [Pagination, A11y];
+import { ref, onMounted } from 'vue';
+import Swiper from 'swiper/bundle';
+import 'swiper/css/bundle';
 
+const mySwiper = ref(null);
+
+onMounted(() => {
+  new Swiper(mySwiper.value, {
+    slidesPerView: "auto",
+    spaceBetween: 30,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+  });
+});
 </script>
