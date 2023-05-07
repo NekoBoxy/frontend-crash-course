@@ -4,5 +4,7 @@
 https://nekoboxy.github.io/frontend-crash-course/assignment0/
 ![](https://i.imgur.com/2RiteQh.jpg)
 
-## 卡個位
-https://nekoboxy.github.io/frontend-crash-course/assignment1/
+## assignment1
+<!-- https://nekoboxy.github.io/frontend-crash-course/assignment1/ -->
+小問題：
+null & undifined 的差異
