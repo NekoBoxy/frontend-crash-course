@@ -1,5 +1,5 @@
 // Practices 3 - access dom node
-// Create a simple html with some tags.
+// 1. Create a simple html with some tags.
 /* <div class="q-1">
 <span>姓名：</span>
 <input type="text" placeholder="請輸入你的名字">

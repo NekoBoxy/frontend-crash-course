@@ -39,6 +39,7 @@
 // let newArr = numbers.map(value => value ** 2);
 // console.log(newArr); // [ 1, 4, 9, 16, 25 ]
 
+// 待修正為 找質數
 // Declare a array called numbers and filter the prime number using filter.
 // let numbers = [1, 2, 3, 4, 5];
 // let newArr = numbers.filter(function (_, index) {

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 1%;
+    }
+
+    img {
+      display: block;
+      max-width: 15%;
+      max-height: 15%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="randomPic">
+    <p>目的：練習以 XHR (XMLHttpRequest) 方式 call api 拿到圖片網址，並更新 img 的 src，按按鈕可換圖。</p>
+    <button type="button" onclick="getRandomPic()">按我換圖</button>
+    <img id="userImg" src="https://random-d.uk/api/randomimg" alt="">
+  </div>
+  <script src="./class-3-ex-01.js"></script>
+</body>
+
+</html>

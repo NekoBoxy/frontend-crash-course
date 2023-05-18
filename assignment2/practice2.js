@@ -8,6 +8,8 @@ const person = {
 };
 
 console.log(person); // { name: 'littleOtter', age: 3, gender: 'female' }
+console.log(person.name); // { name: 'littleOtter', age: 3, gender: 'female' }
+console.log(person.age); // { name: 'littleOtter', age: 3, gender: 'female' }
 
 // Add a method to the person object created in the previous assignment called greet.
 // The method should display a greeting message “Hello”. Invoke the greet method to see the greeting message.
