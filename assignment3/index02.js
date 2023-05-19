@@ -32,50 +32,32 @@ function addNewList() {
 // 新增todo時再針對新增的項目作渲染
 // 渲染新 todo 的 dom
 function newDom({ id, content }) {
-  // 建 div
+  // 建虛擬 div dom
   let elDiv = document.createElement("div");
-  let elText = content; // 準備文字內容
-  elDiv.textContent = elText; // 把值放進 div 中
-  elDiv.setAttribute("data-id", id); // 替 div 加上 data-id
-  document.querySelector(".list-Area").appendChild(elDiv); // 置於指定區域並渲染
-  // 建 button
+  elDiv.textContent = content; // 把值放進 div 中
+  elDiv.setAttribute("data-id", id); // 替 div 加上 data-id 屬性
+  // 建虛擬 btn dom
   let elBtn = document.createElement("button");
-  let elBtnText = "X";
-  elBtn.textContent = elBtnText;
+  elBtn.textContent = "X";
   elBtn.type = "button"; // type="button"
-  // elBtn.setAttribute("type", "button"); // type="button"
-  // document.querySelectorAll("[data-id]").appendChild(elBtn);
-  // document.querySelector("[data-id]").appendChild(elBtn);
-  // addBtn();
-
+  elDiv.appendChild(elBtn);
+  // 將 dom 實體化
+  document.querySelector(".list-Area").appendChild(elDiv); // 將 div 置於指定區域並渲染
 };
 
 // data 的初次渲染
-function init() {
-  if (todoDatas.length != 0) {
-    // elDiv 意為 element Div
-    for (i = 0; i <= dataLen; i++) {
-      let elDiv = document.createElement("div"); // 建一個 div
-      let elText = todoDatas[i].content; // 準備文字內容
-      elDiv.textContent = elText; // 把值放進 div 中
-      elDiv.setAttribute("data-id", todoDatas[i].id);
-      document.querySelector("list-Area").appendChild(elDiv); // 置於指定區域並渲染
-    }
-  }
-};
+// function init() {
+//   if (todoDatas.length != 0) {
+//     // elDiv 意為 element Div
+//     for (i = 0; i <= dataLen; i++) {
+//       let elDiv = document.createElement("div"); // 建一個 div
+//       let elText = todoDatas[i].content; // 準備文字內容
+//       elDiv.textContent = elText; // 把值放進 div 中
+//       elDiv.setAttribute("data-id", todoDatas[i].id);
+//       document.querySelector("list-Area").appendChild(elDiv); // 置於指定區域並渲染
+//     }
+//   }
+// };
 
-// 建立 btn，搜尋所有名為 data-id 的 attribute
-function addBtn() {
-  let elBtn = document.createElement("button");
-  let elText = "X";
-  elBtn.textContent = elText;
-  elBtn.type = "button"; // type="button"
-  // elBtn.setAttribute("type", "button"); // type="button"
-  // document.querySelectorAll("data-id").appendChild(elBtn);
-  let att = document.querySelectorAll("[data-id]");
-  console.log(att);
-  document.append
 
-}
-
-init();
+// init();
