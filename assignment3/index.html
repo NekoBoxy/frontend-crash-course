@@ -54,18 +54,21 @@
     <div class="list-Block">
       <h2>Todo App</h2>
       <input id="newTodo" type="text" placeholder="Add your new todo">
-      <button class="submitBtn" type="button" onclick="listAdd()">+</button>
+      <button class="submitBtn" type="button" onclick="addNewList()">+</button>
       <div class="list-Area">
-        <div id="0">Buy a new laptop
-          <button type="button" onclick="listDelete(id)">X</button>
-        </div>
+        <!-- <div data-id="0">Buy a new laptop
+          <button id="btn" type="button" onclick="listDelete()">X</button>
+        </div> -->
       </div>
       <span>
-        you have<div class="total">1</div>pending tasks.</span>
+        you have<div class="total">1</div>pending tasks.
+      </span>
       <button type="button" onclick="listDelete()">Clear All</button>
     </div>
   </div>
   <script src="./index.js"></script>
+  <script src="./index02.js"></script>
+
 </body>
 
 </html>
