@@ -10,16 +10,14 @@
 </head>
 
 <body>
-  <!-- practice 1 - 1: counter -->
+  <!-- practice 1-1: counter -->
   <div class="question">
     <div class="description">
-      practice 1 - 1
-      <ol>
-        <li>Create a counter with add and sub and show current number<br>
-          做一個含有加減功能、且能看到當前數值的計數器<br></li>
-        <li>Create a todo list, include a.input text, b.add button and c.block with todo items<br>
-          如圖，做一個具有 a.input text, 文字輸入區、b.add button 增加項目鈕，和 c.block with todo items 已加入區塊的 todo list</li>
-      </ol>
+      <h2>practice 1-1</h2>
+      <li>
+        Create a counter with add and sub and show current number<br>
+        做一個含有加減功能、且能看到當前數值的計數器<br>
+      </li>
     </div>
     <div class="counter">
       <button type="button" onclick="numIncrease()">+</button>
@@ -28,41 +26,65 @@
       <button type="button" onclick="numReset()">RESET</button>
     </div>
   </div>
-  <!-- practice 1 - 2: todo-list -->
+  <!-- practice 1-2: todo-list -->
   <div class="question">
     <div class="description">
-      practice 1 - 2
+      <h2>practice 1-2</h2>
+      <li>
+        Create a todo list, include a.input text, b.add button and c.block with todo items<br>
+        如圖，做一個具有 a.input text, 文字輸入區、b.add button 增加項目鈕，和 c.block with todo items 已加入區塊的 todo list。
+      </li>
+    </div>
+    <div class="list-Block">
+      <h2>Todo App</h2>
+      <input id="newTodo" type="text" placeholder="Add your new todo">
+      <button class="submitBtn" type="button" onclick="addTodo()">+</button>
+      <div class="list-Area">
+      </div>
+      <span>
+        you have<div class="total">1</div>pending tasks.
+      </span>
+      <button type="button" onclick="deleteTodo()">Clear All</button>
+    </div>
+  </div>
+  <!-- practice 2-1 -->
+  <div class="question">
+    <div class="description">
+      <h2>practice 2-1</h2>
       <ol>
         <li>
           Show a random activity suggestion with a button<br>
           串api，按按鈕顯示隨機建議<br>
           <a href="https://www.boredapi.com/api/activity">api link</a>
         </li>
-        <li>
-          Predict the age of a person's name with a query string(URL)<br>
-          串api，以人名(字串)來預測/尋找這個人的年紀<br>
-          <a href="https://api.agify.io/?name=danny">api link</a>
-          <ul>
-            <li>a. should have a text input to enter user’s name<br>
-              需要有輸入姓名的 input 區</li>
-            <li>b. should have a button to click<br>
-              需要有可以點擊的 button</li>
-          </ul>
       </ol>
       <a href="https://apipheny.io/free-api/#apis-without-key">reference</a>
     </div>
-    <div class="list-Block">
-      <h2>Todo App</h2>
-      <input id="newTodo" type="text" placeholder="Add your new todo">
-      <button class="submitBtn" type="button" onclick="addNewList()">+</button>
+    <div class="area"></div>
+  </div>
 
-      <div class="list-Area">
-      </div>
-      <span>
-        you have<div class="total">1</div>pending tasks.
-      </span>
-      <button type="button" onclick="listDelete()">Clear All</button>
+  <!-- practice 2-2 -->
+  <div class="question">
+    <div class="description">
+      <h2>practice 2-2</h2>
+      <li>
+        Predict the age of a person's name with a query string(URL)<br>
+        串api，以人名(字串)來預測/尋找這個人的年紀<br>
+      </li>
+      <a href="https://api.agify.io/?name=danny">api link</a>
+      <ul>
+        <li>
+          a. should have a text input to enter user’s name<br>
+          需要有輸入姓名的 input 區
+        </li>
+        <li>
+          b. should have a button to click<br>
+          需要有可以點擊的 button
+        </li>
+      </ul>
+      <a href="https://apipheny.io/free-api/#apis-without-key">reference</a>
     </div>
+    <div class="area"></div>
   </div>
   <script src="./index.js"></script>
   <script src="./index02.js"></script>

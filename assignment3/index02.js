@@ -16,7 +16,7 @@ const todoDatas = [];
 let dataLen = 0;
 
 // step 1.3 加入新紀錄到 todoDatas 中
-function addNewList() {
+function addTodo() {
   // listCount 放在函式內，更新後才取的到值，才能做新 id
   dataLen = todoDatas.length;
   let content = newTodo.value;
@@ -40,10 +40,16 @@ function newDom({ id, content }) {
   let elBtn = document.createElement("button");
   elBtn.textContent = "X";
   elBtn.type = "button"; // type="button"
+  // (虛擬)在 div 內放入 btn
   elDiv.appendChild(elBtn);
   // 將 dom 實體化
   document.querySelector(".list-Area").appendChild(elDiv); // 將 div 置於指定區域並渲染
 };
+
+function deleteTodo() {
+
+};
+
 
 // data 的初次渲染
 // function init() {
