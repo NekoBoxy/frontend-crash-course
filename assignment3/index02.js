@@ -12,7 +12,24 @@ const submitBtn = document.getElementsByClassName(".submitBtn");
 // console.log("submitBtn", submitBtn);
 
 // step 1.2 建立資料格式(陣列)與數量
-const todoDatas = [];
+const todoDatas = [
+  {
+    id: 0,
+    content: "吃飯",
+  },
+  {
+    id: 1,
+    content: "洗澡",
+  },
+  {
+    id: 2,
+    content: "買珍奶",
+  },
+  {
+    id: 3,
+    content: "吃西瓜",
+  },
+];
 let dataLen = 0;
 
 // step 1.3 加入新紀錄到 todoDatas 中
@@ -24,13 +41,11 @@ function addTodo() {
   todoDatas.push({ id, content });
   // console.log("todoDatas", todoDatas);
   newTodo.value = "";
+  changeTotalDom(id);
   newDom({ id, content });
 }
 
-
-// 畫面載入時做第一次todo資料的渲染
-// 新增todo時再針對新增的項目作渲染
-// 渲染新 todo 的 dom
+// 建立 todo 的虛擬 dom 與實體化
 function newDom({ id, content }) {
   // 建虛擬 div dom
   let elDiv = document.createElement("div");
@@ -46,24 +61,50 @@ function newDom({ id, content }) {
   document.querySelector(".list-Area").appendChild(elDiv); // 將 div 置於指定區域並渲染
 };
 
-function deleteTodo() {
+// 刪除 todo
+function deleteTodo(element) {
+  // want: 抓到指定 id 後刪掉整個 DOM
+  // 按下 btn 後往上找父層的 data-id <div data-id="">...</div>
+  console.log("flag2");
+  const idStr = element.target.parentNode.getAttribute("data-id");
+  const id = parseInt(idStr);
+  console.log(id);
+  console.log(idStr);
+};
 
+// function getDom(element) {
+//   console.log("flag2");
+//   const idStr = element.target.parentNode.getAttribute("data-id");
+//   const id = parseInt(idStr);
+//   console.log(id);
+//   console.log(idStr);
+
+// };
+
+// 修改現有 todo 數字
+function initTotalDom() {
+  let elDivNodeList = document.getElementsByClassName("total"); // 回傳結果是 陣列
+  let elDiv = elDivNodeList[0]; // 只有一筆，所以 i=0
+  elDiv.textContent = dataLen; // 把數字改成陣列長度(資料筆數)
+  console.log("initTotal", elDiv.textContent);
+};
+
+function changeTotalDom(id) {
+  let elDivNodeList = document.getElementsByClassName("total"); // 回傳結果是 陣列
+  let elDiv = elDivNodeList[0]; // 只有一筆，所以 i=0
+  elDiv.textContent = id + 1; // 把數字改成陣列長度(資料筆數)
+  console.log("changeTotal", elDiv.textContent);
+};
+
+// todo list 的初次渲染
+function init() {
+  dataLen = todoDatas.length;
+  for (let i = 0; i <= dataLen - 1; i++) {
+    newDom(todoDatas[i]);
+  }
+  initTotalDom();
 };
 
 
-// data 的初次渲染
-// function init() {
-//   if (todoDatas.length != 0) {
-//     // elDiv 意為 element Div
-//     for (i = 0; i <= dataLen; i++) {
-//       let elDiv = document.createElement("div"); // 建一個 div
-//       let elText = todoDatas[i].content; // 準備文字內容
-//       elDiv.textContent = elText; // 把值放進 div 中
-//       elDiv.setAttribute("data-id", todoDatas[i].id);
-//       document.querySelector("list-Area").appendChild(elDiv); // 置於指定區域並渲染
-//     }
-//   }
-// };
 
-
-// init();
+init();
