@@ -7,9 +7,7 @@
 
 // step 1.1 取輸入區 input & button 的 dom
 const newTodo = document.getElementById("newTodo"); // input#newTodo
-const submitBtn = document.getElementsByClassName(".submitBtn");
-// console.log("newTodo", newTodo);
-// console.log("submitBtn", submitBtn);
+const submitBtn = document.getElementsByClassName(".submitBtn"); // 是陣列
 
 // step 1.2 建立資料格式(陣列)與數量
 let todoDatas = [
@@ -55,20 +53,20 @@ function newDom({ id, content }) {
   let elBtn = document.createElement("button");
   elBtn.textContent = "X";
   elBtn.type = "button"; // type="button"
+  // 在 btn element 上加上 onclick
+  elBtn.setAttribute("onclick", "deleteTodo()");
   // (虛擬)在 div 內放入 btn
   elDiv.appendChild(elBtn);
   // 將 dom 實體化
-  document.querySelector(".list-Area").appendChild(elDiv); // 將 div 置於指定區域並渲染
+  document.querySelector(".list-Area").appendChild(elDiv); // 將 elDiv 置於指定區域 .list-Area 並渲染
 };
 
 // 刪除 todo
 function deleteTodo(element) {
   // want: 抓到指定 id 後刪掉整個 DOM
   // 按下 btn 後往上找父層的 data-id <div data-id="">...</div>
-  const elDiv = document.querySelector("data-id");
-  console.log("elDiv", elDiv);
-  console.log("element", element);
-
+  // 用事件冒泡做?
+  console.log("deleteTodo");
 };
 
 // 將 .list-Area 內的所有 div 與陣列資料清空
