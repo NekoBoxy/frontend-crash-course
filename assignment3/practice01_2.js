@@ -8,9 +8,10 @@
 // step 1.1 取輸入區 input & button 的 dom
 const newTodo = document.getElementById("newTodo"); // input#newTodo
 const submitBtn = document.getElementsByClassName(".submitBtn"); // 是陣列
+const listArea = document.querySelector(".list-Area");
 
 // step 1.2 建立資料格式(陣列)與數量
-let todoDatas = [
+let todoList = [
   {
     id: 0,
     content: "吃飯",
@@ -30,14 +31,14 @@ let todoDatas = [
 ];
 let dataLen = 0;
 
-// step 1.3 加入新紀錄到 todoDatas 中
+// step 1.3 加入新紀錄到 todoList 中
 function addTodo() {
   // listCount 放在函式內，更新後才取的到值，才能做新 id
-  dataLen = todoDatas.length;
+  dataLen = todoList.length;
   let content = newTodo.value;
   let id = dataLen;
-  todoDatas.push({ id, content });
-  // console.log("todoDatas", todoDatas);
+  todoList.push({ id, content });
+  // console.log("todoList", todoList);
   newTodo.value = "";
   changeTotalDom(id);
   newDom({ id, content });
@@ -53,8 +54,9 @@ function newDom({ id, content }) {
   let elBtn = document.createElement("button");
   elBtn.textContent = "X";
   elBtn.type = "button"; // type="button"
-  // 在 btn element 上加上 onclick
-  elBtn.setAttribute("onclick", "deleteTodo()");
+  // 在 btn element 上加上 onclick="deleteTodo()"
+  // elBtn.setAttribute("onclick", "deleteTodo()");
+  elBtn.onclick = deleteTodo; // 按按鈕才執行 fn
   // (虛擬)在 div 內放入 btn
   elDiv.appendChild(elBtn);
   // 將 dom 實體化
@@ -64,14 +66,31 @@ function newDom({ id, content }) {
 // 刪除 todo
 function deleteTodo(element) {
   // want: 抓到指定 id 後刪掉整個 DOM
-  // 按下 btn 後往上找父層的 data-id <div data-id="">...</div>
-  // 用事件冒泡做?
-  console.log("deleteTodo");
+  // 找到 id
+  const idStr = element.target.parentNode.getAttribute("data-id"); // 字串
+  const id = parseInt(idStr, 10); // 轉數字
+  // 刪陣列資料：1. findindex or 2. filter；若資料沒有正常排序，直接 splice 刪 index 會刪錯
+  // const target = todoList.findIndex(function (item) {
+  //   return item.id === id;
+  // });
+  // 改寫為箭頭函式
+  const target = todoList.findIndex(item => item.id === id); // 針對陣列內資料 item 一筆筆比對，若 item.id === id 時回傳找到的結果 (id)
+  todoList.splice(target, 1); // 從目標 index 開始刪一筆資料
+  // 移除 DOM
+  clearListDom();
+  // 重新渲染 DOM
+  randerList();
 };
 
 // 將 .list-Area 內的所有 div 與陣列資料清空
-function deleteAll() {
-  dataLen = todoDatas.length;
+function deleteAllTargetDom() {
+  clearListDom();
+  clearTodoList();
+};
+
+// 清空 DOM
+function clearListDom() {
+  dataLen = todoList.length;
   const parentNode = document.querySelector(".list-Area");
   // console.log(parentNode); // <div class="list-Area">...</div>
   const elDivNodeList = document.querySelectorAll(".list-Area div");
@@ -81,15 +100,17 @@ function deleteAll() {
     let delNode = elDivNodeList[i]
     parentNode.removeChild(delNode);
   }
-  // 清空陣列資料
-  todoDatas = [];
-  console.log(todoDatas.length); // 0
+};
+
+// 清空陣列資料
+function clearTodoList() {
+  todoList = [];
+  console.log(todoList.length); // 0
   changeTotalDom(0);
 };
 
-
 // 修改現有 todo 數字
-function initTotalDom() {
+function updateTotalDom() {
   let elDivNodeList = document.getElementsByClassName("total"); // 回傳結果是 陣列
   let elDiv = elDivNodeList[0]; // 只有一筆，所以 i=0
   elDiv.textContent = dataLen; // 把數字改成陣列長度(資料筆數)
@@ -100,21 +121,29 @@ function initTotalDom() {
 function changeTotalDom(id) {
   let elDivNodeList = document.getElementsByClassName("total"); // 回傳結果是 陣列
   let elDiv = elDivNodeList[0]; // 只有一筆，所以 i=0
-  if (todoDatas.length >= 1) {
-    elDiv.textContent = id + 1; // todoDatas 有資料時，把數字改成陣列長度(資料筆數)
+  if (todoList.length >= 1) {
+    elDiv.textContent = id + 1; // todoList 有資料時，把數字改成陣列長度(資料筆數)
   } else {
     elDiv.textContent = id; // id = 0
   }
   // console.log("changeTotal", elDiv.textContent);
 };
 
-// todo list 的初次渲染
-function init() {
-  dataLen = todoDatas.length;
+function randerList() {
+  // 清空 HTML List
+  listArea.innerHTML = "";
+  // 重新渲染 todolist DOM
+  dataLen = todoList.length;
   for (let i = 0; i <= dataLen - 1; i++) {
-    newDom(todoDatas[i]);
+    newDom(todoList[i]);
   }
-  initTotalDom();
+  // 更新顯示總數
+  updateTotalDom();
+};
+
+// todo list dom 的初始化
+function init() {
+  randerList();
 };
 
 init();
