@@ -1,8 +1,8 @@
 // practice of loop (for and while)
 // Show 1 to 10000
-for (let i = 0, ) {
+// for (let i = 0, ) {
 
-}
+// }
 
 
 // Show 1 to 100 even numbers

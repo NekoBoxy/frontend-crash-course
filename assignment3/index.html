@@ -60,9 +60,15 @@
       </ol>
       <a href="https://apipheny.io/free-api/#apis-without-key">reference</a>
     </div>
-    <div class="area"></div>
+    <div class="area">
+      <!-- want 按按鈕顯示 activity -->
+      <!-- 1. 需要有個放置與顯示 activity 的區塊-->
+      <!-- 2. 需要有個按鈕，按下按鈕戳 API 取值並更改 1-->
+      <span>你今天該做什麼呢？</span>
+      <button type="button" onclick=getActivity()>按我取建議</button>
+      <div class="text-area"></div>
+    </div>
   </div>
-
   <!-- practice 2-2 -->
   <div class="question">
     <div class="description">
@@ -84,7 +90,12 @@
       </ul>
       <a href="https://apipheny.io/free-api/#apis-without-key">reference</a>
     </div>
-    <div class="area"></div>
+    <div class="predict">
+      <input type="text" id="predictInput" placeholder="請輸入名字">
+      <button type="button" id="predictBtn">點我預測</button>
+      <span>結果：</span>
+      <span id="predictOutput"></span>
+    </div>
   </div>
   <script src="./practice01_1.js"></script>
   <script src="./practice01_2.js"></script>

@@ -27,6 +27,7 @@ function getRandomPic() {
   xhr.onload = function () {
     if (xhr.status === 200) {
       // console.log("xhr.responseText:", xhr.responseText);
+      // 把 JSON 格式轉成我們看得懂的文字 json
       const json = JSON.parse(xhr.responseText);
       // console.log("json.results[0].picture.large", json.results[0].picture.large);
       const imgUrl = json.results[0].picture.large;
