@@ -9,19 +9,16 @@ npm run build
 cd -
 
 # assignment1
-cd assignment1
-npm run build
-cd -
+rm -rf ./dist/assignment1
+cp -r assignment1 ./dist/assignment1
 
 # assignment2
-cd assignment2
-npm run build
-cd -
+rm -rf ./dist/assignment2
+cp -r assignment2 ./dist/assignment2
 
 # assignment3
-cd assignment3
-npm run build
-cd -
+rm -rf ./dist/assignment3
+cp -r assignment3 ./dist/assignment3
 
 cd dist
 echo > .nojekyll
