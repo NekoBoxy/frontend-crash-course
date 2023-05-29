@@ -4,6 +4,7 @@
 
 // ps. HTML 是純文字檔，抓到的都是字串
 const myNumber = document.querySelector("#myNumber"); // div#myNumber
+
 function numIncrease() {
   // 把抓到的數值(string)轉型成十進位的數值(number)
   let number = parseInt(myNumber.innerHTML, 10); // init: 0
