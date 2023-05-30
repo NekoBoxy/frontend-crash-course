@@ -15,22 +15,36 @@ const predictInput = document.getElementById("predictInput");
 const predictBtn = document.getElementById("predictBtn");
 const predictOutput = document.getElementById("predictOutput");
 
-function getActivity() {
-  const xhr = new XMLHttpRequest();
-  const method = "GET";
-  const url = "https://www.boredapi.com/api/activity";
-  xhr.open(method, url);
-  xhr.onload = function () {
-    if (xhr.status === 200) {
-      // step 取得 api 回傳的資料並轉成純文字
-      // console.log("xhr.responseText:", xhr.responseText);
-      const json = JSON.parse(xhr.responseText);
-      const text = json.activity;
-      // 更改指定 DOM 的文字內容
-      target.innerHTML = text;
-    } else {
-      console.error("status:", xhr.status);
-    }
-  };
-  xhr.send(); // 要有這個才收的到戳 API 的回傳結果
+const getAPI = (url) => {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    const method = "GET";
+    xhr.open(method, url);
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        const json = JSON.parse(xhr.responseText);
+        resolve(json);
+      } else {
+        console.error("status:", xhr.status);
+      }
+    };
+    xhr.send();
+  });
 };
+
+predictBtn.onclick = function () {
+  const name = predictInput.value;
+  const url = `https://api.agify.io/?name=${name}`;
+  getAPI(url).then((json) => {
+    predictOutput.textContent = json.age;
+  });
+  predictInput.value = "";
+};
+
+// async/await 寫法
+// predictBtn.onclick = async function () {
+//   const name = predictInput.value;
+//   const url = `https://api.agify.io/?name=${name}`;
+//   const json = await getAPI(url);
+//   predictOutput.textContent = json.age;
+// };

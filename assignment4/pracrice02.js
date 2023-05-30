@@ -49,3 +49,34 @@
 // }
 
 // getPromise(true);
+
+
+// 串 API
+const predictInput2 = document.getElementById("predictInput2");
+const predictBtn2 = document.getElementById("predictBtn2");
+const predictOutput2 = document.getElementById("predictOutput2");
+
+const getAPI2 = (url) => {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    const method = "GET";
+    xhr.open(method, url);
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        const json = JSON.parse(xhr.responseText);
+        resolve(json);
+      } else {
+        console.error("status:", xhr.status);
+      }
+    };
+    xhr.send();
+  });
+};
+
+predictBtn2.onclick = async function () {
+  const name = predictInput2.value;
+  const url = `https://api.agify.io/?name=${name}`;
+  const json = await getAPI2(url);
+  predictOutput2.textContent = json.age;
+  predictInput2.value = "";
+};
