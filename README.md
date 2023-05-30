@@ -8,21 +8,21 @@ assignment 3-1 ~ 3-2 完畢
 
 ## assignment0：切版與 Vue composition API 練習
 https://nekoboxy.github.io/frontend-crash-course/assignment0/
-https://i.imgur.com/2RiteQh.jpg
+![](https://i.imgur.com/2RiteQh.jpg)
 
-## assignment1
+## assignment1：basic & loop
 https://nekoboxy.github.io/frontend-crash-course/assignment1/
 
-## assignment2
+## assignment2：object, array, node, event
 https://nekoboxy.github.io/frontend-crash-course/assignment2/
 
-## assignment3
+## assignment3：DOM, XMLHttpRequest, API
 https://nekoboxy.github.io/frontend-crash-course/assignment3/
 
-<!-- ## assignment4
+## assignment4：promise, async/await
 https://nekoboxy.github.io/frontend-crash-course/assignment4/
 
-## assignment5
+<!-- ## assignment5
 https://nekoboxy.github.io/frontend-crash-course/assignment5/ -->
 
 
