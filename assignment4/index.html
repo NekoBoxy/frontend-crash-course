@@ -13,49 +13,64 @@
   <!-- practice 1 -->
   <div class="question">
     <div class="description">
-      <h2>practice 1</h2>
-      <span>顯示一個訊息：</span>
+      <h2>practice 1：顯示一個訊息</h2>
       <p>使用 Promise，在延遲 1 秒後，在控制台打印出 "Hello, world!"。</p>
     </div>
-    <div class="area">
+    <div class="practice-area">
+      <!-- 借 assignment 3 的練習 2-2 來用 -->
+      <h4>輸入英文名字，按按鈕踹 API，以取得名字對應的年齡</h4>
+      <div class="predict">
+        <input type="text" id="predictInput" placeholder="請輸入英文名字">
+        <button type="button" id="predictBtn">點我預測</button>
+        <span>結果：</span>
+        <span id="predictOutput"></span>
+      </div>
     </div>
   </div>
   <!-- practice 2 -->
   <div class="question">
     <div class="description">
-      <h2>practice 2</h2>
-      <span>延遲執行：</span>
+      <h2>practice 2：延遲執行</h2>
       <p>
         使用 async/await，創建一個函數，該函數將延遲 3 秒後返回一個 Promise。然後使用 await 來等待 Promise 完成，並在控制台打印出 "Delay complete!"。
       </p>
     </div>
-    <div class="area">
+    <div class="practice-area">
+      <!-- 借 assignment 3 的練習 2-2 來用 -->
+      <h4>輸入英文名字，按按鈕踹 API，以取得名字對應的年齡</h4>
+      <div class="predict">
+        <input type="text" id="predictInput2" placeholder="請輸入英文名字">
+        <button type="button" id="predictBtn2">點我預測</button>
+        <span>結果：</span>
+        <span id="predictOutput2"></span>
+      </div>
     </div>
   </div>
   <!-- practice 3 -->
   <div class="question">
     <div class="description">
-      <h2>practice 3</h2>
-      <span>處理錯誤：</span>
+      <h2>practice 3：處理錯誤</h2>
       <p>
         創建一個 Promise，該 Promise resolve 或 reject。使用 async/await 在控制台打印出相應的訊息，如果 Promise 成功，則打印出 "Promise resolved!"，如果
         Promise 失敗，則打印出 "Promise rejected!"。
       </p>
     </div>
-    <div class="area">
+    <div class="practice-area">
+      <!-- 借 assignment 3 的練習 2-2 來用 -->
+      <button type="button" id="predictBtn3">點我試錯</button>
     </div>
+  </div>
   </div>
   <!-- practice 4 -->
   <div class="question">
     <div class="description">
-      <h2>practice 4</h2>
-      <span>順序執行多個 Promise：</span>
+      <h2>practice 4：順序執行多個 Promise</h2>
       <p>
         創建三個 Promise：Promise A 在 2 秒後 resolve，Promise B 在 1 秒後resolve，Promise C 在 3 秒後resolve。使用 Promise 和
         async/await，在它們依次解析完成後，在控制台打印出 "All promises resolved!"
       </p>
     </div>
-    <div class="area">
+    <div class="practice-area">
     </div>
   </div>
 

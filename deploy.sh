@@ -20,6 +20,10 @@ cp -r assignment2 ./dist/assignment2
 rm -rf ./dist/assignment3
 cp -r assignment3 ./dist/assignment3
 
+# assignment4
+rm -rf ./dist/assignment4
+cp -r assignment4 ./dist/assignment4
+
 cd dist
 echo > .nojekyll
 git init
