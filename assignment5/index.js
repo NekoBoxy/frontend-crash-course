@@ -7,10 +7,11 @@ const elInput = document.querySelector(".input-area input");
 
 // 取 input 的 value
 function getData() {
-  // 轉型為數值，因 html 是字串
+  // 每次 input 輸入新值後，取得 elInput.value
+  // ps. html 元素需轉型為 number
   inputNumber = parseInt(elInput.value, 10);
+  // 第一次計算時 symbol 為空字串，將得到的數值賦值給 ans 便於後續計算。
   if (symbol == "") {
-    // 第一次計算時，將得到的數值賦值給 ans
     ans = inputNumber;
   }
 }
@@ -22,6 +23,7 @@ function setSymbol(x) {
 
 function caculate() {
   if (symbol === "+") {
+    // 新 ans 值為舊 ans & inputNumber 的計算結果
     ans = ans + inputNumber;
   } else if (symbol === "-") {
     ans = ans - inputNumber;
