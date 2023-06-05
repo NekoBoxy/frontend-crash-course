@@ -18,13 +18,16 @@
     </div>
     <div class="practice-area">
       <div class="counter">
-        <input type="number">
-        <button type="button" class="btn-addition">+</button>
-        <button type="button" class="btn-subtraction">-</button>
-        <button type="button" class="btn-multiplication">*</button>
-        <button type="button" class="btn-division">/</button>
-        <button type="button" class="btn-equal">=</button>
-        <button type="button" class="btn-clear">C</button>
+        <div class="input-area">
+          <input type="number" placeholder="請輸入數字" onkeyup="getData()">
+          <!-- <button type="button" onclick="getData()">送出</button> -->
+        </div>
+        <button type="button" onclick="setSymbol('+')">+</button>
+        <button type="button" onclick="setSymbol('-')">-</button>
+        <button type="button" onclick="setSymbol('*')">*</button>
+        <button type="button" onclick="setSymbol('/')">/</button>
+        <button type="button" onclick="caculate()">=</button>
+        <button type="button" onclick="clearAll('C')">C</button>
       </div>
     </div>
   </div>

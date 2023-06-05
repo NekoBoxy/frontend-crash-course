@@ -4668,6 +4668,10 @@ progress {
     display: none !important;
   }
 }
+body {
+  margin: 20px 50px;
+}
+
 .question {
   margin-bottom: 50px;
 }
@@ -4677,4 +4681,20 @@ progress {
   height: 130px;
   border: 2px solid black;
   background-color: cornflowerblue;
+}
+
+.counter-present {
+  display: flex;
+}
+
+.input-area {
+  display: flex;
+  background-color: white;
+}
+.input-area input {
+  width: 77%;
+  border: none;
+}
+.input-area button {
+  border: none;
 }/*# sourceMappingURL=all.css.map */
