@@ -14,7 +14,7 @@
 * 5-4
 
 
-## assignment0：切版與 Vue composition API 微練習
+## assignment0：切版練習 (自己 plus 微 Vue composition API)
 https://nekoboxy.github.io/frontend-crash-course/assignment0/
 ![](https://i.imgur.com/2RiteQh.jpg)
 
@@ -30,7 +30,7 @@ https://nekoboxy.github.io/frontend-crash-course/assignment3/
 ## assignment4：promise, async/await
 https://nekoboxy.github.io/frontend-crash-course/assignment4/
 
-## assignment5：JS 練習、簡單的 SASS 使用
+## assignment5：JS 練習 (自己 plus 簡單的 SASS 使用)
 https://nekoboxy.github.io/frontend-crash-course/assignment5/
 
 
