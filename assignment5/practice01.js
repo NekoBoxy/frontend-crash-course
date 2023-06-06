@@ -19,7 +19,7 @@ function getData() {
 function setSymbol(x) {
   symbol = x;
   elInput.value = "";
-};
+}
 
 function caculate() {
   if (symbol === "+") {
@@ -43,7 +43,7 @@ function clearAll() {
   ans = 0;
   symbol = "";
   elInput.value = "";
-};
+}
 
 // 流程：
 // 1. 輸入數字
