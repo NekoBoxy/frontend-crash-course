@@ -29,7 +29,7 @@ function addTodo() {
 
 // 新增 todo 的虛擬 dom 與實體化
 function newDom({ id, content }) {
-  // 建虛擬 div dom
+  // 建虛擬 div dom (外殼)
   let elDiv = document.createElement("div");
   elDiv.setAttribute("data-id", id); // 替 div 加上 data-id 屬性
   // 建 checkbox dom
