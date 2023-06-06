@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CatBoxy's assignment - 5</title>
+  <link rel="stylesheet" href="./styles/all.css">
+</head>
+
+<body>
+  <!-- practice 1 -->
+  <div class="question">
+    <div class="description">
+      <h2>practice 1：計算機</h2>
+      <p>可以讓使用者輸入兩個數字並執行基本的計算功能，例如加法、減法、乘法和除法。最後顯示結果。</p>
+    </div>
+    <div class="practice-area">
+      <div class="counter">
+        <input type="number" placeholder="請輸入數字" onkeyup="getData()">
+        <div class="btn-group">
+          <button type="button" onclick="setSymbol('+')">+</button>
+          <button type="button" onclick="setSymbol('-')">-</button>
+          <button type="button" onclick="setSymbol('*')">*</button>
+          <button type="button" onclick="setSymbol('/')">/</button>
+          <button type="button" onclick="caculate()">=</button>
+          <button type="button" onclick="clearAll()">C</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- practice 2 -->
+  <div class="question">
+    <div class="description">
+      <h2>practice 2：Todo List</h2>
+      <p>使用者可以新增、刪除和標記已完成的項目。這個module應該具有新增項目、刪除項目和標記完成的功能。</p>
+    </div>
+    <div class="practice-area">
+      <div class="todo-list">
+        <h2>待辦事項</h2>
+        <input id="newTodo" type="text" placeholder="請輸入待辦事項">
+        <button class="submitBtn" type="button" onclick="addTodo()">+</button>
+        <div class="list-Area">
+        </div>
+        <span>
+          you have<div class="total">1</div>pending tasks.
+        </span>
+        <button type="button" onclick="deleteAllTargetDom()">Clear All</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- practice 3 -->
+  <div class="question">
+    <div class="description">
+      <h2>practice 3：倒數計時器</h2>
+      <p>使用者可以輸入以秒為單位的數字，並開始倒數計時，直到達到零時。模組應該提供開始、暫停和重置計時器的功能。</p>
+    </div>
+    <div class="practice-area">
+      <div class="count-down">
+        <input type="number" placeholder="請輸入倒數秒數">
+        <button type="button" onclick="getStart()">開始</button>
+        <!-- <button type="button" onclick="getPause(0)">暫停</button> -->
+        <button type="button" onclick="getReset()">重置</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- practice 4 -->
+  <div class="question">
+    <div class="description">
+      <h2>practice 4：猜數字</h2>
+      <p>生成一個隨機數字，並提供使用者輸入猜測的功能。應該提供提示，告訴使用者他們的猜測是太大還是太小。</p>
+    </div>
+    <div class="practice-area">
+    </div>
+  </div>
+
+  <script src="./index.js"></script>
+  <script src="./practice01.js"></script>
+  <script src="./practice02.js"></script>
+  <script src="./practice03.js"></script>
+  <script src="./practice04.js"></script>
+</body>
+
+</html>

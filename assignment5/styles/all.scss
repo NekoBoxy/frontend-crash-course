@@ -1,0 +1,65 @@
+// css reset
+@import "../node_modules/bootstrap/scss/bootstrap-reboot.scss";
+// bootstrap grid
+@import "../node_modules/bootstrap/scss/bootstrap-grid.scss";
+
+// 變數
+
+
+// 設定
+
+// layout
+body {
+  margin: 20px 50px;
+}
+
+.question {
+  margin-bottom: 50px;
+}
+
+// practice 01
+.counter {
+  width: 230px;
+  height: 95px;
+  border: 2px solid black;
+  background-color: cornflowerblue;
+
+  input {
+    width: 100%;
+    outline: none;
+  }
+
+  .btn-group {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    button {
+      margin: 10px 5px;
+    }
+  }
+}
+
+// practice 02
+.todo-list {
+  .list-Area {
+    margin: 10px;
+
+    button {
+      margin: 5px;
+    }
+
+    input {
+      margin-right: 10px;
+    }
+  }
+
+  .total {
+    display: inline;
+    margin: 10px;
+  }
+
+  span {
+    margin-right: 10px;
+  }
+}
