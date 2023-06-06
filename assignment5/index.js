@@ -3,7 +3,7 @@ let ans = 0;
 let symbol = "";
 
 // 取 input 的 dom
-const elInput = document.querySelector(".input-area input");
+const elInput = document.querySelector(".counter input");
 
 // 取 input 的 value
 function getData() {
