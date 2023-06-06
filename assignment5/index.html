@@ -38,6 +38,17 @@
       <p>使用者可以新增、刪除和標記已完成的項目。這個module應該具有新增項目、刪除項目和標記完成的功能。</p>
     </div>
     <div class="practice-area">
+      <div class="todo-list">
+        <h2>待辦事項</h2>
+        <input id="newTodo" type="text" placeholder="請輸入待辦事項">
+        <button class="submitBtn" type="button" onclick="addTodo()">+</button>
+        <div class="list-Area">
+        </div>
+        <span>
+          you have<div class="total">1</div>pending tasks.
+        </span>
+        <button type="button" onclick="deleteAllTargetDom()">Clear All</button>
+      </div>
     </div>
   </div>
 
@@ -62,6 +73,8 @@
   </div>
 
   <script src="./index.js"></script>
+  <script src="./practice01.js"></script>
+  <script src="./practice02.js"></script>
 </body>
 
 </html>

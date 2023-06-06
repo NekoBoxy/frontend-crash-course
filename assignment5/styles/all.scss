@@ -17,6 +17,7 @@ body {
   margin-bottom: 50px;
 }
 
+// practice 01
 .counter {
   width: 230px;
   height: 95px;
@@ -36,5 +37,29 @@ body {
     button {
       margin: 10px 5px;
     }
+  }
+}
+
+// practice 02
+.todo-list {
+  .list-Area {
+    margin: 10px;
+
+    button {
+      margin: 5px;
+    }
+
+    input {
+      margin-right: 10px;
+    }
+  }
+
+  .total {
+    display: inline;
+    margin: 10px;
+  }
+
+  span {
+    margin-right: 10px;
   }
 }

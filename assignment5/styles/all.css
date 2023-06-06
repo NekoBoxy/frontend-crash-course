@@ -4693,4 +4693,21 @@ body {
 }
 .counter .btn-group button {
   margin: 10px 5px;
+}
+
+.todo-list .list-Area {
+  margin: 10px;
+}
+.todo-list .list-Area button {
+  margin: 5px;
+}
+.todo-list .list-Area input {
+  margin-right: 10px;
+}
+.todo-list .total {
+  display: inline;
+  margin: 10px;
+}
+.todo-list span {
+  margin-right: 10px;
 }/*# sourceMappingURL=all.css.map */
