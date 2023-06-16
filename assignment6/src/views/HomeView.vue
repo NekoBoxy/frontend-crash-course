@@ -35,79 +35,25 @@
             aria-controls="warm" aria-selected="false">南島奔放</button>
         </li>
       </ul>
+      <!-- (網格)卡片內容 -->
       <div class="tab-content" id="myTabContent">
-        <!-- (網格)卡片內容 -->
         <!-- 熱鬧 -->
         <div class="tab-pane fade show active" id="lively-card" role="tabpanel" aria-labelledby="lively">
           <div class="row row-cols-1 row-cols-md-3 g-4">
-            <div class="col">
-              <div class="card">
-                <img src="../assets/images/1.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">熱鬧繁華</h5>
-                </div>
+            <div v-for="(site, index) in livelyCard" :key="site + index">
+              <div class="col" :style="{ 'background-image': 'url(' + site.img + ')' }">
+                <h5 class="text-center"> {{ site.title }}</h5>
               </div>
             </div>
-            <!-- <div class="col">
-              <div class="card">
-                <img src="../assets/images/1.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">熱鬧繁華</h5>
-                </div>
-              </div>
-            </div> -->
           </div>
         </div>
         <!-- 與自然共舞 -->
         <div class="tab-pane fade" id="nature-card" role="tabpanel" aria-labelledby="nature">
           <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
             <div class="row row-cols-1 row-cols-md-3 g-4">
-              <div class="col">
-                <div class="card">
-                  <img src="..." class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">與自然共舞</h5>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <img src="..." class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <img src="..." class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <img src="..." class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <img src="..." class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <img src="..." class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                  </div>
+              <div v-for="(site, index) in natureCard" :key="site + index">
+                <div class="col" :style="{ 'background-image': 'url(' + site.img + ')' }">
+                  <h5 class="text-center"> {{ site.title }}</h5>
                 </div>
               </div>
             </div>
@@ -117,52 +63,9 @@
         <div class="tab-pane fade" id="human-card" role="tabpanel" aria-labelledby="human">
           <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
             <div class="row row-cols-1 row-cols-md-3 g-4">
-              <div class="col">
-                <div class="card">
-                  <img src="..." class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">純樸人情味</h5>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <img src="..." class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <img src="..." class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <img src="..." class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <img src="..." class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <img src="..." class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                  </div>
+              <div v-for="(site, index) in humanCard" :key="site + index">
+                <div class="col" :style="{ 'background-image': 'url(' + site.img + ')' }">
+                  <h5 class="text-center"> {{ site.title }}</h5>
                 </div>
               </div>
             </div>
@@ -172,133 +75,58 @@
         <div class="tab-pane fade" id="warm-card" role="tabpanel" aria-labelledby="warm">
           <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
             <div class="row row-cols-1 row-cols-md-3 g-4">
-              <div class="col">
-                <div class="card">
-                  <img src="..." class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">南島奔放</h5>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <img src="..." class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <img src="..." class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <img src="..." class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <img src="..." class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <img src="..." class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                  </div>
+              <div v-for="(site, index) in warmCard" :key="site + index">
+                <div class="col" :style="{ 'background-image': 'url(' + site.img + ')' }">
+                  <h5 class="text-center"> {{ site.title }}</h5>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <h5>熱門景點</h5>
+      <h5 class="text-center mt-5 mb-2">熱門景點</h5>
       <!-- swiper Slides per view auto -->
       <div ref="mySwiper2" class="swiper my-Swiper-2">
         <div class="swiper-wrapper">
-          <div class="swiper-slide">Slide 1</div>
-          <div class="swiper-slide">Slide 2</div>
-          <div class="swiper-slide">Slide 3</div>
-          <!-- <div class="swiper-slide">Slide 4</div>
-          <div class="swiper-slide">Slide 5</div>
-          <div class="swiper-slide">Slide 6</div>
-          <div class="swiper-slide">Slide 7</div>
-          <div class="swiper-slide">Slide 8</div>
-          <div class="swiper-slide">Slide 9</div> -->
+          <div v-for="(site, index) in viewPoint" :key="ktrpow + index">
+            <div class="swiper-slide">
+              <div class="card">
+                <img :src="site.img" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{ site.name }}</h5>
+                  <p class="card-text">{{ site.location }}</p>
+                  <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="swiper-pagination"></div>
         <div class="swiper-button-prev"></div>
         <div class="swiper-button-next"></div>
       </div>
-      <h5>人氣美食</h5>
+      <h5 class="text-center mt-5 mb-2">人氣美食</h5>
       <div class="row row-cols-1 row-cols-md-3 g-4">
-        <div class="col">
-          <div class="card">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
+        <div v-for="(catalogy, index) in foods" :key="kwog + index">
+          <div class="col">
+            <div class="card">
+              <img :src="catalogy.img" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">{{ catalogy.title }}</h5>
+              </div>
             </div>
           </div>
         </div>
       </div>
       <!-- 訂閱 email -->
-      <div class="subscribe">
-        <h5>訂閱我們，獲得最在地的旅遊資訊！</h5>
-        <span>每週六一封，不隨意打擾，且隨時可以取消</span>
-        <input type="text">
-        <button type="button">訂閱</button>
+      <div class="subscribe mt-5">
+        <h5 class="text-center">訂閱我們，獲得最在地的旅遊資訊！</h5>
+        <span class="d-block text-center">每週六一封，不隨意打擾，且隨時可以取消</span>
+        <!-- <h5 class="d-block text-center">訂閱我們，獲得最在地的旅遊資訊！</h5>
+        <span class="d-block text-center">每週六一封，不隨意打擾，且隨時可以取消</span> -->
+        <div>
+          <input type="text" placeholder="請輸入你的 email">
+          <button type="button">訂閱</button>
+        </div>
       </div>
     </div>
   </main>
@@ -329,6 +157,7 @@ const frontCarousel = ref([
   },
 ]);
 
+// tabs 資料
 const livelyCard = ref([
   {
     title: "台北",
@@ -355,6 +184,136 @@ const livelyCard = ref([
     img: new URL("../assets/images/1.png", import.meta.url).href
   },
 ]);
+const natureCard = ref([
+  {
+    title: "桃園",
+    img: new URL("../assets/images/3.png", import.meta.url).href
+  },
+  {
+    title: "台中",
+    img: new URL("../assets/images/3.png", import.meta.url).href
+  },
+  {
+    title: "台北",
+    img: new URL("../assets/images/1.png", import.meta.url).href
+  },
+  {
+    title: "新北",
+    img: new URL("../assets/images/2.png", import.meta.url).href
+  },
+  {
+    title: "台南",
+    img: new URL("../assets/images/2.png", import.meta.url).href
+  },
+  {
+    title: "高雄",
+    img: new URL("../assets/images/1.png", import.meta.url).href
+  },
+]);
+const humanCard = ref([
+  {
+    title: "台南",
+    img: new URL("../assets/images/2.png", import.meta.url).href
+  },
+  {
+    title: "高雄",
+    img: new URL("../assets/images/1.png", import.meta.url).href
+  },
+  {
+    title: "桃園",
+    img: new URL("../assets/images/3.png", import.meta.url).href
+  },
+  {
+    title: "台中",
+    img: new URL("../assets/images/3.png", import.meta.url).href
+  },
+  {
+    title: "台北",
+    img: new URL("../assets/images/1.png", import.meta.url).href
+  },
+  {
+    title: "新北",
+    img: new URL("../assets/images/2.png", import.meta.url).href
+  },
+]);
+const warmCard = ref([
+  {
+    title: "台中",
+    img: new URL("../assets/images/3.png", import.meta.url).href
+  },
+  {
+    title: "台南",
+    img: new URL("../assets/images/2.png", import.meta.url).href
+  },
+  {
+    title: "高雄",
+    img: new URL("../assets/images/1.png", import.meta.url).href
+  },
+  {
+    title: "桃園",
+    img: new URL("../assets/images/3.png", import.meta.url).href
+  },
+  {
+    title: "台北",
+    img: new URL("../assets/images/1.png", import.meta.url).href
+  },
+  {
+    title: "新北",
+    img: new URL("../assets/images/2.png", import.meta.url).href
+  },
+]);
+
+// 熱門景點
+const viewPoint = ref([
+  {
+    name: "陽明山國家公園冷水坑 牛奶池",
+    img: new URL("../assets/images/site01.png", import.meta.url).href,
+    location: "台北",
+  },
+  {
+    name: "石梯坪",
+    img: new URL("../assets/images/site02.png", import.meta.url).href,
+    location: "花蓮",
+  },
+  {
+    name: "鹿耳門天后宮",
+    img: new URL("../assets/images/site03.png", import.meta.url).href,
+    location: "台南",
+  },
+  {
+    name: "大屯山系 忠義山親山步道",
+    img: new URL("../assets/images/site04.png", import.meta.url).href,
+    location: "台北",
+  },
+]);
+
+// 人氣美食
+const foods = ref([
+  {
+    title: "中式美食",
+    img: new URL("../assets/images/fs.png", import.meta.url).href,
+  },
+  {
+    title: "夜市小吃",
+    img: new URL("../assets/images/fste.png", import.meta.url).href,
+  },
+  {
+    title: "異國料理",
+    img: new URL("../assets/images/fs.png", import.meta.url).href,
+  },
+  {
+    title: "甜點冰品",
+    img: new URL("../assets/images/fste.png", import.meta.url).href,
+  },
+  {
+    title: "伴手禮",
+    img: new URL("../assets/images/fs.png", import.meta.url).href,
+  },
+  {
+    title: "全部類別",
+    img: new URL("../assets/images/fste.png", import.meta.url).href,
+  },
+]);
 
 onMounted(() => {
   new Swiper(mySwiper.value, {
@@ -376,10 +335,6 @@ onMounted(() => {
     // autoplay: {
     //   delay: 5000,
     // },
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
@@ -447,25 +402,52 @@ onMounted(() => {
 
   .swiper-slide img {
     display: block;
-    width: 100%;
-    height: 100%;
+    width: 270px;
+    height: 210px;
     object-fit: cover;
   }
 
   .swiper-slide {
-    width: 80%;
+    width: 100%;
   }
 
   .swiper-slide:nth-child(2n) {
-    width: 60%;
+    width: 30%;
   }
 
   .swiper-slide:nth-child(3n) {
-    width: 40%;
+    width: 30%;
+  }
+
+  .swiper-slide:nth-child(4n) {
+    width: 30%;
   }
 }
 
+// tabs
+.tab-pane {
+  .col {
+    width: 100%;
+    height: 180px;
+    border-radius: 25px;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  h5 {
+    font-size: 26px;
+    font-weight: 700;
+    color: #FEFEFE;
+  }
+}
+
+// 人氣美食
+
+
 .subscribe {
   background-color: #FA7E5F;
+  width: 1100px;
+  height: 220px;
+  border-radius: 15px;
 }
 </style>
