@@ -3,19 +3,13 @@
     <CNavbar />
     <!-- Swiper Infinite loop-->
     <div class="container">
-      <div ref="mySwiper" class="swiper mySwiper" style="height: 300px;">
+      <div ref="mySwiper" class="swiper mySwiper" style="padding-bottom: 50px;">
         <div class="swiper-wrapper">
           <div class="swiper-slide" v-for="(city, index) in frontCarousel" v-bind:key="index">
-            <div class="swiper-pic">
-              <img :src="city.img" alt="">
-            </div>
-            <div class="swiper-title">
-              <h5>{{ city.title }}</h5>
-            </div>
+            <img :src="city.img" alt="">
+            <h5>{{ city.title }}</h5>
           </div>
         </div>
-        <!-- <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div> -->
         <div class="swiper-pagination"></div>
       </div>
       <!-- tabs -->
@@ -371,6 +365,9 @@ onMounted(() => {
     slidesPerView: 1,
     spaceBetween: 30,
     loop: true,
+    autoplay: {
+      delay: 5000,
+    },
     pagination: {
       el: ".swiper-pagination",
       clickable: true,
@@ -404,32 +401,37 @@ onMounted(() => {
   height: 100%;
 }
 
-.swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  background: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+.mySwiper {
+  .swiper-pagination-bullet {
+    width: 20px;
+    height: 20px;
+    margin: 0 15px !important;
+  }
 
-.swiper-slide img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-.swiper {
-  margin-left: auto;
-  margin-right: auto;
+  .swiper-slide img {
+    display: block;
+    width: 80%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 25px;
+  }
+
+  .swiper {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .mySwiper2 {
-  .swiper {
-    width: 100%;
-    height: 100%;
-  }
 
   .swiper-slide {
     text-align: center;
