@@ -3,17 +3,21 @@
     <CNavbar />
     <!-- Swiper Infinite loop-->
     <div class="container">
-      <div ref="mySwiper" class="swiper mySwiper" style="padding-bottom: 50px;">
+      <div ref="mySwiper" class="swiper my-Swiper" style="padding-bottom: 50px;">
         <div class="swiper-wrapper">
           <div class="swiper-slide" v-for="(city, index) in frontCarousel" v-bind:key="index">
-            <img :src="city.img" alt="">
-            <h5>{{ city.title }}</h5>
+            <div class="swiper-background" :style="{ 'background-image': 'url(' + city.img + ')' }">
+              <div class="swiper-text">
+                <h5>{{ city.title }}</h5>
+                <button type="button">新北</button>
+              </div>
+            </div>
           </div>
         </div>
         <div class="swiper-pagination"></div>
       </div>
       <!-- tabs -->
-      <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <ul class="nav nav-tabs d-flex justify-content-center" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
           <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button"
             role="tab" aria-controls="home" aria-selected="true">熱鬧繁華</button>
@@ -253,25 +257,22 @@
         </div>
       </div>
       <h5>熱門景點</h5>
-      <!-- Slides per view auto -->
-      <!-- Infinite loop -->
-
-      <!-- autoplay -->
-      <div ref="mySwiper2" class="swiper mySwiper2">
+      <!-- swiper Slides per view auto -->
+      <div ref="mySwiper2" class="swiper my-Swiper-2">
         <div class="swiper-wrapper">
           <div class="swiper-slide">Slide 1</div>
           <div class="swiper-slide">Slide 2</div>
           <div class="swiper-slide">Slide 3</div>
-          <div class="swiper-slide">Slide 4</div>
+          <!-- <div class="swiper-slide">Slide 4</div>
           <div class="swiper-slide">Slide 5</div>
           <div class="swiper-slide">Slide 6</div>
           <div class="swiper-slide">Slide 7</div>
           <div class="swiper-slide">Slide 8</div>
-          <div class="swiper-slide">Slide 9</div>
+          <div class="swiper-slide">Slide 9</div> -->
         </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
         <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
       </div>
       <h5>人氣美食</h5>
       <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -365,9 +366,9 @@ onMounted(() => {
     slidesPerView: 1,
     spaceBetween: 30,
     loop: true,
-    autoplay: {
-      delay: 5000,
-    },
+    // autoplay: {
+    //   delay: 5000,
+    // },
     pagination: {
       el: ".swiper-pagination",
       clickable: true,
@@ -375,20 +376,20 @@ onMounted(() => {
   });
 
   new Swiper(mySwiper2.value, {
+    slidesPerView: "auto",
     spaceBetween: 30,
-    centeredSlides: true,
-    autoplay: {
-      delay: 2500,
-      disableOnInteraction: false,
-    },
+    // autoplay: {
+    //   delay: 5000,
+    // },
     pagination: {
       el: ".swiper-pagination",
       clickable: true,
     },
     navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
     },
+
   });
 });
 
@@ -396,43 +397,50 @@ onMounted(() => {
 </script>
 
 <style scoped lang="scss">
+// swiper 預設
 .swiper {
   width: 100%;
   height: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.mySwiper {
-  .swiper-pagination-bullet {
-    width: 20px;
-    height: 20px;
-    margin: 0 15px !important;
-  }
-
+// landing swiper
+.my-Swiper {
   .swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: #fff;
     display: flex;
     justify-content: center;
+    text-align: center;
+    background: #fff;
     align-items: center;
   }
 
-  .swiper-slide img {
-    display: block;
-    width: 80%;
-    height: 100%;
-    object-fit: cover;
+  .swiper-slide .swiper-background {
     border-radius: 25px;
+    width: 1000px;
+    height: 500px;
   }
 
-  .swiper {
-    margin-left: auto;
-    margin-right: auto;
+  .swiper-slide .swiper-text {
+    background-color: #02020225;
+    position: relative;
+    bottom: -350px;
+  }
+
+  .swiper-slide h5 {
+    display: inline;
+    font-size: 36px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .swiper-slide button {
+    border-radius: 15px;
+    margin-left: 60px;
   }
 }
 
-.mySwiper2 {
-
+.my-Swiper-2 {
   .swiper-slide {
     text-align: center;
     font-size: 18px;
@@ -447,6 +455,18 @@ onMounted(() => {
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+
+  .swiper-slide {
+    width: 80%;
+  }
+
+  .swiper-slide:nth-child(2n) {
+    width: 60%;
+  }
+
+  .swiper-slide:nth-child(3n) {
+    width: 40%;
   }
 }
 
