@@ -19,26 +19,26 @@
       <!-- tabs -->
       <ul class="nav nav-tabs d-flex justify-content-center" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
-          <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button"
-            role="tab" aria-controls="home" aria-selected="true">熱鬧繁華</button>
+          <button class="nav-link active" id="lively-tab" data-bs-toggle="tab" data-bs-target="#lively-card" type="button"
+            role="tab" aria-controls="lively" aria-selected="true">熱鬧繁華</button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
-            role="tab" aria-controls="profile" aria-selected="false">與自然共舞</button>
+          <button class="nav-link" id="nature-tab" data-bs-toggle="tab" data-bs-target="#nature-card" type="button"
+            role="tab" aria-controls="nature" aria-selected="false">與自然共舞</button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button"
-            role="tab" aria-controls="contact" aria-selected="false">純樸人情味</button>
+          <button class="nav-link" id="human-tab" data-bs-toggle="tab" data-bs-target="#human-card" type="button"
+            role="tab" aria-controls="human" aria-selected="false">純樸人情味</button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button"
-            role="tab" aria-controls="contact" aria-selected="false">南島奔放</button>
+          <button class="nav-link" id="warm-tab" data-bs-toggle="tab" data-bs-target="#warm-card" type="button" role="tab"
+            aria-controls="warm" aria-selected="false">南島奔放</button>
         </li>
       </ul>
       <div class="tab-content" id="myTabContent">
         <!-- (網格)卡片內容 -->
         <!-- 熱鬧 -->
-        <div class="tab-pane fade show active" id="area-lively" role="tabpanel" aria-labelledby="home-tab">
+        <div class="tab-pane fade show active" id="lively-card" role="tabpanel" aria-labelledby="lively">
           <div class="row row-cols-1 row-cols-md-3 g-4">
             <div class="col">
               <div class="card">
@@ -91,7 +91,7 @@
           </div>
         </div>
         <!-- 與自然共舞 -->
-        <div class="tab-pane fade" id="area-nature" role="tabpanel" aria-labelledby="profile-tab">
+        <div class="tab-pane fade" id="nature-card" role="tabpanel" aria-labelledby="nature">
           <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
             <div class="row row-cols-1 row-cols-md-3 g-4">
               <div class="col">
@@ -146,7 +146,7 @@
           </div>
         </div>
         <!-- 純樸人情味 -->
-        <div class="tab-pane fade" id="area-human" role="tabpanel" aria-labelledby="profile-tab">
+        <div class="tab-pane fade" id="human-card" role="tabpanel" aria-labelledby="human">
           <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
             <div class="row row-cols-1 row-cols-md-3 g-4">
               <div class="col">
@@ -201,7 +201,7 @@
           </div>
         </div>
         <!-- 南島奔放 -->
-        <div class="tab-pane fade" id="area-passion" role="tabpanel" aria-labelledby="profile-tab">
+        <div class="tab-pane fade" id="warm-card" role="tabpanel" aria-labelledby="warm">
           <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
             <div class="row row-cols-1 row-cols-md-3 g-4">
               <div class="col">
