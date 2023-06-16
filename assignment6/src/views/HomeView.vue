@@ -42,52 +42,20 @@
           <div class="row row-cols-1 row-cols-md-3 g-4">
             <div class="col">
               <div class="card">
-                <img src="..." class="card-img-top" alt="...">
+                <img src="../assets/images/1.png" class="card-img-top" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">熱鬧繁華</h5>
                 </div>
               </div>
             </div>
-            <div class="col">
+            <!-- <div class="col">
               <div class="card">
-                <img src="..." class="card-img-top" alt="...">
+                <img src="../assets/images/1.png" class="card-img-top" alt="...">
                 <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
+                  <h5 class="card-title">熱鬧繁華</h5>
                 </div>
               </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                </div>
-              </div>
-            </div>
+            </div> -->
           </div>
         </div>
         <!-- 與自然共舞 -->
@@ -358,6 +326,33 @@ const frontCarousel = ref([
   {
     title: "台北 101",
     img: new URL("../assets/images/kdg.png", import.meta.url).href
+  },
+]);
+
+const livelyCard = ref([
+  {
+    title: "台北",
+    img: new URL("../assets/images/1.png", import.meta.url).href
+  },
+  {
+    title: "新北",
+    img: new URL("../assets/images/2.png", import.meta.url).href
+  },
+  {
+    title: "桃園",
+    img: new URL("../assets/images/3.png", import.meta.url).href
+  },
+  {
+    title: "台中",
+    img: new URL("../assets/images/3.png", import.meta.url).href
+  },
+  {
+    title: "台南",
+    img: new URL("../assets/images/2.png", import.meta.url).href
+  },
+  {
+    title: "高雄",
+    img: new URL("../assets/images/1.png", import.meta.url).href
   },
 ]);
 
