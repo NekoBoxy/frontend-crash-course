@@ -1,5 +1,5 @@
 <template>
-  <div class="background-color">
+  <div class="footer">
     <div class="container mt-5">
       <div class="row">
         <div class="col-6 mt-5">
@@ -32,6 +32,8 @@
         </div>
       </div>
       <span>Design by Zoe Kang</span>
+      <span class="mx-3">made by CatBoxy</span>
+      <span>source from 2021 F2E</span>
     </div>
   </div>
 </template>
@@ -39,13 +41,17 @@
 <script></script>
 
 <style scoped lang="scss">
-.background-color {
+.footer {
   background-color: #392A93;
   color: #FEFEFE;
-}
+  position: relative;
+  width: 100%;
+  height: 300px;
+  // bottom: 0;
 
-.footer-list {
-  flex-direction: column;
-  margin-right: 30px;
+  .footer-list {
+    flex-direction: column;
+    margin-right: 30px;
+  }
 }
 </style>
