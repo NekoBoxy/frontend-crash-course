@@ -1,8 +1,7 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import { createRouter, createWebHashHistory } from 'vue-router'
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
@@ -10,12 +9,27 @@ const router = createRouter({
       component: () => import('../views/HomeView.vue')
     },
     {
+      path: '/points',
+      name: 'points',
+      component: () => import('../views/PointsView.vue')
+    },
+    {
       path: '/point',
       name: 'point',
       component: () => import('../views/PointView.vue')
     },
     {
-      path: '/food',
+      path: '/point/:id',
+      name: 'point',
+      component: () => import('../views/PointView.vue')
+    },
+    {
+      path: '/foods',
+      name: 'foods',
+      component: () => import('../views/FoodsView.vue')
+    },
+    {
+      path: '/food/:id',
       name: 'food',
       component: () => import('../views/FoodView.vue')
     },
