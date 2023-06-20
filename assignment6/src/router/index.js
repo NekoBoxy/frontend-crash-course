@@ -13,11 +13,11 @@ const router = createRouter({
       name: 'points',
       component: () => import('../views/PointsView.vue')
     },
-    {
-      path: '/point',
-      name: 'point',
-      component: () => import('../views/PointView.vue')
-    },
+    // {
+    //   path: '/point',
+    //   name: 'point',
+    //   component: () => import('../views/PointView.vue')
+    // },
     {
       path: '/point/:id',
       name: 'point',

@@ -11,7 +11,7 @@
                 <RouterLink to="/">首頁</RouterLink>
               </li>
               <li class="breadcrumb-item">
-                <RouterLink to="/point">旅遊景點</RouterLink>
+                <RouterLink to="/points">旅遊景點</RouterLink>
               </li>
               <li class="breadcrumb-item active" aria-current="page">新北市</li>
             </ol>
@@ -54,9 +54,9 @@
     <div class="contsiner-fluid">
       <div class="row" style="margin-right: 0;">
         <!-- 地圖區 -->
-        <div ref="sectionMap" class="col-6 section-map"></div>
+        <div ref="sectionMap" class="col-6 area-map"></div>
         <!-- 景點卡片區 -->
-        <div class="col-6 section-site">
+        <div class="col-6 area-site">
           <div class="row row-cols-2 g-2">
             <div class="col" v-for="(site, index) in  tdxSpot" :key="1453 + index">
               <div class="card" @click="handleSiteClick(site)" style="cursor: pointer;">
@@ -84,9 +84,11 @@
 import CNavbar from '../components/CNavbar.vue';
 // import CFooter from '../components/CFooter.vue';
 import { ref, onMounted } from 'vue';
-
 import axios from 'axios';
 import { Loader } from '@googlemaps/js-api-loader';
+
+import { useRouter } from 'vue-router';
+const router = useRouter();
 
 const tdxSpot = ref();
 const sectionMap = ref();
@@ -99,10 +101,14 @@ const sectionMap = ref();
 // 取得 tdx 指定縣市景點資料
 async function getScenicSpot() {
   try {
+    const city = "Taipei";
     const response = await axios({
       method: "get",
-      // url: `${import.meta.env.VITE_BASE_URL}/v2/Tourism/ScenicSpot/${city.value}`,
-      url: `${import.meta.env.VITE_BASE_URL}/v2/Tourism/ScenicSpot/Taipei?%24top=10&%24format=JSON`,
+      url: `${import.meta.env.VITE_BASE_URL}/v2/Tourism/ScenicSpot/${city}`,
+      params: {
+        "$top": "10",
+        "$format": "JSON"
+      }
     });
     console.log("response.data", response.data);
     tdxSpot.value = response.data;
@@ -156,10 +162,9 @@ onMounted(async () => {
 
 // 點擊切換至細節頁
 async function handleSiteClick(site) {
-  const id = site.ScenicSpotID;
-  await this.$router.push(`/point/${id}`);
-  // console.log(site.ScenicSpotID);
-  await this.$router.go();
+  // console.log("site.ScenicSpotID", site.ScenicSpotID);
+  await router.push({ path: `/point/${site.ScenicSpotID}` });
+  await router.go();
 }
 
 </script>
@@ -171,12 +176,12 @@ async function handleSiteClick(site) {
 //   margin-bottom: -300px;
 // }
 
-.section-map {
+.area-map {
   // width: 50%;
   height: 400px;
 }
 
-.section-site {
+.area-site {
   width: 50%;
   height: 400px;
   overflow-y: scroll;
