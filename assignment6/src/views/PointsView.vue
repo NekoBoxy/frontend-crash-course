@@ -110,7 +110,7 @@ async function getScenicSpot() {
         "$format": "JSON"
       }
     });
-    console.log("response.data", response.data);
+    // console.log("response.data", response.data);
     tdxSpot.value = response.data;
   } catch (error) {
     alert(error);
