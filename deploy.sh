@@ -28,6 +28,11 @@ cp -r assignment4 ./dist/assignment4
 rm -rf ./dist/assignment5
 cp -r assignment5 ./dist/assignment5
 
+# assignment6
+cd assignment6
+npm run build
+cd -
+
 cd dist
 echo > .nojekyll
 git init
