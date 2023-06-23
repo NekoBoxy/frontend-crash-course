@@ -10,10 +10,7 @@
               <li class="breadcrumb-item">
                 <RouterLink to="/">首頁</RouterLink>
               </li>
-              <li class="breadcrumb-item">
-                <RouterLink to="/points">旅遊景點</RouterLink>
-              </li>
-              <li class="breadcrumb-item active" aria-current="page">新北市</li>
+              <li class="breadcrumb-item active" aria-current="page">旅遊景點</li>
             </ol>
           </nav>
         </div>
@@ -54,7 +51,7 @@
     <div class="contsiner-fluid">
       <div class="row" style="margin-right: 0;">
         <!-- 地圖區 -->
-        <div ref="sectionMap" class="col-6 area-map"></div>
+        <div ref="areaMap" class="col-6 area-map"></div>
         <!-- 景點卡片區 -->
         <div class="col-6 area-site">
           <div class="row row-cols-2 g-2">
@@ -65,8 +62,9 @@
                   <h5 class="card-title" style="font-size: medium;">{{ site.ScenicSpotName }}</h5>
                   <p class="card-text">
                     <span class="badge rounded-pill bg-success text-white">{{ site.City }}</span>
-                    <span class="badge rounded-pill bg-success text-white" style="margin-left: 5px; margin-right: 5px;">{{
-                      site.Class1 }}</span>
+                    <span class="badge rounded-pill bg-success text-white" style="margin-left: 5px; margin-right: 5px;">
+                      {{ site.Class1 }}
+                    </span>
                     <span class="badge rounded-pill bg-success text-white">{{ site.Level }}</span>
                   </p>
                 </div>
@@ -91,7 +89,7 @@ import { useRouter } from 'vue-router';
 const router = useRouter();
 
 const tdxSpot = ref();
-const sectionMap = ref();
+const areaMap = ref();
 
 // 取得 select 的城市
 // const location = ref();
@@ -136,10 +134,10 @@ async function getMap() {
   };
 
   const google = await loader.load();
-  const map = new google.maps.Map(sectionMap.value, mapOptions);
+  const map = new google.maps.Map(areaMap.value, mapOptions); // 地圖實體化
   const bounds = new google.maps.LatLngBounds(); // 自適應地圖可視範圍
+  // 加入標記
   for (let i = 0; i < tdxSpot.value.length; i++) {
-    // 加入標記
     const marker = new google.maps.Marker({
       position: {
         lat: tdxSpot.value[i].Position.PositionLat,
@@ -178,12 +176,12 @@ async function handleSiteClick(site) {
 
 .area-map {
   // width: 50%;
-  height: 400px;
+  height: 70vh;
 }
 
 .area-site {
   width: 50%;
-  height: 400px;
+  height: 70vh;
   overflow-y: scroll;
 }
 </style>
