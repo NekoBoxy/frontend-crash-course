@@ -71,14 +71,18 @@
                   d="M2.06189 9H6.02704C6.16368 6.48347 6.81241 4.15607 7.84474 2.29368C4.78431 3.1478 2.46392 5.77602 2.06189 9ZM9.99055 2.61029C8.92813 4.21065 8.18551 6.44463 8.03021 9H11.968C11.8081 6.44133 11.0591 4.20668 9.99055 2.61029ZM11.9715 11H8.03021C8.18643 13.5705 8.93693 15.8158 10.0094 17.418C11.0758 15.8118 11.82 13.5672 11.9715 11ZM7.84474 17.7063C6.81241 15.8439 6.16368 13.5165 6.02704 11H2.06189C2.46392 14.224 4.78431 16.8522 7.84474 17.7063ZM12.1738 17.7011C13.1992 15.8374 13.842 13.5123 13.9745 11H17.9381C17.5369 14.2175 15.225 16.8416 12.1738 17.7011ZM17.9381 9H13.9714C13.8306 6.47922 13.1759 4.14947 12.1366 2.2885C15.2063 3.13713 17.5353 5.76948 17.9381 9ZM0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10Z"
                   fill="#392A93" />
               </svg>
-              {{ `官網連結` }}
+              <span>{{ `官網連結` }}</span>
             </div>
           </div>
         </div>
         <div class="col-12 mt-4">
           {{ targetSpot.DescriptionDetail }}
         </div>
-        <div class="col-12 mt-4 map" ref="areaMap"></div>
+        <div class="col-12 mt-4 map" ref="pointMap"></div>
+        <div class="col-12 mt-4">
+          <h5>附近景點</h5>
+
+        </div>
       </div>
     </div>
     <CFooter />
@@ -94,7 +98,7 @@ import { useRoute } from 'vue-router';
 import { Loader } from '@googlemaps/js-api-loader';
 
 const route = useRoute();
-const areaMap = ref();
+const pointMap = ref();
 
 const targetSpot = ref({
   City: "",
@@ -116,7 +120,7 @@ const targetSpot = ref({
 });
 
 // 從 tdx 拿景點資料
-// 取得單一景點資料
+// 取得指定景點資料
 // route.params.id = C1_379000000A_000001
 async function getSite() {
   try {
@@ -138,9 +142,9 @@ async function getSite() {
   }
 }
 
-// 取得 google 地圖圖資
+// 將 tdx 圖資顯示在 google map 上
 async function getMap() {
-  const loader = new Loader({
+  const loader = await new Loader({
     apiKey: "AIzaSyC42jlw7i6yloHhAXQp_M7Lxh7_KxzY9bI",
     version: "weekly",
     libraries: ["places"]
@@ -155,10 +159,20 @@ async function getMap() {
   };
 
   const google = await loader.load();
-  const map = new google.maps.Map(areaMap.value, mapOptions); // 地圖實體化
-  const bounds = new google.maps.LatLngBounds(); // 自適應地圖可視範圍
+  const map = await new google.maps.Map(pointMap.value, mapOptions); // 地圖實體化
+  const bounds = await new google.maps.LatLngBounds(); // 自適應地圖可視範圍
+  // 加入資訊視窗內的資訊
+  const contentString = '<div class="map-info">' +
+    '<h5>' +
+    targetSpot.value.ScenicSpotName +
+    '</h5>' +
+    '</div>';
+  const infowindow = await new google.maps.InfoWindow({
+    content: contentString,
+    ariaLabel: targetSpot.value.ScenicSpotName,
+  });
   // 加入標記
-  const marker = new google.maps.Marker({
+  const marker = await new google.maps.Marker({
     position: {
       lat: targetSpot.value.Position.PositionLat,
       lng: targetSpot.value.Position.PositionLon
@@ -167,7 +181,11 @@ async function getMap() {
     title: targetSpot.value.ScenicSpotName,
   });
   bounds.extend(marker.position); // 把 marker 的座標放進 bounds
-  // map.fitBounds(bounds); // 計算 markers 中心並自適應地圖大小
+  infowindow.open({
+    anchor: marker,
+    map,
+  });
+
 }
 
 
@@ -197,5 +215,6 @@ main {
 .map {
   width: 100%;
   height: 100vh;
+  border-radius: 20px;
 }
 </style>
