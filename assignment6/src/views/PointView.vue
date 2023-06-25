@@ -162,29 +162,29 @@ async function getMap() {
   const map = await new google.maps.Map(pointMap.value, mapOptions); // 地圖實體化
   const bounds = await new google.maps.LatLngBounds(); // 自適應地圖可視範圍
   // 加入資訊視窗內的資訊
-  const contentString = '<div class="map-info">' +
-    '<h5>' +
-    targetSpot.value.ScenicSpotName +
-    '</h5>' +
-    '</div>';
-  const infowindow = await new google.maps.InfoWindow({
-    content: contentString,
-    ariaLabel: targetSpot.value.ScenicSpotName,
-  });
-  // 加入標記
+  // const contentString = '<div class="map-info">' +
+  //   '<h5>' +
+  //   targetSpot.value.ScenicSpotName +
+  //   '</h5>' +
+  //   '</div>';
+  // const infowindow = await new google.maps.InfoWindow({
+  //   content: contentString,
+  //   ariaLabel: targetSpot.value.ScenicSpotName,
+  // });
+  // 在地圖上加入標記
   const marker = await new google.maps.Marker({
     position: {
       lat: targetSpot.value.Position.PositionLat,
       lng: targetSpot.value.Position.PositionLon
     },
     map,
-    title: targetSpot.value.ScenicSpotName,
+    // title: targetSpot.value.ScenicSpotName,
   });
   bounds.extend(marker.position); // 把 marker 的座標放進 bounds
-  infowindow.open({
-    anchor: marker,
-    map,
-  });
+  // infowindow.open({
+  //   anchor: marker,
+  //   map,
+  // });
 
 }
 
