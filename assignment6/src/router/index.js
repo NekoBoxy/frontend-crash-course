@@ -8,23 +8,19 @@ const router = createRouter({
       name: 'home',
       component: () => import('../views/HomeView.vue')
     },
+    // 路由可接受 /points 或 /points/:city
     {
       path: '/points/:city?',
       name: 'points',
       component: () => import('../views/PointsView.vue')
     },
-    // {
-    //   path: '/point',
-    //   name: 'point',
-    //   component: () => import('../views/PointView.vue')
-    // },
     {
       path: '/point/:id',
       name: 'point',
       component: () => import('../views/PointView.vue')
     },
     {
-      path: '/foods',
+      path: '/foods/:city?',
       name: 'foods',
       component: () => import('../views/FoodsView.vue')
     },
