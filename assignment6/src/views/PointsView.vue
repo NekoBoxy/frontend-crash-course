@@ -21,9 +21,9 @@
           <h5>旅遊景點</h5>
         </div>
         <div class="col-6">
-          <select name="city" id="selectedCity">
+          <select name="city" id="selectedCity" on-change="getSelcct()">
             <option value="Keelung">基隆市</option>
-            <option value="Taipei">台北市</option>
+            <option value="Taipei" selected="selected">台北市</option>
             <option value="NewTaipei">新北市</option>
             <option value="Taoyuan">桃園市</option>
             <option value="MiaoliCounty">苗栗縣</option>
@@ -91,10 +91,16 @@ const router = useRouter();
 const tdxSpot = ref();
 const areaMap = ref();
 
-// 取得 select 的城市
-// const location = ref();
-// function getSelcct() {
-// }
+// 取得 select 的城市，存入變數 city 並同步更動路由與 map 的 city
+const location = ref();
+
+function getSelcct() {
+  let select = document.querySelector("#selectedCity");
+  console.log(select);
+  console.log(select.value);
+
+
+}
 
 // 取得 tdx 指定縣市景點資料
 async function getScenicSpot() {
