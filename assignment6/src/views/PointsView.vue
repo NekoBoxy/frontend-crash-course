@@ -92,26 +92,37 @@ const tdxSpot = ref();
 const areaMap = ref();
 
 // 取得 select 的城市，存入變數 city 並同步更動路由與 map 的 city
-const location = ref();
+const city = ref("");
 
 function getSelect() {
-  location.value = document.querySelector("#selectedCity").value;
-  console.log(location.value);
+  city.value = document.querySelector("#selectedCity").value;
+  // console.log(city.value);
+  getScenicSpot(city.value);
+  getMap();
+  // router.push({ path: `/point/${city.value}/` });
+  // router.go();
 }
+
+
+// // 選取城市後重新渲染畫面
+// function renewPage(){
+
+// }
 
 // 取得 tdx 指定縣市景點資料
 async function getScenicSpot() {
   try {
-    const city = "Taipei";
+    if (!city.value) {
+      city.value = "Taipei";
+    }
     const response = await axios({
       method: "get",
-      url: `${import.meta.env.VITE_BASE_URL}/v2/Tourism/ScenicSpot/${city}`,
+      url: `${import.meta.env.VITE_BASE_URL}/v2/Tourism/ScenicSpot/${city.value}`,
       params: {
         "$top": "10",
         "$format": "JSON"
       }
     });
-    // console.log("response.data", response.data);
     tdxSpot.value = response.data;
   } catch (error) {
     alert(error);
@@ -161,10 +172,11 @@ onMounted(async () => {
   await getMap();
 });
 
+
 // 點擊切換至細節頁
 async function handleSiteClick(site) {
   // console.log("site.ScenicSpotID", site.ScenicSpotID);
-  await router.push({ path: `/point/${site.ScenicSpotID}` });
+  await router.push({ path: `/point/${city.value}/${site.ScenicSpotID}` });
   await router.go();
 }
 
