@@ -13,8 +13,7 @@
               <li class="breadcrumb-item">
                 <RouterLink to="/points">旅遊景點</RouterLink>
               </li>
-              <li class="breadcrumb-item">{{ targetSpot.City }}</li>
-              <li class="breadcrumb-item active" aria-current="page">{{ targetSpot.ScenicSpotName }}</li>
+              <li class="breadcrumb-item active" aria-current="page">{{ targetSpot.City }}</li>
             </ol>
           </nav>
         </div>
@@ -28,9 +27,9 @@
         <div class="col-6">
           <div>
             <!-- 所屬城市標籤 -->
-            <span class="badge rounded-pill bg-danger text-white">{{ targetSpot.City }}</span>
+            <span class="badge rounded-pill bg-danger text-white" style="margin-right: 5px;">{{ targetSpot.City }}</span>
             <!-- 景點屬性標籤 -->
-            <span class="badge rounded-pill bg-success text-white" style="margin-left: 5px; margin-right: 5px;">
+            <span class="badge rounded-pill bg-success text-white" style="margin-right: 5px;">
               {{ targetSpot.Class1 }}
             </span>
             <span class="badge rounded-pill bg-success text-white">
@@ -80,8 +79,18 @@
         </div>
         <div class="col-12 mt-4 map" ref="pointMap"></div>
         <div class="col-12 mt-4">
-          <h5>附近景點</h5>
-
+          <h5 class="text-center" style="margin: 20px;">{{ `${targetSpot.City}其他景點` }}</h5>
+          <!-- 附近景點卡片 -->
+          <div class="row row-cols-md-4 row-cols-1 g-4">
+            <div class="col" v-for="(spot, index) in spots" :key="456 + index">
+              <div class="card">
+                <img :src="spot.Picture.PictureUrl1" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title" style="color: #392A93;">{{ spot.ScenicSpotName }}</h5>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -119,6 +128,7 @@ const targetSpot = ref({
   },
 });
 
+const spots = ref();
 // 從 tdx 拿景點資料
 // 取得指定景點資料
 // route.params.id = C1_379000000A_000001
@@ -134,9 +144,29 @@ async function getSite() {
         "$format": "JSON"
       }
     });
-    console.log("response.data[0]", response.data[0]);
     targetSpot.value = response.data[0];
     // console.log(targetSpot.value);
+  } catch (error) {
+    alert(error);
+  }
+}
+
+
+async function getOtherSpots() {
+  try {
+    const { id } = route.params;
+    const city = "Taipei";
+    const response = await axios({
+      method: "get",
+      url: `${import.meta.env.VITE_BASE_URL}/v2/Tourism/ScenicSpot/${city}`,
+      params: {
+        "$filter": `ScenicSpotID ne '${id}'`, // 排除指定 id 的資料
+        "$format": "JSON",
+        "$Top": 4
+      }
+    });
+    spots.value = response.data;
+    console.log("spots.value", spots.value);
   } catch (error) {
     alert(error);
   }
@@ -161,16 +191,6 @@ async function getMap() {
   const google = await loader.load();
   const map = await new google.maps.Map(pointMap.value, mapOptions); // 地圖實體化
   const bounds = await new google.maps.LatLngBounds(); // 自適應地圖可視範圍
-  // 加入資訊視窗內的資訊
-  // const contentString = '<div class="map-info">' +
-  //   '<h5>' +
-  //   targetSpot.value.ScenicSpotName +
-  //   '</h5>' +
-  //   '</div>';
-  // const infowindow = await new google.maps.InfoWindow({
-  //   content: contentString,
-  //   ariaLabel: targetSpot.value.ScenicSpotName,
-  // });
   // 在地圖上加入標記
   const marker = await new google.maps.Marker({
     position: {
@@ -181,17 +201,15 @@ async function getMap() {
     // title: targetSpot.value.ScenicSpotName,
   });
   bounds.extend(marker.position); // 把 marker 的座標放進 bounds
-  // infowindow.open({
-  //   anchor: marker,
-  //   map,
-  // });
 
 }
+
 
 
 onMounted(async () => {
   await getSite();
   await getMap();
+  await getOtherSpots();
 });
 </script>
 
@@ -216,5 +234,7 @@ main {
   width: 100%;
   height: 100vh;
   border-radius: 20px;
+  padding-left: 0rem;
+  padding-right: 0rem;
 }
 </style>
