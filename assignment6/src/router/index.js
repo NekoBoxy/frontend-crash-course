@@ -9,7 +9,7 @@ const router = createRouter({
       component: () => import('../views/HomeView.vue')
     },
     {
-      path: '/points',
+      path: '/points/:city?',
       name: 'points',
       component: () => import('../views/PointsView.vue')
     },
