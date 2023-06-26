@@ -15,7 +15,7 @@ const router = createRouter({
       component: () => import('../views/PointsView.vue')
     },
     {
-      path: '/point/:id',
+      path: '/point/:city/:id',
       name: 'point',
       component: () => import('../views/PointView.vue')
     },
@@ -25,7 +25,7 @@ const router = createRouter({
       component: () => import('../views/FoodsView.vue')
     },
     {
-      path: '/food/:id',
+      path: '/food/:city?/:id',
       name: 'food',
       component: () => import('../views/FoodView.vue')
     },
