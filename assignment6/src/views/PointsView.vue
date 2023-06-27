@@ -10,7 +10,10 @@
               <li class="breadcrumb-item">
                 <RouterLink to="/">首頁</RouterLink>
               </li>
-              <li class="breadcrumb-item active" aria-current="page">旅遊景點</li>
+              <li class="breadcrumb-item">
+                <RouterLink to="/points/Taipei">旅遊景點</RouterLink>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">{{ currentCityTitle }}</li>
             </ol>
           </nav>
         </div>
@@ -22,28 +25,9 @@
         </div>
         <div class="col-6">
           <select id="selectedCity" v-on:change="getSelect()" v-model="city">
-            <option value="Keelung">基隆市</option>
-            <option value="Taipei" selected="selected">台北市</option>
-            <option value="NewTaipei">新北市</option>
-            <option value="Taoyuan">桃園市</option>
-            <option value="MiaoliCounty">苗栗縣</option>
-            <option value="HsinchuCounty">新竹縣</option>
-            <option value="Hsinchu">新竹市</option>
-            <option value="Taichung">台中市</option>
-            <option value="ChanghuaCounty">彰化縣</option>
-            <option value="NantouCounty">南投縣</option>
-            <option value="YunlinCounty">雲林縣</option>
-            <option value="ChiayiCounty">嘉義縣</option>
-            <option value="Chiayi">嘉義市</option>
-            <option value="Tainan">台南市</option>
-            <option value="Kaohsiung">高雄市</option>
-            <option value="PingtungCounty">屏東縣</option>
-            <option value="YilanCounty">宜蘭縣</option>
-            <option value="HualienCounty">花蓮縣</option>
-            <option value="TaitungCounty">台東縣</option>
-            <option value="KinmenCounty">金門縣</option>
-            <option value="PenghuCounty">澎湖縣</option>
-            <option value="LienchiangCounty">連江縣</option>
+            <option v-for="item in cityList" :value="item.name" :key="item.name" :selected="item.name === city.value">
+              {{ item.title }}
+            </option>
           </select>
         </div>
       </div>
@@ -61,11 +45,15 @@
                 <div class="card-body">
                   <h5 class="card-title" style="font-size: medium;">{{ site.ScenicSpotName }}</h5>
                   <p class="card-text">
-                    <span class="badge rounded-pill bg-success text-white">{{ site.City }}</span>
-                    <span class="badge rounded-pill bg-success text-white" style="margin-left: 5px; margin-right: 5px;">
+                    <span class="badge rounded-pill bg-success text-white" style="margin-right: 5px;">
+                      {{ site.City }}
+                    </span>
+                    <span class="badge rounded-pill bg-success text-white" style="margin-right: 5px;">
                       {{ site.Class1 }}
                     </span>
-                    <span class="badge rounded-pill bg-success text-white">{{ site.Level }}</span>
+                    <span class="badge rounded-pill bg-success text-white" style="margin-right: 5px;">
+                      {{ site.Level }}
+                    </span>
                   </p>
                 </div>
               </div>
@@ -82,16 +70,47 @@
 import CNavbar from '../components/CNavbar.vue';
 // import CFooter from '../components/CFooter.vue';
 import axios from 'axios';
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 import { Loader } from '@googlemaps/js-api-loader';
-import { useRouter } from 'vue-router';
+import { useRouter, useRoute } from 'vue-router';
 const router = useRouter();
+const route = useRoute();
 
 const tdxSpot = ref();
 const areaMap = ref();
 
 // 取得 select 的城市，存入變數 city 並同步更動路由與 map 的 city
+const cityList = ref([
+  { title: "基隆市", name: "Keelung" },
+  { title: "臺北市", name: "Taipei" },
+  { title: "新北市", name: "NewTaipei" },
+  { title: "桃園市", name: "Taoyuan" },
+  { title: "苗栗縣", name: "MiaoliCounty" },
+  { title: "新竹縣", name: "HsinchuCounty" },
+  { title: "新竹市", name: "Hsinchu" },
+  { title: "臺中市", name: "Taichung" },
+  { title: "彰化縣", name: "ChanghuaCounty" },
+  { title: "南投縣", name: "NantouCounty" },
+  { title: "雲林縣", name: "YunlinCounty" },
+  { title: "嘉義縣", name: "ChiayiCounty" },
+  { title: "嘉義市", name: "Chiayi" },
+  { title: "臺南市", name: "Tainan" },
+  { title: "高雄市", name: "Kaohsiung" },
+  { title: "屏東縣", name: "PingtungCounty" },
+  { title: "宜蘭縣", name: "YilanCounty" },
+  { title: "花蓮縣", name: "HualienCounty" },
+  { title: "臺東縣", name: "TaitungCounty" },
+  { title: "金門縣", name: "KinmenCounty" },
+  { title: "澎湖縣", name: "PenghuCounty" },
+  { title: "連江縣", name: "LienchiangCounty" },
+]);
 const city = ref("Taipei");
+
+const currentCityTitle = computed(() => {
+  // 若在陣列 cityList 中找到 name 與 city.value 相同的值，回傳
+  const currentCity = cityList.value.find(item => item.name === city.value);
+  return currentCity.title;
+});
 
 async function getSelect() {
   // console.log("city.value", city.value);
@@ -112,7 +131,6 @@ async function getScenicSpot() {
       }
     });
     tdxSpot.value = response.data;
-    console.log("tdxSpot.value", tdxSpot.value);
   } catch (error) {
     alert(error);
   }
@@ -157,6 +175,11 @@ async function getMap() {
 
 
 onMounted(async () => {
+  const currentCity = cityList.value.find(
+    item => item.name.toLowerCase() === route.params.city.toLowerCase()
+  );
+  city.value = currentCity?.name || city.value;
+  router.replace(`/points/${city.value}/`);
   await getScenicSpot();
   await getMap();
 });
@@ -187,5 +210,12 @@ async function handleSiteClick(site) {
   width: 50%;
   height: 70vh;
   overflow-y: scroll;
+}
+
+.card {
+  &:hover {
+    /* offset-x | offset-y | blur-radius | spread-radius | color */
+    box-shadow: 5px 5px 5px 1px rgba(0, 0, 0, 0.2);
+  }
 }
 </style>
