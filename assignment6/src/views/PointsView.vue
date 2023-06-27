@@ -21,7 +21,7 @@
           <h5>旅遊景點</h5>
         </div>
         <div class="col-6">
-          <select id="selectedCity" v-on:change="getSelect()">
+          <select id="selectedCity" v-on:change="getSelect()" v-model="city">
             <option value="Keelung">基隆市</option>
             <option value="Taipei" selected="selected">台北市</option>
             <option value="NewTaipei">新北市</option>
@@ -81,10 +81,9 @@
 <script setup>
 import CNavbar from '../components/CNavbar.vue';
 // import CFooter from '../components/CFooter.vue';
-import { ref, onMounted } from 'vue';
 import axios from 'axios';
+import { ref, onMounted } from 'vue';
 import { Loader } from '@googlemaps/js-api-loader';
-
 import { useRouter } from 'vue-router';
 const router = useRouter();
 
@@ -92,29 +91,18 @@ const tdxSpot = ref();
 const areaMap = ref();
 
 // 取得 select 的城市，存入變數 city 並同步更動路由與 map 的 city
-const city = ref("");
+const city = ref("Taipei");
 
-function getSelect() {
-  city.value = document.querySelector("#selectedCity").value;
-  // console.log(city.value);
-  getScenicSpot(city.value);
-  getMap();
-  // router.push({ path: `/point/${city.value}/` });
-  // router.go();
+async function getSelect() {
+  // console.log("city.value", city.value);
+  router.push({ path: `/points/${city.value}/` });
+  await getScenicSpot();
+  await getMap();
 }
-
-
-// // 選取城市後重新渲染畫面
-// function renewPage(){
-
-// }
 
 // 取得 tdx 指定縣市景點資料
 async function getScenicSpot() {
   try {
-    if (!city.value) {
-      city.value = "Taipei";
-    }
     const response = await axios({
       method: "get",
       url: `${import.meta.env.VITE_BASE_URL}/v2/Tourism/ScenicSpot/${city.value}`,
@@ -124,6 +112,7 @@ async function getScenicSpot() {
       }
     });
     tdxSpot.value = response.data;
+    console.log("tdxSpot.value", tdxSpot.value);
   } catch (error) {
     alert(error);
   }
