@@ -71,15 +71,14 @@ import CNavbar from '../components/CNavbar.vue';
 // import CFooter from '../components/CFooter.vue';
 import axios from 'axios';
 import { ref, onMounted, computed } from 'vue';
+import { useRouter, useRoute, RouterLink } from 'vue-router';
 import { Loader } from '@googlemaps/js-api-loader';
-import { useRouter, useRoute } from 'vue-router';
+
 const router = useRouter();
 const route = useRoute();
-
 const tdxSpot = ref();
 const areaMap = ref();
 
-// 取得 select 的城市，存入變數 city 並同步更動路由與 map 的 city
 const cityList = ref([
   { title: "基隆市", name: "Keelung" },
   { title: "臺北市", name: "Taipei" },
@@ -104,8 +103,9 @@ const cityList = ref([
   { title: "澎湖縣", name: "PenghuCounty" },
   { title: "連江縣", name: "LienchiangCounty" },
 ]);
-const city = ref("Taipei");
 
+// 取得 select 的城市，存入變數 city 並同步更動路由與 map 的 city
+const city = ref("Taipei");
 const currentCityTitle = computed(() => {
   // 若在陣列 cityList 中找到 name 與 city.value 相同的值，回傳
   const currentCity = cityList.value.find(item => item.name === city.value);
@@ -131,6 +131,7 @@ async function getScenicSpot() {
       }
     });
     tdxSpot.value = response.data;
+    // console.log("tdxSpot.value", tdxSpot.value);
   } catch (error) {
     alert(error);
   }
@@ -176,6 +177,7 @@ async function getMap() {
 
 onMounted(async () => {
   const currentCity = cityList.value.find(
+    // 從 path: '/points/:city?' 取得 route.params.city 的值，比對符合後轉成全小寫
     item => item.name.toLowerCase() === route.params.city.toLowerCase()
   );
   city.value = currentCity?.name || city.value;
