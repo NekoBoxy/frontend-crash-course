@@ -4,6 +4,7 @@ import { RouterView } from 'vue-router';
 import axios from 'axios';
 
 // 取得 tdx 授權
+// 放在根目錄下全頁面才吃的到 token
 async function getAuth() {
   const AUTH_URL = 'https://tdx.transportdata.tw/auth/realms/TDXConnect/protocol/openid-connect/token';
   if (import.meta.env.VITE_CLIENT_ID && import.meta.env.VITE_CLIENT_SECRET) {
