@@ -131,7 +131,7 @@ async function getScenicSpot() {
       }
     });
     tdxSpot.value = response.data;
-    // console.log("tdxSpot.value", tdxSpot.value);
+    console.log("tdxSpot.value", tdxSpot.value);
   } catch (error) {
     alert(error);
   }
