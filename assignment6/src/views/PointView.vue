@@ -83,12 +83,14 @@
           <!-- 附近景點卡片 -->
           <div class="row row-cols-md-4 row-cols-1 g-4">
             <div class="col" v-for="(spot, index) in spots" :key="456 + index">
-              <div class="card">
-                <img :src="spot.Picture.PictureUrl1" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title" style="color: #392A93;">{{ spot.ScenicSpotName }}</h5>
+              <RouterLink :to="`/point/${city}/${spot.ScenicSpotID}`" @click="handleSiteClick(spot)">
+                <div class="card">
+                  <img :src="spot.Picture.PictureUrl1" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title" style="color: #392A93;">{{ spot.ScenicSpotName }}</h5>
+                  </div>
                 </div>
-              </div>
+              </RouterLink>
             </div>
           </div>
         </div>
@@ -103,12 +105,15 @@ import axios from 'axios';
 import CNavbar from '../components/CNavbar.vue';
 import CFooter from '../components/CFooter.vue';
 import { ref, onMounted } from 'vue';
-import { useRoute } from 'vue-router';
+import { RouterLink, useRouter, useRoute } from 'vue-router';
 import { Loader } from '@googlemaps/js-api-loader';
 
+const router = useRouter();
 const route = useRoute();
 const pointMap = ref();
-
+const city = ref("");
+const id = ref("");
+const spots = ref();
 const targetSpot = ref({
   City: "",
   ScenicSpotName: "",
@@ -126,21 +131,44 @@ const targetSpot = ref({
     PositionLat: 0,
     PositionLon: 0,
   },
+  ScenicSpotID: "",
 });
 
-const spots = ref();
+const cityList = ref([
+  { title: "基隆市", name: "Keelung" },
+  { title: "臺北市", name: "Taipei" },
+  { title: "新北市", name: "NewTaipei" },
+  { title: "桃園市", name: "Taoyuan" },
+  { title: "苗栗縣", name: "MiaoliCounty" },
+  { title: "新竹縣", name: "HsinchuCounty" },
+  { title: "新竹市", name: "Hsinchu" },
+  { title: "臺中市", name: "Taichung" },
+  { title: "彰化縣", name: "ChanghuaCounty" },
+  { title: "南投縣", name: "NantouCounty" },
+  { title: "雲林縣", name: "YunlinCounty" },
+  { title: "嘉義縣", name: "ChiayiCounty" },
+  { title: "嘉義市", name: "Chiayi" },
+  { title: "臺南市", name: "Tainan" },
+  { title: "高雄市", name: "Kaohsiung" },
+  { title: "屏東縣", name: "PingtungCounty" },
+  { title: "宜蘭縣", name: "YilanCounty" },
+  { title: "花蓮縣", name: "HualienCounty" },
+  { title: "臺東縣", name: "TaitungCounty" },
+  { title: "金門縣", name: "KinmenCounty" },
+  { title: "澎湖縣", name: "PenghuCounty" },
+  { title: "連江縣", name: "LienchiangCounty" },
+]);
+
 // 從 tdx 拿景點資料
-// 取得指定景點資料
+// 取得指定景點資料並存入 targetSpot
 // route.params.id = C1_379000000A_000001
 async function getSite() {
   try {
-    const { id } = route.params;
-    const city = "Taipei";
     const response = await axios({
       method: "get",
-      url: `${import.meta.env.VITE_BASE_URL}/v2/Tourism/ScenicSpot/${city}`,
+      url: `${import.meta.env.VITE_BASE_URL}/v2/Tourism/ScenicSpot/${city.value}`,
       params: {
-        "$filter": `contains(ScenicSpotID, '${id}')`,
+        "$filter": `contains(ScenicSpotID, '${id.value}')`,
         "$format": "JSON"
       }
     });
@@ -154,13 +182,11 @@ async function getSite() {
 
 async function getOtherSpots() {
   try {
-    const { id } = route.params;
-    const city = "Taipei";
     const response = await axios({
       method: "get",
-      url: `${import.meta.env.VITE_BASE_URL}/v2/Tourism/ScenicSpot/${city}`,
+      url: `${import.meta.env.VITE_BASE_URL}/v2/Tourism/ScenicSpot/${city.value}`,
       params: {
-        "$filter": `ScenicSpotID ne '${id}'`, // 排除指定 id 的資料
+        "$filter": `ScenicSpotID ne '${id.value}'`, // 排除指定 id 的資料
         "$format": "JSON",
         "$Top": 4
       }
@@ -204,9 +230,23 @@ async function getMap() {
 
 }
 
+// 點擊切換至細節頁
+async function handleSiteClick(spot) {
+  console.log("spot.ScenicSpotID", spot.ScenicSpotID);
+  console.log("city.value", city.value);
+  await router.push({ path: `/point/${city.value}/${spot.ScenicSpotID}` });
+  await router.go();
+}
 
-
+// 為了取得 city 的英文值，在 onmounted 時要得到變數
 onMounted(async () => {
+  const currentCity = cityList.value.find(
+    // 從 path: '/points/:city?' 取得 route.params.city 的值，比對符合後轉成全小寫
+    item => item.name.toLowerCase() === route.params.city.toLowerCase()
+  );
+  city.value = currentCity?.name || city.value;
+  id.value = route.params.id;
+  router.replace(`/point/${city.value}/${id.value}/`);
   await getSite();
   await getMap();
   await getOtherSpots();
