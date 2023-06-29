@@ -83,16 +83,21 @@
           <!-- 附近景點卡片 -->
           <div class="row row-cols-md-4 row-cols-1 g-4">
             <div class="col" v-for="(spot, index) in spots" :key="456 + index">
-              <div class="col" v-for="(spot, index) in spots" :key="456 + index">
-                <RouterLink :to="`/point/${city}/${spot.ScenicSpotID}`" @click="handleSiteClick(spot)">
-                  <div class="card">
+              <RouterLink :to="`/point/${city}/${spot.ScenicSpotID}`" @click="handleSiteClick(spot)">
+                <div class="card">
+                  <div v-if="spot.Picture.PictureUrl1">
                     <img :src="spot.Picture.PictureUrl1" class="card-img-top" alt="...">
                     <div class="card-body">
                       <h5 class="card-title" style="color: #392A93;">{{ spot.ScenicSpotName }}</h5>
                     </div>
                   </div>
-                </RouterLink>
-              </div>
+                  <div v-else>
+                    <div class="card-body">
+                      <h5 class="card-title" style="color: #392A93;">{{ spot.ScenicSpotName }}</h5>
+                    </div>
+                  </div>
+                </div>
+              </RouterLink>
             </div>
           </div>
         </div>

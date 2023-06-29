@@ -40,21 +40,41 @@
         <div class="col-6 area-site">
           <div class="row row-cols-2 g-2">
             <div class="col" v-for="(site, index) in  tdxSpot" :key="1453 + index">
-              <div class="card" @click="handleSiteClick(site)" style="cursor: pointer;">
-                <img :src="site.Picture.PictureUrl1" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title" style="font-size: medium;">{{ site.ScenicSpotName }}</h5>
-                  <p class="card-text">
-                    <span class="badge rounded-pill bg-success text-white" style="margin-right: 5px;">
-                      {{ site.City }}
-                    </span>
-                    <span class="badge rounded-pill bg-success text-white" style="margin-right: 5px;">
-                      {{ site.Class1 }}
-                    </span>
-                    <span class="badge rounded-pill bg-success text-white" style="margin-right: 5px;">
-                      {{ site.Level }}
-                    </span>
-                  </p>
+              <div v-if="site.Picture.PictureUrl1">
+                <div class="card" @click="handleSiteClick(site)" style="cursor: pointer;">
+                  <img :src="site.Picture.PictureUrl1" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title" style="font-size: medium;">{{ site.ScenicSpotName }}</h5>
+                    <p class="card-text">
+                      <span class="badge rounded-pill bg-success text-white" style="margin-right: 5px;">
+                        {{ site.City }}
+                      </span>
+                      <span class="badge rounded-pill bg-success text-white" style="margin-right: 5px;">
+                        {{ site.Class1 }}
+                      </span>
+                      <span class="badge rounded-pill bg-success text-white" style="margin-right: 5px;">
+                        {{ site.Level }}
+                      </span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div v-else>
+                <div class="card" @click="handleSiteClick(site)" style="cursor: pointer;">
+                  <div class="card-body">
+                    <h5 class="card-title" style="font-size: medium;">{{ site.ScenicSpotName }}</h5>
+                    <p class="card-text">
+                      <span class="badge rounded-pill bg-success text-white" style="margin-right: 5px;">
+                        {{ site.City }}
+                      </span>
+                      <span class="badge rounded-pill bg-success text-white" style="margin-right: 5px;">
+                        {{ site.Class1 }}
+                      </span>
+                      <span class="badge rounded-pill bg-success text-white" style="margin-right: 5px;">
+                        {{ site.Level }}
+                      </span>
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
