@@ -3,18 +3,22 @@
     <CNavbar />
     <!-- Swiper Infinite loop-->
     <div class="container">
-      <div ref="mySwiper" class="swiper my-Swiper" style="padding-bottom: 50px;">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide" v-for="(city, index) in frontCarousel" v-bind:key="index">
-            <div class="swiper-background" :style="{ 'background-image': 'url(' + city.img + ')' }">
-              <div class="swiper-text">
-                <h5>{{ city.title }}</h5>
-                <button type="button">新北</button>
+      <div class="row">
+        <div class="landing-swiper">
+          <div ref="mySwiper" class="swiper my-Swiper" style="padding-bottom: 50px;">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide" v-for="(city, index) in frontCarousel" v-bind:key="index">
+                <div class="swiper-background" :style="{ 'background-image': 'url(' + city.img + ')' }">
+                  <div class="swiper-text">
+                    <h5>{{ city.title }}</h5>
+                    <button type="button">新北</button>
+                  </div>
+                </div>
               </div>
             </div>
+            <div class="swiper-pagination"></div>
           </div>
         </div>
-        <div class="swiper-pagination"></div>
       </div>
       <!-- tabs -->
       <ul class="nav nav-tabs d-flex justify-content-center" id="myTab" role="tablist">
@@ -455,4 +459,25 @@ main {
   height: 220px;
   border-radius: 15px;
 }
+
+.landing-swiper {
+  width: 100%;
+}
+
+// 桌機 1250px~
+// @media only screen and (min-width: 1250px) {
+//   .my-Swiper {
+//     width: 100%;
+//   }
+// }
+
+// 平板 501~1249px
+@media only screen and (max-width: 1249px) {
+  .my-Swiper {
+    columns: 1;
+  }
+}
+
+// 手機 ~500px
+@media only screen and (max-width: 500px) {}
 </style>

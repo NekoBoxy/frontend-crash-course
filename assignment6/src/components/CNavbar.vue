@@ -45,4 +45,8 @@ import { RouterLink } from 'vue-router';
 nav {
   color: #392A93;
 }
+
+nav:hover {
+  transition: backgroung-color#000 2s;
+}
 </style>
