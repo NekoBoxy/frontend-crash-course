@@ -44,11 +44,15 @@
                 <div class="card" @click="handleSiteClick(site)" style="cursor: pointer;">
                   <img :src="site.Picture.PictureUrl1" class="card-img-top" alt="...">
                   <div class="card-body">
-                    <h5 class="card-title" style="font-size: medium;">{{ site.ScenicSpotName }}</h5>
+                    <div style="color: #fff; font-weight: bold; background-color: #392A93;
+                      width: 30px; height: 30px; border-radius: 999px; text-align: center; margin-bottom: 5px;">
+                      {{ (10 + index).toString(36).toUpperCase() }}
+                    </div>
+                    <h5 class="card-title" style="font-size: large;">{{ site.ScenicSpotName }}</h5>
                     <p class="card-text">
-                      <span class="badge rounded-pill bg-success text-white" style="margin-right: 5px;">
+                      <!-- <span class="badge rounded-pill bg-success text-white" style="margin-right: 5px;">
                         {{ site.City }}
-                      </span>
+                      </span> -->
                       <span class="badge rounded-pill bg-success text-white" style="margin-right: 5px;">
                         {{ site.Class1 }}
                       </span>
@@ -61,10 +65,39 @@
               </div>
               <div v-else>
                 <div class="card" @click="handleSiteClick(site)" style="cursor: pointer;">
+                  <img src="../assets/images/noimage.png" class="card-img-top" alt="圖片不存在">
+                  <div class="card-body">
+                    <div style="color: #fff;  background-color: #392A93; font-weight: bold;
+                      width: 30px; height: 30px; border-radius: 999px; text-align: center; margin-bottom: 5px;">
+                      {{ (10 + index).toString(36).toUpperCase() }}
+                    </div>
+                    <h5 class="card-title" style="font-size: large;">{{ site.ScenicSpotName }}</h5>
+                    <p class="card-text">
+                      <span class="badge rounded-pill bg-success text-white" style="margin-right: 5px;"
+                        v-show="site.Class1">
+                        {{ site.Class1 }}
+                      </span>
+                      <span class="badge rounded-pill bg-success text-white" style="margin-right: 5px;"
+                        v-show="site.Class2">
+                        {{ site.Class2 }}
+                      </span>
+                      <span class="badge rounded-pill bg-success text-white" style="margin-right: 5px;"
+                        v-show="site.Class3">
+                        {{ site.Class3 }}
+                      </span>
+                      <span class="badge rounded-pill bg-success text-white" style="margin-right: 5px;"
+                        v-show="site.Level">
+                        {{ site.Level }}
+                      </span>
+                    </p>
+                  </div>
+                </div>
+                <!-- <div class="card" @click="handleSiteClick(site)" style="cursor: pointer;">
                   <div class="card-body">
                     <h5 class="card-title" style="font-size: medium;">{{ site.ScenicSpotName }}</h5>
                     <p class="card-text">
-                      <span class="badge rounded-pill bg-success text-white" style="margin-right: 5px;">
+                      <span class="badge rounded-pill bg-success text-white"
+                        style="background-color: #9086cc; margin-right: 5px;">
                         {{ site.City }}
                       </span>
                       <span class="badge rounded-pill bg-success text-white" style="margin-right: 5px;">
@@ -75,7 +108,7 @@
                       </span>
                     </p>
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
@@ -98,6 +131,9 @@ const router = useRouter();
 const route = useRoute();
 const tdxSpot = ref();
 const areaMap = ref();
+// const label = ref([
+//   "A", "B", "C", "D", "E", "F", "G", "H", "I", "J"
+// ]);
 
 const cityList = ref([
   { title: "基隆市", name: "Keelung" },
@@ -132,6 +168,7 @@ const currentCityTitle = computed(() => {
   return currentCity.title;
 });
 
+// 用 city 切換 router 並重取相關 api 資料
 async function getSelect() {
   // console.log("city.value", city.value);
   router.push({ path: `/points/${city.value}/` });
@@ -188,10 +225,12 @@ async function getMap() {
       map,
       title: tdxSpot.value[i].ScenicSpotName,
       label: (10 + i).toString(36).toUpperCase(), // i=0 時為 A、=1 時為B，類推
+      // label: label.value[i],
     });
     bounds.extend(marker.position); // 把 marker 的座標放進 bounds
   }
   map.fitBounds(bounds); // 計算 markers 中心並自適應地圖大小
+
 }
 
 
