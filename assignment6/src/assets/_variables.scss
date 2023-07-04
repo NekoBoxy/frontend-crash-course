@@ -44,3 +44,17 @@ $body-emphasis-color: #392A93;
 // $swiper-pagination-bullet-opacity: 1;
 // $swiper-pagination-bullet-horizontal-gap: 4px;
 // $swiper-pagination-bullet-vertical-gap: 6px;
+
+$success: #9086cc;
+$theme-colors: (
+  // "primary":    $primary,
+  // "secondary":  $secondary,
+  "success": $success,
+  // "info":       $info,
+  // "warning":    $warning,
+  // "danger":     $danger,
+  // "light":      $light,
+  // "dark":       $dark
+);
+
+$color-contrast-light: #221476;
