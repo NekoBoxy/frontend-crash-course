@@ -250,7 +250,8 @@ async function getOtherSpots() {
 //       params: {
 //         // "$filter": `ScenicSpotID ne '${id.value}'`, // 排除指定 id 的資料
 //         // 尋找 社子島環島與二重疏洪道自行車道 
-//         // 緯度,經度,範圍x公尺內
+//         // 緯度 lat ,經度 lon,範圍x公尺內
+//         // 拿的到資料但是是空的
 //         "$spatialFilter": `nearby(ScenicSpotID, 25.10984992980957, 121.46605682373047, 3000)`,
 //         "$format": "JSON",
 //         "$Top": 4,
