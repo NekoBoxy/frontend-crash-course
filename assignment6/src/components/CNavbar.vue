@@ -41,12 +41,18 @@ import { RouterLink } from 'vue-router';
 
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 nav {
   color: #392A93;
-}
+  border-bottom: 1px solid #0000001A;
+  margin-bottom: 20px;
 
-nav:hover {
-  transition: backgroung-color#000 2s;
+  // &hover {
+  //   transition: backgroung-color#000 5s;
+  // }
+
+  // .nav-item:active {
+  //   border: 1px solid #392A9305;
+  // }
 }
 </style>
