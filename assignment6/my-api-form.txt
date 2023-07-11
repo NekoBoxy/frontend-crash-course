@@ -1,0 +1,31 @@
+{
+  city: "",
+  tags: [
+    Class1: "",
+    Class2: "",
+    Class3: "",
+    Level: "",
+  ],
+  ScenicSpot: [
+    id: "",
+    name: "",
+    DescriptionDetail: "",
+    Phone:'',
+    Address:'',
+    TravelInfo: '',
+    OpenTime:'',    
+    MapUrl:'',
+    Position:  {
+      "PositionLon": 0,
+      "PositionLat": 0,
+      "GeoHash": "string"
+    },
+    WebsiteUrl:'',
+    TicketInfo:'',
+    Remarks:'',
+    Keyword:'',
+  ],
+  Picture: {
+    PictureUrl1:'',
+  }
+}

@@ -188,7 +188,30 @@ async function getScenicSpot() {
       }
     });
     tdxSpot.value = response.data;
-    console.log("tdxSpot.value", tdxSpot.value);
+    // console.log(response.data);
+    // tdxSpot.value = response.data.map( (item) => {
+    //   return {
+    //     city: item.City,
+    //     picture: {
+    //       ...(item?.Picture.PictureUrl1) || ""
+    //     },
+    //     tags:[
+    //       ...(item?.Class1 ? [ item.Class1 ] : []),
+    //       ...(item.Class2 ? [ item.Class2 ] : []),
+    //       ...(item.Class3 ? [ item.Class3 ] : []),
+    //       ...(item.Level ? [ item.Level ] : []),
+
+
+    //     ],
+    //   };
+    // });
+
+    const a = {
+
+    };
+    const test = a?.b?.c?.d;
+
+    // console.log("tdxSpot.value", tdxSpot.value);
   } catch (error) {
     alert(error);
   }
