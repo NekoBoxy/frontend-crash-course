@@ -90,16 +90,15 @@
       </div>
       <h5 class="text-center mt-5 mb-2">熱門景點</h5>
       <!-- swiper Slides per view auto -->
-      <div ref="mySwiper2" class="swiper my-Swiper-2">
+      <!-- <div ref="mySwiper2" class="swiper my-Swiper-2">
         <div class="swiper-wrapper">
-          <div v-for="(site, index) in viewPoint" :key="40676 + index">
+          <div v-for="(site, index) in hotSpots" :key="40676 + index">
             <div class="swiper-slide">
               <div class="card">
                 <img :src="site.img" class="card-img-top" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">{{ site.name }}</h5>
                   <p class="card-text">{{ site.location }}</p>
-                  <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
                 </div>
               </div>
             </div>
@@ -107,6 +106,19 @@
         </div>
         <div class="swiper-button-prev"></div>
         <div class="swiper-button-next"></div>
+      </div> -->
+      <div class="row">
+        <div class="col-3 hot-spot" v-for="site in hotSpots" :key="site.name">
+          <RouterLink :to="`/point/${site.location}/${site.id}`" @click="handleSiteClick(site)">
+            <div class="card">
+              <img :src="site.img" class="card-img-top" style="width: 100%; height: 213px;" alt="景點圖片">
+              <div class="card-body">
+                <h5 class="card-title" :title="site.name">{{ site.name }}</h5>
+                <p class="card-text">{{ site.cityZhTW }}</p>
+              </div>
+            </div>
+          </RouterLink>
+        </div>
       </div>
       <h5 class="text-center mt-5 mb-2">人氣美食</h5>
       <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -145,6 +157,11 @@ import { ref, onMounted } from "vue";
 import Swiper from 'swiper/bundle';
 // import styles bundle
 import 'swiper/css/bundle';
+import axios from "axios";
+import { RouterLink, useRouter, useRoute } from 'vue-router';
+
+const router = useRouter();
+const route = useRoute();
 // init Swiper:
 const mySwiper = ref(null);
 const mySwiper2 = ref(null);
@@ -267,26 +284,34 @@ const warmCard = ref([
 ]);
 
 // 熱門景點
-const viewPoint = ref([
+const hotSpots = ref([
   {
-    name: "陽明山國家公園冷水坑 牛奶池",
-    img: new URL("../assets/images/site01.png", import.meta.url).href,
-    location: "台北",
+    name: "陽明山國家公園冷水坑",
+    img: new URL("../assets/images/site01.jpg", import.meta.url).href,
+    cityZhTW: "台北",
+    cityEn: "Taipei",
+    id: "C1_379000000A_000009",
   },
   {
     name: "石梯坪",
     img: new URL("../assets/images/site02.png", import.meta.url).href,
-    location: "花蓮",
+    cityZhTW: "花蓮",
+    cityEn: "HualienCounty",
+    id: "C1_315080500H_000012",
   },
   {
     name: "鹿耳門天后宮",
     img: new URL("../assets/images/site03.png", import.meta.url).href,
-    location: "台南",
+    cityZhTW: "台南",
+    cityEn: "Tainan",
+    id: "C1_315081600H_000066",
   },
   {
-    name: "大屯山系 忠義山親山步道",
+    name: "忠義山親山步道",
     img: new URL("../assets/images/site04.png", import.meta.url).href,
-    location: "台北",
+    cityZhTW: "台北",
+    cityEn: "Taipei",
+    id: "C1_379000000A_000013",
   },
 ]);
 
@@ -318,6 +343,30 @@ const foods = ref([
   },
 ]);
 
+// 取得熱門景點資料
+// async function getHotSpots() {
+//   try {
+//     const response = await axios({
+//       method: "get",
+//       url: `${import.meta.env.VITE_BASE_URL}/v2/Tourism/ScenicSpot/${city.value}`,
+//       params: {
+//         "$filter": `contains(ScenicSpotID, '${id.value}')`,
+//         "$format": "JSON"
+//       }
+//     });
+//     targetSpot.value = response.data[0];
+//     console.log(targetSpot.value);
+//   } catch (error) {
+//     alert(error);
+//   }
+// }
+
+// 跳轉熱門景點指定頁
+async function handleSiteClick(site) {
+  await router.push({ path: `/point/${site.cityEn}/${site.id}` });
+  await router.go();
+}
+
 onMounted(async () => {
   new Swiper(mySwiper.value, {
     slidesPerView: 1,
@@ -342,8 +391,8 @@ onMounted(async () => {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
     },
-
   });
+  await getHotSpots();
 });
 
 
@@ -452,6 +501,15 @@ main {
 
 // 人氣美食
 
+// 熱門景點
+.hot-spot {
+  h5 {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
 // 訂閱
 .subscribe {
   background-color: #FA7E5F;
@@ -461,6 +519,38 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  h5 {
+    font-size: 26px;
+    font-weight: 700;
+  }
+
+  span {
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+  span,
+  button {
+    color: #FEFEFE;
+  }
+
+  input,
+  button {
+    border-radius: 12px;
+    border: none;
+    height: 50px;
+  }
+
+  input {
+    margin-right: 10px;
+    padding: 16px;
+  }
+
+  button {
+    width: 60px;
+    background-color: #392A93;
+  }
 }
 
 .landing-swiper {

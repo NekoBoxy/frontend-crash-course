@@ -12,8 +12,6 @@
           <span style="font-weight: 500; font-size: 20px; color: #392A93;">島遊</span>
         </div>
       </RouterLink>
-      <!-- <a class="navbar-brand" href="/" style="display: flex; flex-wrap: wrap;">
-      </a> -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -29,7 +27,13 @@
         </ul>
         <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="想去哪裡玩？" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
+          <button class="btn btn-outline-success" type="submit">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M10.6798 4C7.01399 4 4.0423 6.91015 4.0423 10.5C4.0423 14.0899 7.01399 17 10.6798 17C14.3455 17 17.3172 14.0899 17.3172 10.5C17.3172 6.91015 14.3455 4 10.6798 4ZM2 10.5C2 5.80558 5.88606 2 10.6798 2C15.4735 2 19.3595 5.80558 19.3595 10.5C19.3595 12.5926 18.5873 14.5087 17.3067 15.9897L21.7009 20.2929C22.0997 20.6834 22.0997 21.3166 21.7009 21.7071C21.3021 22.0976 20.6556 22.0976 20.2568 21.7071L15.8127 17.3551C14.3751 18.3892 12.6003 19 10.6798 19C5.88606 19 2 15.1944 2 10.5Z"
+                fill="#392A93" />
+            </svg>
+          </button>
         </form>
       </div>
     </div>
