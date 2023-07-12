@@ -452,12 +452,15 @@ main {
 
 // 人氣美食
 
-
+// 訂閱
 .subscribe {
   background-color: #FA7E5F;
   width: 100%;
   height: 220px;
   border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .landing-swiper {
@@ -472,12 +475,12 @@ main {
 // }
 
 // 平板 501~1249px
-@media only screen and (max-width: 1249px) {
-  .my-Swiper {
-    columns: 1;
-  }
-}
+// @media only screen and (max-width: 1249px) {
+//   .my-Swiper {
+//     columns: 1;
+//   }
+// }
 
 // 手機 ~500px
-@media only screen and (max-width: 500px) {}
+// @media only screen and (max-width: 500px) {}
 </style>
