@@ -38,7 +38,7 @@
         <span style="margin-right: 20px;">Design by Zoe Kang</span>
         <span style="margin-right: 20px;">source from 2021 F2E</span>
         <span>made by CatBoxy
-          <a href="https://github.com/NekoBoxy" target="_blank">
+          <a href="https://github.com/NekoBoxy" target="_blank" style="color: white;">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github ml-2"
               viewBox="0 0 16 16">
               <path
