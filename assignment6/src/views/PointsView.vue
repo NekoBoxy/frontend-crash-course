@@ -32,7 +32,7 @@
         </div>
       </div>
     </div>
-    <div class="contsiner-fluid">
+    <div class="container-fluid">
       <div class="row" style="margin-right: 0;">
         <!-- 地圖區 -->
         <div ref="areaMap" class="col-6 area-map"></div>
@@ -205,12 +205,6 @@ async function getScenicSpot() {
     //     ],
     //   };
     // });
-
-    const a = {
-
-    };
-    const test = a?.b?.c?.d;
-
     // console.log("tdxSpot.value", tdxSpot.value);
   } catch (error) {
     alert(error);

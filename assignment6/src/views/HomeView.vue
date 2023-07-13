@@ -161,10 +161,10 @@ import axios from "axios";
 import { RouterLink, useRouter, useRoute } from 'vue-router';
 
 const router = useRouter();
-const route = useRoute();
+// const route = useRoute();
 // init Swiper:
 const mySwiper = ref(null);
-const mySwiper2 = ref(null);
+// const mySwiper2 = ref(null);
 
 const frontCarousel = ref([
   {
@@ -381,18 +381,18 @@ onMounted(async () => {
     },
   });
 
-  new Swiper(mySwiper2.value, {
-    slidesPerView: "auto",
-    spaceBetween: 30,
-    // autoplay: {
-    //   delay: 5000,
-    // },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-  });
-  await getHotSpots();
+  // new Swiper(mySwiper2.value, {
+  //   slidesPerView: "auto",
+  //   spaceBetween: 30,
+  //   // autoplay: {
+  //   //   delay: 5000,
+  //   // },
+  //   navigation: {
+  //     nextEl: '.swiper-button-next',
+  //     prevEl: '.swiper-button-prev',
+  //   },
+  // });
+  // await getHotSpots();
 });
 
 
