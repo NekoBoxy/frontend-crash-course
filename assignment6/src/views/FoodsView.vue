@@ -136,6 +136,7 @@ async function getRestaurants() {
     console.log(response.data);
     tdxSpot.value = response.data.map((item) => {
       return {
+        RestaurantID: item.RestaurantID,
         City: item.City,
         RestaurantName: item.RestaurantName,
         Class: item?.Class,
@@ -190,8 +191,9 @@ async function getMap() {
 
 // 點擊切換至細節頁
 async function handleSiteClick(site) {
-  // console.log("site.ScenicSpotID", site.ScenicSpotID);
-  await router.push({ path: `/point/${city.value}/${site.ScenicSpotID}` });
+  console.log("site.RestaurantID", site.RestaurantID);
+  console.log(city.value);
+  await router.push({ path: `/food/${city.value}/${site.RestaurantID}` });
   await router.go();
 }
 
