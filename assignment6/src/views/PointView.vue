@@ -144,10 +144,10 @@ import { Loader } from '@googlemaps/js-api-loader';
 
 const router = useRouter();
 const route = useRoute();
-const pointMap = ref();
+const pointMap = ref(null);
 const city = ref("");
 const id = ref("");
-const spots = ref();
+const spots = ref([]);
 const targetSpot = ref({
   City: "",
   ScenicSpotID: "",
@@ -214,8 +214,8 @@ async function getSite() {
         "$format": "JSON"
       }
     });
+    console.log(response.data[0]);
     targetSpot.value = response.data[0];
-    console.log(targetSpot.value);
   } catch (error) {
     alert(error);
   }
@@ -233,8 +233,8 @@ async function getOtherSpots() {
         "$Top": 4
       }
     });
+    console.log("response.data", response.data);
     spots.value = response.data;
-    console.log("spots.value", spots.value);
   } catch (error) {
     alert(error);
   }
