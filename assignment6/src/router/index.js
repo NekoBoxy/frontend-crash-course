@@ -8,8 +8,8 @@ const router = createRouter({
       name: 'home',
       component: () => import('../views/HomeView.vue')
     },
-    // 路由可接受 /points 或 /points/:city
     {
+      // 路由可接受 /points 或 /points/:city
       path: '/points/:city?',
       name: 'points',
       component: () => import('../views/PointsView.vue')

@@ -22,7 +22,7 @@
             <RouterLink to="/points/Taipei" class="nav-link" aria-current="page">旅遊景點</RouterLink>
           </li>
           <li class="nav-item">
-            <RouterLink to="/foods" class="nav-link" aria-current="page">美食餐廳</RouterLink>
+            <RouterLink to="/foods/NewTaipei" class="nav-link" aria-current="page">美食餐廳</RouterLink>
           </li>
         </ul>
         <form class="d-flex">
