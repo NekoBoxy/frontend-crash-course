@@ -106,7 +106,7 @@
         </div>
         <div class="col-12 mt-4 map" ref="pointMap"></div>
         <div class="col-12 mt-4">
-          <h5 class="text-center" style="margin: 20px;">{{ `${targetSpot.City}其他景點` }}</h5>
+          <h5 class="text-center" style="margin: 20px;">{{ `看看${targetSpot.City}的其他景點` }}</h5>
           <!-- 附近景點卡片 -->
           <div class="row row-cols-md-4 row-cols-1 g-4">
             <div class="col" v-for="(spot, index) in spots" :key="456 + index">
