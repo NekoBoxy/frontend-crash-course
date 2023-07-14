@@ -11,7 +11,7 @@
                 <RouterLink to="/">首頁</RouterLink>
               </li>
               <li class="breadcrumb-item">
-                <RouterLink to="/food">美食餐廳</RouterLink>
+                <RouterLink to="/foods">美食餐廳</RouterLink>
               </li>
               <li class="breadcrumb-item active" aria-current="page">{{ foodData.City }}</li>
             </ol>
@@ -20,29 +20,35 @@
       </div>
       <!-- 餐廳細節 -->
       <div class="row">
-        <div class="col-6">
-          <div v-if="foodData?.Picture?.PictureUrl1">
+        <div class="col-6 food-img">
+          <!-- foodData.Picture 為物件 -->
+          <!-- <div v-if="foodData.Picture?.PictureUrl1">
             <img :src="foodData.Picture.PictureUrl1" alt="" srcset=""
               style="width: 100%; object-fit: cover; border-radius: 20px;">
+          </div> -->
+          <!-- foodData.Picture 為陣列 -->
+          <div v-if="foodData.Picture.length > 0">
+            <img :src="foodData.Picture[0]" alt="餐廳圖片" srcset="">
           </div>
           <div v-else>
-            <img src="../assets/images/noimage.png" alt="" srcset=""
-              style="width: 100%; object-fit: cover; border-radius: 20px;">
+            <img src="../assets/images/noimage.png" alt="沒有提供餐廳圖片" srcset="">
           </div>
         </div>
         <div class="col-6">
+          <!-- 標籤 -->
           <div>
-            <!-- 所屬城市標籤 -->
+            <!-- 所屬城市 -->
             <span class="badge rounded-pill bg-success text-white" style="margin-right: 5px;">
               {{ foodData.City }}</span>
-            <!-- 餐廳屬性標籤 -->
+            <!-- 餐廳屬性 -->
             <span class="badge rounded-pill bg-success text-white" v-show="foodData.Class">
               {{ foodData.Class }}
             </span>
           </div>
-          <!-- 餐廳營業時間 -->
+          <!-- 餐廳細節 -->
           <div class="point-detail">
-            <h5 class="point-item">{{ foodData.RestaurantName }}</h5>
+            <h3 class="point-item">{{ foodData.RestaurantName }}</h3>
+            <!-- 營業時間 -->
             <div class="point-item" v-show="foodData.OpenTime">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -66,59 +72,43 @@
                   fill="#392A93" />
               </svg>{{ foodData.Address }}
             </div>
-            <!-- 購票資訊 -->
-            <!-- <div class="point-item" v-show="foodData.TicketInfo">
-              購票資訊：
-              <span>{{ foodData.TicketInfo }}</span>
-            </div> -->
-            <!-- 關鍵字 -->
-            <!-- <div class="point-item" v-show="foodData.Keyword">
-              關鍵字：
-              <span>{{ foodData.Keyword }}</span>
-            </div> -->
             <!-- 官網 -->
             <div class="point-item" v-show="foodData.WebsiteUrl">
               官網：
               <a :href="foodData.WebsiteUrl" target="_blank">{{ foodData.WebsiteUrl }}</a>
             </div>
-            <!-- 旅遊資訊 -->
-            <!-- <div class="point-item" v-show="foodData.TravelInfo">
-              旅遊資訊：
-              <span>{{ foodData.TravelInfo }}</span>
-            </div> -->
-            <!-- 備註 -->
-            <!-- <div class="point-item" v-show="foodData.Remarks">
-              備註：
-              <span>{{ foodData.Remarks }}</span>
-            </div> -->
-            <!-- mapurl -->
-            <!-- <div class="point-item" v-show="foodData.MapUrl">
-              mapurl：
-              <span>{{ foodData.MapUrl }}</span>
-            </div> -->
+            <!-- 停車資訊 -->
+            <div class="point-item" v-show="foodData?.ParkingInfo">
+              {{ foodData.ParkingInfo }}
+            </div>
+            <!-- MapUrl -->
+            <div class="point-item" v-show="foodData?.MapUrl">
+              <a :href="foodData.MapUrl" target="_blank">
+                {{ foodData.MapUrl }}
+              </a>
+            </div>
           </div>
         </div>
         <div class="col-12 mt-4">
           {{ foodData.Description }}
         </div>
+        <!-- 地圖區 -->
         <div class="col-12 mt-4 map" ref="pointMap"></div>
         <!-- 附近餐廳卡片 -->
-        <div class="col-12 mt-4">
-          <h5 class="text-center" style="margin: 20px;">{{ `看看${foodData.City}的其他餐廳` }}</h5>
+        <div class="col-12 mt-4 nearby-food">
+          <h5>{{ `看看${foodData.City}的其他餐廳` }}</h5>
           <div class="row row-cols-md-4 row-cols-1 g-4">
-            <div class="col" v-for="(spot, index) in spots" :key="456 + index">
-              <RouterLink :to="`/point/${city}/${spot.RestaurantID}`" @click="handleSiteClick(spot)">
+            <div class="col" v-for="(spot, index) in spots" :key="index">
+              <RouterLink :to="`/food/${city}/${spot.RestaurantID}`" @click="handleSiteClick(spot)">
                 <div class="card">
-                  <div v-if="spot.Picture.PictureUrl1">
-                    <img :src="spot.Picture.PictureUrl1" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title" style="color: #392A93;">{{ spot.ScenicSpotName }}</h5>
-                    </div>
+                  <div v-if="spot.Picture?.PictureUrl1">
+                    <img :src="spot.Picture.PictureUrl1" class="card-img-top" alt="餐廳圖片">
                   </div>
                   <div v-else>
-                    <div class="card-body">
-                      <h5 class="card-title" style="color: #392A93;">{{ spot.ScenicSpotName }}</h5>
-                    </div>
+                    <img src="../assets/images/noimage.png" class="card-img-top" alt="資料庫無餐廳圖片">
+                  </div>
+                  <div class="card-body">
+                    <span class="card-title" style="">{{ spot.RestaurantName }}</span>
                   </div>
                 </div>
               </RouterLink>
@@ -145,7 +135,9 @@ const pointMap = ref(null);
 const city = ref("");
 const id = ref("");
 const spots = ref([]);
-const foodData = ref({});
+const foodData = ref({
+  Picture: [],
+});
 const cityList = ref([
   { title: "基隆市", name: "Keelung" },
   { title: "臺北市", name: "Taipei" },
@@ -185,9 +177,12 @@ async function getTargetFood() {
         "$format": "JSON"
       }
     });
-    // console.log("response.data", response.data);
+    console.log("response.data", response.data);
     const foods = await transformResult(response.data);
+    // console.log("foods", foods);
     foodData.value = foods[0];
+    // console.log("foodData.value", foodData.value);
+    console.log("foodData.value.Picture", foodData.value.Picture);
   } catch (error) {
     alert(error);
   }
@@ -241,15 +236,6 @@ async function getMap() {
     // title: foodData.value.ScenicSpotName,
   });
   bounds.extend(marker.position); // 把 marker 的座標放進 bounds
-
-}
-
-// 點擊切換至細節頁
-async function handleSiteClick(spot) {
-  console.log("spot.RestaurantID", spot.RestaurantID);
-  console.log("city.value", city.value);
-  await router.push({ path: `/point/${city.value}/${spot.RestaurantID}` });
-  await router.go();
 }
 
 // 將來自 api 的資料整理後回傳
@@ -267,10 +253,17 @@ async function transformResult(list) {
       Class: item?.Class || "",
       MapUrl: item?.MapUrl || "",
       ParkingInfo: item?.ParkingInfo || "",
+      // Picture 為物件
+      // Picture: {
+      //   PictureUrl1: item.Picture?.PictureUrl1 || '',
+      //   PictureUrl2: item.Picture?.PictureUrl2 || '',
+      //   PictureUrl3: item.Picture?.PictureUrl3 || '',
+      // },
+      // picture 為陣列
       Picture: [
-        ...(item?.Picture?.PictureUrl1 || ""),
-        ...(item?.Picture?.PictureUrl2 || ""),
-        ...(item?.Picture?.PictureUrl3 || ""),
+        ...(item.Picture?.PictureUrl1 ? [item.Picture?.PictureUrl1] : []),
+        ...(item.Picture?.PictureUrl2 ? [item.Picture?.PictureUrl2] : []),
+        ...(item.Picture?.PictureUrl3 ? [item.Picture?.PictureUrl3] : []),
       ],
       Position: {
         PositionLon: item?.Position?.PositionLon,
@@ -278,6 +271,14 @@ async function transformResult(list) {
       },
     }
   });
+}
+
+// 點擊切換至指定餐廳細節頁
+async function handleSiteClick(spot) {
+  console.log("spot.RestaurantID", spot.RestaurantID);
+  console.log("city.value", city.value);
+  await router.push({ path: `/food/${city.value}/${spot.RestaurantID}` });
+  await router.go();
 }
 
 // 為了取得 city 的英文值，在 onmounted 時要得到變數
@@ -305,6 +306,15 @@ main {
   margin-bottom: -300px;
 }
 
+.food-img {
+  img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 20px;
+  }
+}
+
 .point-detail {
   .point-item {
     margin: 20px 20px 20px 0px;
@@ -312,6 +322,10 @@ main {
     svg {
       margin-right: 10px;
     }
+  }
+
+  h3 {
+    font-weight: bold;
   }
 }
 
@@ -321,5 +335,25 @@ main {
   border-radius: 20px;
   padding-left: 0rem;
   padding-right: 0rem;
+}
+
+.nearby-food {
+  h5 {
+    margin: 20px;
+    text-align: center;
+  }
+
+  img {
+    width: 100%;
+    height: 213px;
+  }
+
+  span {
+    color: #392A93;
+    display: inline-block;
+    width: 100%;
+    font-weight: bold;
+    text-align: center;
+  }
 }
 </style>
