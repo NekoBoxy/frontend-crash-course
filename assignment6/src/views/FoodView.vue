@@ -94,9 +94,9 @@
         </div>
         <!-- 地圖區 -->
         <div class="col-12 mt-4 map" ref="pointMap"></div>
-        <!-- 附近餐廳卡片 -->
-        <div class="col-12 mt-4 nearby-food">
+        <div class="col-12 mt-4 mb-1 nearby-food">
           <h5>{{ `看看${foodData.City}的其他餐廳` }}</h5>
+          <!-- 附近餐廳卡片 -->
           <div class="row row-cols-md-4 row-cols-1 g-4">
             <div class="col" v-for="(spot, index) in spots" :key="index">
               <RouterLink :to="`/food/${city}/${spot.RestaurantID}`" @click="handleSiteClick(spot)">
@@ -108,7 +108,13 @@
                     <img src="../assets/images/noimage.png" class="card-img-top" alt="資料庫無餐廳圖片">
                   </div>
                   <div class="card-body">
-                    <span class="card-title" style="">{{ spot.RestaurantName }}</span>
+                    <!-- 9 個字 -->
+                    <div v-if="spot.RestaurantName.length < 9">
+                      <span class="card-title" style="padding: 25px;">{{ spot.RestaurantName }}</span>
+                    </div>
+                    <div v-else>
+                      <span class="card-title" style="padding: 10px;">{{ spot.RestaurantName }}</span>
+                    </div>
                   </div>
                 </div>
               </RouterLink>
@@ -348,12 +354,20 @@ main {
     height: 213px;
   }
 
-  span {
-    color: #392A93;
-    display: inline-block;
-    width: 100%;
-    font-weight: bold;
-    text-align: center;
+  .card-body {
+    display: flex;
+    justify-content: center;
+    // align-items: center;
+
+    .card-title {
+      color: #392A93;
+      display: block;
+      width: 100%;
+      font-weight: bold;
+      text-align: center;
+      height: 80px;
+      margin-bottom: 0px;
+    }
   }
 }
 </style>

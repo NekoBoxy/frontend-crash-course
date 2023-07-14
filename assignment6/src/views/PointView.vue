@@ -105,22 +105,25 @@
           {{ targetSpot.DescriptionDetail }}
         </div>
         <div class="col-12 mt-4 map" ref="pointMap"></div>
-        <div class="col-12 mt-4">
-          <h5 class="text-center" style="margin: 20px;">{{ `看看${targetSpot.City}的其他景點` }}</h5>
+        <div class="col-12 mt-4 nearby-spot">
+          <h5>{{ `看看${targetSpot.City}的其他景點` }}</h5>
           <!-- 附近景點卡片 -->
           <div class="row row-cols-md-4 row-cols-1 g-4">
-            <div class="col" v-for="(spot, index) in spots" :key="456 + index">
+            <div class="col" v-for="(spot, index) in spots" :key="index">
               <RouterLink :to="`/point/${city}/${spot.ScenicSpotID}`" @click="handleSiteClick(spot)">
                 <div class="card">
-                  <div v-if="spot.Picture.PictureUrl1">
-                    <img :src="spot.Picture.PictureUrl1" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title" style="color: #392A93;">{{ spot.ScenicSpotName }}</h5>
-                    </div>
+                  <div v-if="spot.Picture?.PictureUrl1">
+                    <img :src="spot.Picture.PictureUrl1" class="card-img-top" alt="景點圖片">
                   </div>
                   <div v-else>
-                    <div class="card-body">
-                      <h5 class="card-title" style="color: #392A93;">{{ spot.ScenicSpotName }}</h5>
+                    <img src="../assets/images/noimage.png" class="card-img-top" alt="資料庫無景點圖片">
+                  </div>
+                  <div class="card-body">
+                    <div v-if="spot.ScenicSpotName.length < 9">
+                      <span class="card-title" style="padding: 20px;">{{ spot.ScenicSpotName }}</span>
+                    </div>
+                    <div v-else>
+                      <span class="card-title" style="padding: 10px;">{{ spot.ScenicSpotName }}</span>
                     </div>
                   </div>
                 </div>
@@ -233,7 +236,7 @@ async function getOtherSpots() {
         "$Top": 4
       }
     });
-    console.log("response.data", response.data);
+    console.log("getOtherSpots data", response.data);
     spots.value = response.data;
   } catch (error) {
     alert(error);
@@ -343,5 +346,37 @@ main {
   border-radius: 20px;
   padding-left: 0rem;
   padding-right: 0rem;
+}
+
+.nearby-spot {
+  h5 {
+    margin: 20px;
+    text-align: center;
+  }
+
+  img {
+    width: 100%;
+    height: 213px;
+    object-fit: cover;
+  }
+
+  .card-body {
+    display: flex;
+    justify-content: center;
+    // align-items: center;
+
+    .card-title {
+      color: #392A93;
+      display: inline-block;
+      width: 100%;
+      font-weight: bold;
+      text-align: center;
+      line-height: 30px;
+      // align-items: center;
+      height: 80px;
+      margin-bottom: 0px;
+    }
+  }
+
 }
 </style>
