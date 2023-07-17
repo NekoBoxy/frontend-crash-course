@@ -119,12 +119,7 @@
                     <img src="../assets/images/noimage.png" class="card-img-top" alt="資料庫無景點圖片">
                   </div>
                   <div class="card-body">
-                    <div v-if="spot.ScenicSpotName.length < 9">
-                      <span class="card-title" style="padding: 20px;">{{ spot.ScenicSpotName }}</span>
-                    </div>
-                    <div v-else>
-                      <span class="card-title" style="padding: 10px;">{{ spot.ScenicSpotName }}</span>
-                    </div>
+                    <span class="card-title">{{ spot.ScenicSpotName }}</span>
                   </div>
                 </div>
               </RouterLink>
@@ -324,7 +319,7 @@ onMounted(async () => {
 </script>
 
 <style scoped lang="scss">
-// main
+/* main */
 main {
   height: 100%;
   margin-bottom: -300px;
@@ -354,6 +349,11 @@ main {
     text-align: center;
   }
 
+  .card {
+    /* 幫助整張 card 同高 */
+    height: 100%;
+  }
+
   img {
     width: 100%;
     height: 213px;
@@ -363,20 +363,17 @@ main {
   .card-body {
     display: flex;
     justify-content: center;
-    // align-items: center;
+    align-items: center;
 
     .card-title {
       color: #392A93;
-      display: inline-block;
       width: 100%;
       font-weight: bold;
+      /* 文字左右對齊 */
       text-align: center;
       line-height: 30px;
-      // align-items: center;
-      height: 80px;
       margin-bottom: 0px;
     }
   }
-
 }
 </style>

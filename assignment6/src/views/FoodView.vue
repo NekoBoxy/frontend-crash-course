@@ -108,13 +108,7 @@
                     <img src="../assets/images/noimage.png" class="card-img-top" alt="資料庫無餐廳圖片">
                   </div>
                   <div class="card-body">
-                    <!-- 9 個字 -->
-                    <div v-if="spot.RestaurantName.length < 9">
-                      <span class="card-title" style="padding: 25px;">{{ spot.RestaurantName }}</span>
-                    </div>
-                    <div v-else>
-                      <span class="card-title" style="padding: 10px;">{{ spot.RestaurantName }}</span>
-                    </div>
+                    <span class="card-title">{{ spot.RestaurantName }}</span>
                   </div>
                 </div>
               </RouterLink>
@@ -306,7 +300,7 @@ onMounted(async () => {
 </script>
 
 <style scoped lang="scss">
-// main
+/* main */
 main {
   height: 100%;
   margin-bottom: -300px;
@@ -343,6 +337,10 @@ main {
   padding-right: 0rem;
 }
 
+.card {
+  height: 100%;
+}
+
 .nearby-food {
   h5 {
     margin: 20px;
@@ -357,15 +355,13 @@ main {
   .card-body {
     display: flex;
     justify-content: center;
-    // align-items: center;
+    align-items: center;
 
     .card-title {
       color: #392A93;
-      display: block;
       width: 100%;
       font-weight: bold;
       text-align: center;
-      height: 80px;
       margin-bottom: 0px;
     }
   }
