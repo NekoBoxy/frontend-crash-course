@@ -136,10 +136,10 @@ async function getRestaurants() {
     console.log(response.data);
     tdxSpot.value = response.data.map((item) => {
       return {
-        RestaurantID: item.RestaurantID,
         City: item.City,
+        RestaurantID: item.RestaurantID,
         RestaurantName: item.RestaurantName,
-        Class: item?.Class,
+        Class: item?.Class || "",
         Picture: {
           PictureUrl1: item?.Picture?.PictureUrl1 || "",
         },
