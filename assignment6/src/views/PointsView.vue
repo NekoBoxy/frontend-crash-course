@@ -39,76 +39,25 @@
         <!-- 景點卡片區 -->
         <div class="col-6 area-site">
           <div class="row row-cols-2 g-2">
-            <div class="col" v-for="(site, index) in  tdxSpot" :key="1453 + index">
-              <div v-if="site.Picture.PictureUrl1">
-                <div class="card" @click="handleSiteClick(site)" style="cursor: pointer;">
-                  <img :src="site.Picture.PictureUrl1" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <div style="color: #fff; font-weight: bold; background-color: #392A93;
-                      width: 30px; height: 30px; border-radius: 999px; text-align: center; margin-bottom: 5px;">
-                      {{ (10 + index).toString(36).toUpperCase() }}
-                    </div>
-                    <h5 class="card-title" style="font-size: large;">{{ site.ScenicSpotName }}</h5>
-                    <p class="card-text">
-                      <!-- <span class="badge rounded-pill bg-success text-white" style="margin-right: 5px;">
-                        {{ site.City }}
-                      </span> -->
-                      <span class="badge rounded-pill bg-success text-white" style="margin-right: 5px;">
-                        {{ site.Class1 }}
-                      </span>
-                      <span class="badge rounded-pill bg-success text-white" style="margin-right: 5px;">
-                        {{ site.Level }}
-                      </span>
-                    </p>
-                  </div>
+            <div class="col" v-for="(site, index) in tdxSpot" :key="index">
+              <div class="card" @click="handleSiteClick(site)">
+                <div v-if="site?.Picture?.PictureUrl1">
+                  <img :src="site.Picture.PictureUrl1" class="card-img-top" alt="餐廳圖片">
                 </div>
-              </div>
-              <div v-else>
-                <div class="card" @click="handleSiteClick(site)" style="cursor: pointer;">
-                  <img src="../assets/images/noimage.png" class="card-img-top" alt="圖片不存在">
-                  <div class="card-body">
-                    <div style="color: #fff;  background-color: #392A93; font-weight: bold;
-                      width: 30px; height: 30px; border-radius: 999px; text-align: center; margin-bottom: 5px;">
-                      {{ (10 + index).toString(36).toUpperCase() }}
-                    </div>
-                    <h5 class="card-title" style="font-size: large;">{{ site.ScenicSpotName }}</h5>
-                    <p class="card-text">
-                      <span class="badge rounded-pill bg-success text-white" style="margin-right: 5px;"
-                        v-show="site.Class1">
-                        {{ site.Class1 }}
-                      </span>
-                      <span class="badge rounded-pill bg-success text-white" style="margin-right: 5px;"
-                        v-show="site.Class2">
-                        {{ site.Class2 }}
-                      </span>
-                      <span class="badge rounded-pill bg-success text-white" style="margin-right: 5px;"
-                        v-show="site.Class3">
-                        {{ site.Class3 }}
-                      </span>
-                      <span class="badge rounded-pill bg-success text-white" style="margin-right: 5px;"
-                        v-show="site.Level">
-                        {{ site.Level }}
-                      </span>
-                    </p>
-                  </div>
+                <div v-else>
+                  <img src="../assets/images/noimage.png" class="card-img-top" alt="沒有餐廳圖片">
                 </div>
-                <!-- <div class="card" @click="handleSiteClick(site)" style="cursor: pointer;">
-                  <div class="card-body">
-                    <h5 class="card-title" style="font-size: medium;">{{ site.ScenicSpotName }}</h5>
-                    <p class="card-text">
-                      <span class="badge rounded-pill bg-success text-white"
-                        style="background-color: #9086cc; margin-right: 5px;">
-                        {{ site.City }}
-                      </span>
-                      <span class="badge rounded-pill bg-success text-white" style="margin-right: 5px;">
-                        {{ site.Class1 }}
-                      </span>
-                      <span class="badge rounded-pill bg-success text-white" style="margin-right: 5px;">
-                        {{ site.Level }}
-                      </span>
-                    </p>
+                <div class="card-body">
+                  <div class="circle-label">
+                    {{ (10 + index).toString(36).toUpperCase() }}
                   </div>
-                </div> -->
+                  <h5 class="card-title">{{ site.ScenicSpotName }}</h5>
+                  <p class="card-text">
+                    <span class="badge rounded-pill bg-success text-white" v-for="(tag, index) in site.tags" :key="index">
+                      {{ tag }}
+                    </span>
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -187,25 +136,27 @@ async function getScenicSpot() {
         "$format": "JSON"
       }
     });
-    tdxSpot.value = response.data;
-    // console.log(response.data);
-    // tdxSpot.value = response.data.map( (item) => {
-    //   return {
-    //     city: item.City,
-    //     picture: {
-    //       ...(item?.Picture.PictureUrl1) || ""
-    //     },
-    //     tags:[
-    //       ...(item?.Class1 ? [ item.Class1 ] : []),
-    //       ...(item.Class2 ? [ item.Class2 ] : []),
-    //       ...(item.Class3 ? [ item.Class3 ] : []),
-    //       ...(item.Level ? [ item.Level ] : []),
+    console.log(response.data);
 
+    tdxSpot.value = response.data.map((item) => {
+      return {
+        ScenicSpotID: item.ScenicSpotID,
+        City: item.City,
+        ScenicSpotName: item.ScenicSpotName,
+        tags: [
+          ...(item?.Class1 ? [item?.Class1] : []),
+          ...(item?.Class2 ? [item?.Class2] : []),
+          ...(item?.Class3 ? [item?.Class3] : []),
+          ...(item?.Level ? [item?.Level] : []),
+        ],
+        Picture: {
+          PictureUrl1: item?.Picture?.PictureUrl1 || "",
+        },
+        Position: item.Position,
+      }
+    });
 
-    //     ],
-    //   };
-    // });
-    // console.log("tdxSpot.value", tdxSpot.value);
+    console.log("tdxSpot.value", tdxSpot.value);
   } catch (error) {
     alert(error);
   }
@@ -291,9 +242,40 @@ async function handleSiteClick(site) {
 }
 
 .card {
+  cursor: pointer;
+
   &:hover {
     /* offset-x | offset-y | blur-radius | spread-radius | color */
     box-shadow: 5px 5px 5px 1px rgba(0, 0, 0, 0.2);
+  }
+
+  height: 100%;
+
+  img {
+    height: 200px;
+  }
+
+  .circle-label {
+    color: #fff;
+    font-weight: bold;
+    background-color: #392A93;
+    width: 30px;
+    height: 30px;
+    border-radius: 999px;
+    text-align: center;
+    margin-bottom: 5px;
+  }
+
+  h5 {
+    font-size: large;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  span {
+    background-color: #9086cc;
+    margin-right: 5px;
   }
 }
 </style>
