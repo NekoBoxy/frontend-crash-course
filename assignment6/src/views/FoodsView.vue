@@ -211,14 +211,13 @@ onMounted(async () => {
 </script>
 
 <style scoped lang="scss">
-// main
-// main {
-//   height: 100%;
-//   margin-bottom: -300px;
-// }
+/* main */
+/* main {
+  height: 99%;
+  margin-bottom: -300px;
+} */
 
 .area-map {
-  // width: 50%;
   height: 70vh;
 }
 
@@ -229,6 +228,11 @@ onMounted(async () => {
 
   .card {
     cursor: pointer;
+    height: 100%;
+
+    img {
+      height: 200px;
+    }
 
     &:hover {
       /* offset-x | offset-y | blur-radius | spread-radius | color */
@@ -256,7 +260,6 @@ onMounted(async () => {
 
   span {
     margin-right: 5px;
-    // color: white;
   }
 }
 </style>
