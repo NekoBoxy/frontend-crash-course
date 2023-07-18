@@ -105,31 +105,18 @@
       <h5 class="text-center mt-5 mb-3">人氣美食</h5>
       <div class="row">
         <div class="col-3 hot-spot" v-for="food in hotFoods" :key="food.name">
-          <RouterLink :to="`/food/${food.location}/${food.id}`" @click="handleSiteClick(food)">
+          <RouterLink :to="`/food/${food.location}/${food.id}`" @click="handleFoodClick(food)">
             <div class="card">
-              <div>{{ food.cityZhtw }}</div>
+              <!-- <div class="hot-spot-tag">{{ food.cityZhtw }}</div> -->
               <img :src="food.img" class="card-img-top" alt="景點圖片">
               <div class="card-body hot-spot-text">
                 <span class="card-title" :title="food.name">{{ food.restaurantName }}</span>
                 <p class="card-text">{{ `${food.cityZhtw} ${food.title}` }}</p>
-                <!-- <p class="card-text">{{ food.title }}</p> -->
               </div>
             </div>
           </RouterLink>
         </div>
       </div>
-      <!-- <div class="row row-cols-1 row-cols-md-3 g-4">
-        <div v-for="(catalogy, index) in foods" :key="index">
-          <div class="col">
-            <div class="card hot-food">
-              <img :src="catalogy.img" class="card-img" alt="美食類別圖片">
-              <div class="card-img-overlay">
-                <h5 class="card-title">{{ catalogy.title }}</h5>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> -->
       <!-- 訂閱 email -->
       <div class="subscribe mt-5">
         <h5 class="text-center">訂閱我們，獲得最在地的旅遊資訊！</h5>
@@ -317,16 +304,36 @@ const hotSpots = ref([
 // https://travel.nantou.gov.tw/manasystem/files/food/20140306140443_%E5%B1%B1%E8%B1%AC%E8%82%89%E7%82%92%E8%92%9C.jpg
 const hotFoods = ref([
   {
-    title: "中式美食",
-    img: new URL("../assets/images/fs.png", import.meta.url).href,
-  },
-  {
     id: "C3_376480000A_000315",
     title: "中式美食",
     cityEn: "NantouCounty",
     cityZhtw: "南投縣",
     restaurantName: "和雅谷餐廳",
     img: new URL("../assets/images/pork.jpg", import.meta.url).href,
+  },
+  {
+    id: "C3_376490000A_001108",
+    title: "特色小吃",
+    cityEn: "YunlinCounty",
+    cityZhtw: "雲林縣",
+    restaurantName: "華山小吃部",
+    img: new URL("../assets/images/chicken.jpg", import.meta.url).href,
+  },
+  {
+    id: "C3_376600000A_000005",
+    title: "異國料理",
+    cityEn: "Chiayi",
+    cityZhtw: "嘉義市",
+    restaurantName: "京宴港式創意料理",
+    img: new URL("../assets/images/sugar.jpg", import.meta.url).href,
+  },
+  {
+    id: "C3_376490000A_000796",
+    title: "甜點冰品",
+    cityEn: "YunlinCounty",
+    cityZhtw: "雲林縣",
+    restaurantName: "奶油巴士烘焙屋",
+    img: new URL("../assets/images/sweet.jpg", import.meta.url).href,
   },
   // {
   //   title: "夜市小吃",
@@ -371,6 +378,12 @@ const hotFoods = ref([
 // 跳轉熱門景點指定頁
 async function handleSiteClick(site) {
   await router.push({ path: `/point/${site.cityEn}/${site.id}` });
+  await router.go();
+}
+
+// 跳轉熱門餐廳指定頁
+async function handleFoodClick(food) {
+  await router.push({ path: `/food/${food.cityEn}/${food.id}` });
   await router.go();
 }
 
@@ -482,6 +495,21 @@ main {
     width: 100%;
     height: 213px;
   }
+
+  .card {
+    position: relative;
+  }
+}
+
+.hot-spot-tag {
+  width: 100%;
+  position: absolute;
+  /* bottom: 95px; */
+  text-align: center;
+  background-color: #392A9370;
+  color: #FEFEFE;
+  font-size: 20px;
+  font-weight: lighter;
 }
 
 .hot-spot-text {
