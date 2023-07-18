@@ -146,7 +146,6 @@ async function getRestaurants() {
         Position: item.Position,
       }
     });
-
   } catch (error) {
     alert(error);
   }
@@ -171,6 +170,7 @@ async function getMap() {
   const google = await loader.load();
   const map = new google.maps.Map(areaMap.value, mapOptions); // 地圖實體化
   const bounds = new google.maps.LatLngBounds(); // 自適應地圖可視範圍
+
   // 加入標記
   for (let i = 0; i < tdxSpot.value.length; i++) {
     const marker = new google.maps.Marker({
