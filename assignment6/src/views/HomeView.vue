@@ -108,7 +108,7 @@
           <RouterLink :to="`/food/${food.location}/${food.id}`" @click="handleFoodClick(food)">
             <div class="card">
               <!-- <div class="hot-spot-tag">{{ food.cityZhtw }}</div> -->
-              <img :src="food.img" class="card-img-top" alt="景點圖片">
+              <img :src="food.img" class="card-img-top" alt="美食圖片">
               <div class="card-body hot-spot-text">
                 <span class="card-title" :title="food.name">{{ food.restaurantName }}</span>
                 <p class="card-text">{{ `${food.cityZhtw} ${food.title}` }}</p>
@@ -501,16 +501,17 @@ main {
   }
 }
 
+
+/* bottom: 95px; 
 .hot-spot-tag {
   width: 100%;
   position: absolute;
-  /* bottom: 95px; */
   text-align: center;
   background-color: #392A9370;
   color: #FEFEFE;
   font-size: 20px;
   font-weight: lighter;
-}
+}*/
 
 .hot-spot-text {
   text-align: center;
