@@ -45,7 +45,7 @@
         <div class="tab-pane fade show active" id="lively-card" role="tabpanel" aria-labelledby="lively">
           <div class="row row-cols-1 row-cols-md-3 g-4">
             <div v-for="(site, index) in livelyCard" :key="site + index">
-              <div class="col" :style="{ 'background-image': 'url(' + site.img + ')' }">
+              <div class="col tab-col" :style="{ 'background-image': 'url(' + site.img + ')' }">
                 <h5 class="text-center"> {{ site.title }}</h5>
               </div>
             </div>
@@ -56,7 +56,7 @@
           <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
             <div class="row row-cols-1 row-cols-md-3 g-4">
               <div v-for="(site, index) in natureCard" :key="site + index">
-                <div class="col" :style="{ 'background-image': 'url(' + site.img + ')' }">
+                <div class="col tab-col" :style="{ 'background-image': 'url(' + site.img + ')' }">
                   <h5 class="text-center"> {{ site.title }}</h5>
                 </div>
               </div>
@@ -68,7 +68,7 @@
           <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
             <div class="row row-cols-1 row-cols-md-3 g-4">
               <div v-for="(site, index) in humanCard" :key="site + index">
-                <div class="col" :style="{ 'background-image': 'url(' + site.img + ')' }">
+                <div class="col tab-col" :style="{ 'background-image': 'url(' + site.img + ')' }">
                   <h5 class="text-center"> {{ site.title }}</h5>
                 </div>
               </div>
@@ -80,7 +80,7 @@
           <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
             <div class="row row-cols-1 row-cols-md-3 g-4">
               <div v-for="(site, index) in warmCard" :key="site + index">
-                <div class="col" :style="{ 'background-image': 'url(' + site.img + ')' }">
+                <div class="col tab-col" :style="{ 'background-image': 'url(' + site.img + ')' }">
                   <h5 class="text-center"> {{ site.title }}</h5>
                 </div>
               </div>
@@ -88,45 +88,27 @@
           </div>
         </div>
       </div>
-      <h5 class="text-center mt-5 mb-2">熱門景點</h5>
-      <!-- swiper Slides per view auto -->
-      <!-- <div ref="mySwiper2" class="swiper my-Swiper-2">
-        <div class="swiper-wrapper">
-          <div v-for="(site, index) in hotSpots" :key="40676 + index">
-            <div class="swiper-slide">
-              <div class="card">
-                <img :src="site.img" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">{{ site.name }}</h5>
-                  <p class="card-text">{{ site.location }}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-      </div> -->
+      <h5 class="text-center mt-5 mb-3" style="font-weight: bold;">熱門景點</h5>
       <div class="row">
         <div class="col-3 hot-spot" v-for="site in hotSpots" :key="site.name">
           <RouterLink :to="`/point/${site.location}/${site.id}`" @click="handleSiteClick(site)">
             <div class="card">
-              <img :src="site.img" class="card-img-top" style="width: 100%; height: 213px;" alt="景點圖片">
-              <div class="card-body">
-                <h5 class="card-title" :title="site.name">{{ site.name }}</h5>
+              <img :src="site.img" class="card-img-top" alt="景點圖片">
+              <div class="card-body hot-spot-text">
+                <span class="card-title" :title="site.name">{{ site.name }}</span>
                 <p class="card-text">{{ site.cityZhTW }}</p>
               </div>
             </div>
           </RouterLink>
         </div>
       </div>
-      <h5 class="text-center mt-5 mb-2">人氣美食</h5>
+      <h5 class="text-center mt-5 mb-3">人氣美食</h5>
       <div class="row row-cols-1 row-cols-md-3 g-4">
-        <div v-for="(catalogy, index) in foods" :key="8576 + index">
+        <div v-for="(catalogy, index) in foods" :key="index">
           <div class="col">
-            <div class="card">
-              <img :src="catalogy.img" class="card-img-top" alt="...">
-              <div class="card-body">
+            <div class="card hot-food">
+              <img :src="catalogy.img" class="card-img" alt="美食類別圖片">
+              <div class="card-img-overlay">
                 <h5 class="card-title">{{ catalogy.title }}</h5>
               </div>
             </div>
@@ -399,13 +381,17 @@ onMounted(async () => {
 </script>
 
 <style scoped lang="scss">
-// main
+/* main */
 main {
   height: 100%;
   margin-bottom: -300px;
 }
 
-// swiper 預設
+.landing-swiper {
+  width: 100%;
+}
+
+/* swiper 預設 */
 .swiper {
   width: 100%;
   height: 100%;
@@ -413,7 +399,7 @@ main {
   margin-right: auto;
 }
 
-// landing swiper
+/* landing swiper */
 .my-Swiper {
   .swiper-slide {
     display: flex;
@@ -448,43 +434,9 @@ main {
   }
 }
 
-.my-Swiper-2 {
-  .swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .swiper-slide img {
-    display: block;
-    width: 270px;
-    height: 210px;
-    object-fit: cover;
-  }
-
-  .swiper-slide {
-    width: 100%;
-  }
-
-  .swiper-slide:nth-child(2n) {
-    width: 30%;
-  }
-
-  .swiper-slide:nth-child(3n) {
-    width: 30%;
-  }
-
-  .swiper-slide:nth-child(4n) {
-    width: 30%;
-  }
-}
-
-// tabs
+/* tabs */
 .tab-pane {
-  .col {
+  .tab-col {
     width: 100%;
     height: 180px;
     border-radius: 25px;
@@ -499,18 +451,55 @@ main {
   }
 }
 
-// 人氣美食
-
-// 熱門景點
+/* 熱門景點 */
 .hot-spot {
-  h5 {
+  img {
+    width: 100%;
+    height: 213px;
+  }
+
+}
+
+.hot-spot-text {
+  text-align: center;
+
+  span,
+  p {
+    font-size: 18px;
+  }
+
+  span {
+    color: #392A93;
+    line-height: 26px;
+    font-weight: bold;
+    text-align: center;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
   }
+
+  p {
+    color: #392a93bd;
+    font-weight: lighter;
+  }
 }
 
-// 訂閱
+/* 人氣美食 */
+.hot-food {
+  div {
+    height: 100%;
+
+    h5 {
+      color: #fff;
+      font-weight: bold;
+      padding: 75px 20px;
+      text-align: center;
+      margin-bottom: 0;
+    }
+  }
+}
+
+/* 訂閱 */
 .subscribe {
   background-color: #FA7E5F;
   width: 100%;
@@ -553,24 +542,22 @@ main {
   }
 }
 
-.landing-swiper {
-  width: 100%;
-}
 
-// 桌機 1250px~
-// @media only screen and (min-width: 1250px) {
-//   .my-Swiper {
-//     width: 100%;
-//   }
-// }
+/* 桌機 1250px~
+ @media only screen and (min-width: 1250px) {
+   .my-Swiper {
+     width: 100%;
+   }
+ }
 
-// 平板 501~1249px
-// @media only screen and (max-width: 1249px) {
-//   .my-Swiper {
-//     columns: 1;
-//   }
-// }
+ 平板 501~1249px
+ @media only screen and (max-width: 1249px) {
+   .my-Swiper {
+     columns: 1;
+   }
+ }
 
-// 手機 ~500px
-// @media only screen and (max-width: 500px) {}
+ 手機 ~500px
+ @media only screen and (max-width: 500px) {}
+ */
 </style>
