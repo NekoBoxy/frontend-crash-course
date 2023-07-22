@@ -11,8 +11,9 @@
                 <RouterLink :to="`/point/${site.cityEn}/${site.id}`" @click="handleSiteClick(site)">
                   <div class="swiper-background" :style="{ 'background-image': 'url(' + site.img + ')' }">
                     <div class="swiper-text">
+                      <span>{{ site.cityZhTW }}</span>
                       <span>{{ site.name }}</span>
-                      <button type="button">{{ site.cityZhTW }}</button>
+                      <button type="button">GO</button>
                     </div>
                   </div>
                 </RouterLink>
@@ -372,34 +373,59 @@ main {
     background-position: center center;
     background-size: cover;
   }
+}
 
-  .swiper-text {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #02020225;
-    position: absolute;
-    right: 35%;
-    bottom: 15%;
+.swiper-text {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #02020225;
+  backdrop-filter: blur(1px);
+  position: absolute;
+  right: 0%;
+  bottom: 15%;
 
-    span {
-      display: inline;
-      // line-height: 40px;
-      font-size: 36px;
-      font-weight: 700;
-      color: #fff;
-    }
+  span,
+  button {
+    color: #fff;
+    font-size: 36px;
+    font-weight: 700;
 
-    button {
-      border-radius: 15px;
-      margin-left: 60px;
-      padding: 10px;
-      border: none;
+  }
+
+  span {
+    display: inline;
+    line-height: 40px;
+    font-size: 36px;
+    margin-right: 20px;
+  }
+
+  button {
+    border-radius: 15px;
+    padding: 10px;
+    border: none;
+    background-color: #4633B4;
+
+    &:hover {
+      background-color: #fff;
+      color: #4633B4;
     }
   }
 }
 
 /* tabs */
+.nav-tabs {
+  button {
+    color: #392A93;
+    font-weight: 700;
+
+    &:active {
+      border-color: none;
+    }
+  }
+}
+
 .tab-pane {
   h5 {
     font-size: 26px;
@@ -421,18 +447,6 @@ main {
     }
   }
 }
-
-
-/* bottom: 95px; 
-.hot-spot-tag {
-  width: 100%;
-  position: absolute;
-  text-align: center;
-  background-color: #392A9370;
-  color: #FEFEFE;
-  font-size: 20px;
-  font-weight: lighter;
-} */
 
 .hot-spot-text {
   text-align: center;
