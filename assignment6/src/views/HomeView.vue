@@ -7,13 +7,15 @@
         <div class="landing-swiper">
           <div ref="mySwiper" class="swiper my-Swiper" style="padding-bottom: 50px;">
             <div class="swiper-wrapper">
-              <div class="swiper-slide" v-for="(city, index) in frontCarousel" v-bind:key="index">
-                <div class="swiper-background" :style="{ 'background-image': 'url(' + city.img + ')' }">
-                  <div class="swiper-text">
-                    <h5>{{ city.title }}</h5>
-                    <button type="button">新北</button>
+              <div class="swiper-slide" v-for="(site, index) in landingData" v-bind:key="index">
+                <RouterLink :to="`/point/${site.cityEn}/${site.id}`" @click="handleSiteClick(site)">
+                  <div class="swiper-background" :style="{ 'background-image': 'url(' + site.img + ')' }">
+                    <div class="swiper-text">
+                      <span>{{ site.name }}</span>
+                      <button type="button">{{ site.cityZhTW }}</button>
+                    </div>
                   </div>
-                </div>
+                </RouterLink>
               </div>
             </div>
             <div class="swiper-pagination"></div>
@@ -23,66 +25,44 @@
       <!-- tabs -->
       <ul class="nav nav-tabs d-flex justify-content-center" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
-          <button class="nav-link active" id="lively-tab" data-bs-toggle="tab" data-bs-target="#lively-card" type="button"
-            role="tab" aria-controls="lively" aria-selected="true">熱鬧繁華</button>
+          <button class="nav-link active" id="recreation-tab" data-bs-toggle="tab" data-bs-target="#recreation-card"
+            type="button" role="tab" aria-controls="recreation" aria-selected="true">出門走走吧</button>
         </li>
         <li class="nav-item" role="presentation">
           <button class="nav-link" id="nature-tab" data-bs-toggle="tab" data-bs-target="#nature-card" type="button"
-            role="tab" aria-controls="nature" aria-selected="false">與自然共舞</button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link" id="human-tab" data-bs-toggle="tab" data-bs-target="#human-card" type="button"
-            role="tab" aria-controls="human" aria-selected="false">純樸人情味</button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link" id="warm-tab" data-bs-toggle="tab" data-bs-target="#warm-card" type="button" role="tab"
-            aria-controls="warm" aria-selected="false">南島奔放</button>
+            role="tab" aria-controls="nature" aria-selected="false">享受美食吧</button>
         </li>
       </ul>
       <!-- (網格)卡片內容 -->
       <div class="tab-content" id="myTabContent">
-        <!-- 熱鬧 -->
-        <div class="tab-pane fade show active" id="lively-card" role="tabpanel" aria-labelledby="lively">
+        <!-- 出門走走吧 -->
+        <div class="tab-pane fade show active" id="recreation-card" role="tabpanel" aria-labelledby="recreation">
           <div class="row row-cols-1 row-cols-md-3 g-4">
-            <div v-for="(site, index) in livelyCard" :key="site + index">
-              <div class="col tab-col" :style="{ 'background-image': 'url(' + site.img + ')' }">
-                <h5 class="text-center"> {{ site.title }}</h5>
-              </div>
+            <div class="col-3 viewCards" v-for="site in viewPointCards" :key="site.cityEn">
+              <RouterLink :to="`/points/${site.cityEn}`" @click="handleCityClick(site)">
+                <div class="card">
+                  <img :src="site.img" class="card-img" alt="縣市圖片">
+                  <div class="card-img-overlay">
+                    <h5 class="card-title" :title="site.cityZhTW">{{ site.cityZhTW }}</h5>
+                  </div>
+                </div>
+              </RouterLink>
             </div>
           </div>
         </div>
-        <!-- 與自然共舞 -->
+        <!-- 享用美食吧 -->
         <div class="tab-pane fade" id="nature-card" role="tabpanel" aria-labelledby="nature">
           <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
             <div class="row row-cols-1 row-cols-md-3 g-4">
-              <div v-for="(site, index) in natureCard" :key="site + index">
-                <div class="col tab-col" :style="{ 'background-image': 'url(' + site.img + ')' }">
-                  <h5 class="text-center"> {{ site.title }}</h5>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- 純樸人情味 -->
-        <div class="tab-pane fade" id="human-card" role="tabpanel" aria-labelledby="human">
-          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-            <div class="row row-cols-1 row-cols-md-3 g-4">
-              <div v-for="(site, index) in humanCard" :key="site + index">
-                <div class="col tab-col" :style="{ 'background-image': 'url(' + site.img + ')' }">
-                  <h5 class="text-center"> {{ site.title }}</h5>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- 南島奔放 -->
-        <div class="tab-pane fade" id="warm-card" role="tabpanel" aria-labelledby="warm">
-          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-            <div class="row row-cols-1 row-cols-md-3 g-4">
-              <div v-for="(site, index) in warmCard" :key="site + index">
-                <div class="col tab-col" :style="{ 'background-image': 'url(' + site.img + ')' }">
-                  <h5 class="text-center"> {{ site.title }}</h5>
-                </div>
+              <div class="col-3 viewCards" v-for="site in foodCards" :key="site.cityEn">
+                <RouterLink :to="`/points/${site.cityEn}`" @click="handleFoodClick(site)">
+                  <div class="card">
+                    <img :src="site.img" class="card-img" alt="縣市圖片">
+                    <div class="card-img-overlay">
+                      <h5 class="card-title" :title="site.cityZhTW">{{ site.cityZhTW }}</h5>
+                    </div>
+                  </div>
+                </RouterLink>
               </div>
             </div>
           </div>
@@ -102,10 +82,10 @@
           </RouterLink>
         </div>
       </div>
-      <h5 class="text-center mt-5 mb-3">人氣美食</h5>
+      <h5 class="text-center mt-5 mb-3" style="font-weight: bold;">人氣美食</h5>
       <div class="row">
         <div class="col-3 hot-spot" v-for="food in hotFoods" :key="food.name">
-          <RouterLink :to="`/food/${food.location}/${food.id}`" @click="handleFoodClick(food)">
+          <RouterLink :to="`/food/${food.location}/${food.id}`" @click="handleShopClick(food)">
             <div class="card">
               <!-- <div class="hot-spot-tag">{{ food.cityZhtw }}</div> -->
               <img :src="food.img" class="card-img-top" alt="美食圖片">
@@ -141,129 +121,111 @@ import { ref, onMounted } from "vue";
 import Swiper from 'swiper/bundle';
 // import styles bundle
 import 'swiper/css/bundle';
-import axios from "axios";
+// import axios from "axios";
 import { RouterLink, useRouter, useRoute } from 'vue-router';
 
 const router = useRouter();
 // const route = useRoute();
+
 // init Swiper:
 const mySwiper = ref(null);
-// const mySwiper2 = ref(null);
 
-const frontCarousel = ref([
+const landingData = ref([
   {
-    title: "九份老街",
-    img: new URL("../assets/images/hry.png", import.meta.url).href
+    id: "C1_315081800H_000055",
+    name: "龍洞灣海洋公園",
+    cityZhTW: "新北市",
+    cityEn: "NewTaipei",
+    img: new URL("../assets/images/landing03.jpg", import.meta.url).href,
   },
   {
-    title: "台北 101",
-    img: new URL("../assets/images/kdg.png", import.meta.url).href
+    id: "C1_382000000A_109990",
+    name: "九份老街",
+    cityZhTW: "新北市",
+    cityEn: "NewTaipei",
+    img: new URL("../assets/images/landing01.png", import.meta.url).href
+  },
+  {
+    id: "C1_382000000A_109990",
+    name: "台北 101",
+    cityZhTW: "台北市",
+    cityEn: "Taipei",
+    img: new URL("../assets/images/landing02.png", import.meta.url).href
+  },
+  {
+    id: "C1_315081100H_000036",
+    name: "紙教堂",
+    cityZhTW: "南投縣",
+    cityEn: "NantouCounty",
+    img: new URL("../assets/images/landing04.jpg", import.meta.url).href
   },
 ]);
 
-// tabs 資料
-const livelyCard = ref([
+// tabs 出門走走吧 資料
+const viewPointCards = ref([
   {
-    title: "台北",
-    img: new URL("../assets/images/1.png", import.meta.url).href
+    img: new URL("../assets/images/cardTY.jpg", import.meta.url).href,
+    cityZhTW: "桃園市",
+    cityEn: "Taoyuan",
   },
   {
-    title: "新北",
-    img: new URL("../assets/images/2.png", import.meta.url).href
+    img: new URL("../assets/images/cardPH.jpg", import.meta.url).href,
+    cityZhTW: "澎湖縣",
+    cityEn: "PenghuCounty",
   },
   {
-    title: "桃園",
-    img: new URL("../assets/images/3.png", import.meta.url).href
+    img: new URL("../assets/images/cardNT.jpg", import.meta.url).href,
+    cityZhTW: "南投縣",
+    cityEn: "NantouCounty",
   },
   {
-    title: "台中",
-    img: new URL("../assets/images/3.png", import.meta.url).href
+    img: new URL("../assets/images/cardCY.jpg", import.meta.url).href,
+    cityZhTW: "嘉義縣",
+    cityEn: "ChiayiCounty",
   },
   {
-    title: "台南",
-    img: new URL("../assets/images/2.png", import.meta.url).href
+    img: new URL("../assets/images/cardTT.jpg", import.meta.url).href,
+    cityZhTW: "台東縣",
+    cityEn: "TaitungCounty",
   },
   {
-    title: "高雄",
-    img: new URL("../assets/images/1.png", import.meta.url).href
-  },
-]);
-const natureCard = ref([
-  {
-    title: "桃園",
-    img: new URL("../assets/images/3.png", import.meta.url).href
-  },
-  {
-    title: "台中",
-    img: new URL("../assets/images/3.png", import.meta.url).href
-  },
-  {
-    title: "台北",
-    img: new URL("../assets/images/1.png", import.meta.url).href
-  },
-  {
-    title: "新北",
-    img: new URL("../assets/images/2.png", import.meta.url).href
-  },
-  {
-    title: "台南",
-    img: new URL("../assets/images/2.png", import.meta.url).href
-  },
-  {
-    title: "高雄",
-    img: new URL("../assets/images/1.png", import.meta.url).href
+    img: new URL("../assets/images/cardLC.jpg", import.meta.url).href,
+    cityZhTW: "連江縣",
+    cityEn: "LienchiangCounty",
   },
 ]);
-const humanCard = ref([
+
+// tabs 享受美食吧 資料
+const foodCards = ref([
   {
-    title: "台南",
-    img: new URL("../assets/images/2.png", import.meta.url).href
+    img: new URL("../assets/images/cardFHL.jpg", import.meta.url).href,
+    cityZhTW: "花蓮縣",
+    cityEn: "HualienCounty",
   },
   {
-    title: "高雄",
-    img: new URL("../assets/images/1.png", import.meta.url).href
+    img: new URL("../assets/images/cardFTC.jpg", import.meta.url).href,
+    cityZhTW: "台中市",
+    cityEn: "Taichung",
   },
   {
-    title: "桃園",
-    img: new URL("../assets/images/3.png", import.meta.url).href
+    img: new URL("../assets/images/cardFCH.jpg", import.meta.url).href,
+    cityZhTW: "彰化縣",
+    cityEn: "ChanghuaCounty",
   },
   {
-    title: "台中",
-    img: new URL("../assets/images/3.png", import.meta.url).href
+    img: new URL("../assets/images/cardFTN.jpg", import.meta.url).href,
+    cityZhTW: "台南市",
+    cityEn: "Tainan",
   },
   {
-    title: "台北",
-    img: new URL("../assets/images/1.png", import.meta.url).href
+    img: new URL("../assets/images/cardFYL.jpg", import.meta.url).href,
+    cityZhTW: "雲林縣",
+    cityEn: "YunlinCounty",
   },
   {
-    title: "新北",
-    img: new URL("../assets/images/2.png", import.meta.url).href
-  },
-]);
-const warmCard = ref([
-  {
-    title: "台中",
-    img: new URL("../assets/images/3.png", import.meta.url).href
-  },
-  {
-    title: "台南",
-    img: new URL("../assets/images/2.png", import.meta.url).href
-  },
-  {
-    title: "高雄",
-    img: new URL("../assets/images/1.png", import.meta.url).href
-  },
-  {
-    title: "桃園",
-    img: new URL("../assets/images/3.png", import.meta.url).href
-  },
-  {
-    title: "台北",
-    img: new URL("../assets/images/1.png", import.meta.url).href
-  },
-  {
-    title: "新北",
-    img: new URL("../assets/images/2.png", import.meta.url).href
+    img: new URL("../assets/images/cardFNP.jpg", import.meta.url).href,
+    cityZhTW: "新北市",
+    cityEn: "NewTaipei",
   },
 ]);
 
@@ -271,28 +233,28 @@ const warmCard = ref([
 const hotSpots = ref([
   {
     name: "陽明山國家公園冷水坑",
-    img: new URL("../assets/images/site01.jpg", import.meta.url).href,
+    img: new URL("../assets/images/hotSite01.jpg", import.meta.url).href,
     cityZhTW: "台北",
     cityEn: "Taipei",
     id: "C1_379000000A_000009",
   },
   {
     name: "石梯坪",
-    img: new URL("../assets/images/site02.png", import.meta.url).href,
+    img: new URL("../assets/images/hotSite02.png", import.meta.url).href,
     cityZhTW: "花蓮",
     cityEn: "HualienCounty",
     id: "C1_315080500H_000012",
   },
   {
     name: "鹿耳門天后宮",
-    img: new URL("../assets/images/site03.png", import.meta.url).href,
+    img: new URL("../assets/images/hotSite03.png", import.meta.url).href,
     cityZhTW: "台南",
     cityEn: "Tainan",
     id: "C1_315081600H_000066",
   },
   {
     name: "忠義山親山步道",
-    img: new URL("../assets/images/site04.png", import.meta.url).href,
+    img: new URL("../assets/images/hotSite04.png", import.meta.url).href,
     cityZhTW: "台北",
     cityEn: "Taipei",
     id: "C1_379000000A_000013",
@@ -300,8 +262,6 @@ const hotSpots = ref([
 ]);
 
 // 人氣美食
-// C3_376480000A_000315
-// https://travel.nantou.gov.tw/manasystem/files/food/20140306140443_%E5%B1%B1%E8%B1%AC%E8%82%89%E7%82%92%E8%92%9C.jpg
 const hotFoods = ref([
   {
     id: "C3_376480000A_000315",
@@ -335,54 +295,28 @@ const hotFoods = ref([
     restaurantName: "奶油巴士烘焙屋",
     img: new URL("../assets/images/sweet.jpg", import.meta.url).href,
   },
-  // {
-  //   title: "夜市小吃",
-  //   img: new URL("../assets/images/fste.png", import.meta.url).href,
-  // },
-  // {
-  //   title: "異國料理",
-  //   img: new URL("../assets/images/fs.png", import.meta.url).href,
-  // },
-  // {
-  //   title: "甜點冰品",
-  //   img: new URL("../assets/images/fste.png", import.meta.url).href,
-  // },
-  // {
-  //   title: "伴手禮",
-  //   img: new URL("../assets/images/fs.png", import.meta.url).href,
-  // },
-  // {
-  //   title: "全部類別",
-  //   img: new URL("../assets/images/fste.png", import.meta.url).href,
-  // },
 ]);
 
-// 取得熱門景點資料
-// async function getHotSpots() {
-//   try {
-//     const response = await axios({
-//       method: "get",
-//       url: `${import.meta.env.VITE_BASE_URL}/v2/Tourism/ScenicSpot/${city.value}`,
-//       params: {
-//         "$filter": `contains(ScenicSpotID, '${id.value}')`,
-//         "$format": "JSON"
-//       }
-//     });
-//     targetSpot.value = response.data[0];
-//     console.log(targetSpot.value);
-//   } catch (error) {
-//     alert(error);
-//   }
-// }
+// 跳轉指定景點城市頁
+async function handleCityClick(site) {
+  await router.push({ path: `/points/${site.cityEn}` });
+  await router.go();
+}
 
-// 跳轉熱門景點指定頁
+// 跳轉指定美食城市頁
+async function handleFoodClick(site) {
+  await router.push({ path: `/foods/${site.cityEn}` });
+  await router.go();
+}
+
+// 跳轉熱門景點指定細節頁
 async function handleSiteClick(site) {
   await router.push({ path: `/point/${site.cityEn}/${site.id}` });
   await router.go();
 }
 
-// 跳轉熱門餐廳指定頁
-async function handleFoodClick(food) {
+// 跳轉熱門餐廳指定細節頁
+async function handleShopClick(food) {
   await router.push({ path: `/food/${food.cityEn}/${food.id}` });
   await router.go();
 }
@@ -400,19 +334,6 @@ onMounted(async () => {
       clickable: true,
     },
   });
-
-  // new Swiper(mySwiper2.value, {
-  //   slidesPerView: "auto",
-  //   spaceBetween: 30,
-  //   // autoplay: {
-  //   //   delay: 5000,
-  //   // },
-  //   navigation: {
-  //     nextEl: '.swiper-button-next',
-  //     prevEl: '.swiper-button-prev',
-  //   },
-  // });
-  // await getHotSpots();
 });
 
 
@@ -427,6 +348,17 @@ main {
 
 .landing-swiper {
   width: 100%;
+
+  button {
+    border-radius: 12px;
+    line-height: 40px;
+  }
+
+  .swiper-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 /* swiper 預設 */
@@ -459,8 +391,9 @@ main {
     bottom: -350px;
   }
 
-  .swiper-slide h5 {
+  .swiper-slide span {
     display: inline;
+    // line-height: 40px;
     font-size: 36px;
     font-weight: 700;
     color: #fff;
@@ -470,6 +403,11 @@ main {
     border-radius: 15px;
     margin-left: 60px;
   }
+}
+
+.swiper-background {
+  background-position: center center;
+  background-size: cover;
 }
 
 /* tabs */
@@ -490,14 +428,16 @@ main {
 }
 
 /* 熱門景點、人氣美食 */
-.hot-spot {
-  img {
-    width: 100%;
-    height: 213px;
-  }
+.hot-spot,
+.viewCards {
 
   .card {
     position: relative;
+
+    img {
+      height: 213px;
+      object-fit: cover;
+    }
   }
 }
 
@@ -511,28 +451,25 @@ main {
   color: #FEFEFE;
   font-size: 20px;
   font-weight: lighter;
-}*/
+} */
 
 .hot-spot-text {
   text-align: center;
 
   span,
   p {
-    font-size: 18px;
+    text-align: center;
   }
 
   span {
     color: #392A93;
     line-height: 26px;
     font-weight: bold;
-    text-align: center;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
   }
 
   p {
     color: #392a93bd;
+    font-size: 18px;
     font-weight: lighter;
   }
 }
