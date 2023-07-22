@@ -103,7 +103,7 @@
         <h5 class="text-center">訂閱我們，獲得最在地的旅遊資訊！</h5>
         <span class="d-block text-center">每週六一封，不隨意打擾，且隨時可以取消</span>
         <div style="text-align: center; margin-top: 10px;">
-          <input type="text" placeholder="請輸入你的 email">
+          <input type="text" placeholder="請輸入你的 email" style="outline: none; padding: 15px;">
           <button type="button">訂閱</button>
         </div>
       </div>
