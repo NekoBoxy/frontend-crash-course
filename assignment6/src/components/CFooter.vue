@@ -79,7 +79,7 @@
           </a>
         </span>
         <span class="separator">|</span>
-        <span>Design by Zoe Kang</span>
+        <span>Original design by Zoe Kang</span>
       </div>
     </div>
   </div>
@@ -124,7 +124,7 @@
     margin-right: 30px;
 
     svg {
-      margin-right: 10px;
+      margin-right: 5px;
     }
   }
 
