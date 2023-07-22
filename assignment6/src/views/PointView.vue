@@ -20,9 +20,11 @@
       </div>
       <!-- 景點細節 -->
       <div class="row">
-        <div class="col-6">
-          <img :src="targetSpot.Picture.PictureUrl1" alt="" srcset=""
+        <div class="col-6" style="text-align: center;">
+          <img :src="targetSpot.Picture.PictureUrl1" alt="景點介紹用圖片" srcset=""
             style="width: 100%; object-fit: cover; border-radius: 20px;">
+          <!-- 圖片描述 -->
+          <span>{{ targetSpot.Picture?.PictureDescription1 }}</span>
         </div>
         <div class="col-6">
           <div>
@@ -212,7 +214,7 @@ async function getSite() {
         "$format": "JSON"
       }
     });
-    console.log(response.data[0]);
+    console.log("response.data[0]", response.data[0]);
     targetSpot.value = response.data[0];
   } catch (error) {
     alert(error);
