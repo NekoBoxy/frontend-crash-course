@@ -132,13 +132,6 @@ const mySwiper = ref(null);
 
 const landingData = ref([
   {
-    id: "C1_315081800H_000055",
-    name: "龍洞灣海洋公園",
-    cityZhTW: "新北市",
-    cityEn: "NewTaipei",
-    img: new URL("../assets/images/landing03.jpg", import.meta.url).href,
-  },
-  {
     id: "C1_382000000A_109990",
     name: "九份老街",
     cityZhTW: "新北市",
@@ -158,6 +151,13 @@ const landingData = ref([
     cityZhTW: "南投縣",
     cityEn: "NantouCounty",
     img: new URL("../assets/images/landing04.jpg", import.meta.url).href
+  },
+  {
+    id: "C1_315081800H_000055",
+    name: "龍洞灣海洋公園",
+    cityZhTW: "新北市",
+    cityEn: "NewTaipei",
+    img: new URL("../assets/images/landing03.jpg", import.meta.url).href,
   },
 ]);
 
@@ -349,77 +349,58 @@ main {
 .landing-swiper {
   width: 100%;
 
-  button {
-    border-radius: 12px;
-    line-height: 40px;
+
+}
+
+/* landing swiper */
+.my-Swiper {
+  width: 100%;
+  height: 100%;
+
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+  }
+
+  .swiper-background {
+    border-radius: 25px;
+    width: 1000px;
+    height: 500px;
+    position: relative;
+    background-position: center center;
+    background-size: cover;
   }
 
   .swiper-text {
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-}
-
-/* swiper 預設 */
-.swiper {
-  width: 100%;
-  height: 100%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* landing swiper */
-.my-Swiper {
-  .swiper-slide {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    background: #fff;
-    align-items: center;
-  }
-
-  .swiper-slide .swiper-background {
-    border-radius: 25px;
-    width: 1000px;
-    height: 500px;
-  }
-
-  .swiper-slide .swiper-text {
     background-color: #02020225;
-    position: relative;
-    bottom: -350px;
-  }
+    position: absolute;
+    right: 35%;
+    bottom: 15%;
 
-  .swiper-slide span {
-    display: inline;
-    // line-height: 40px;
-    font-size: 36px;
-    font-weight: 700;
-    color: #fff;
-  }
+    span {
+      display: inline;
+      // line-height: 40px;
+      font-size: 36px;
+      font-weight: 700;
+      color: #fff;
+    }
 
-  .swiper-slide button {
-    border-radius: 15px;
-    margin-left: 60px;
+    button {
+      border-radius: 15px;
+      margin-left: 60px;
+      padding: 10px;
+      border: none;
+    }
   }
-}
-
-.swiper-background {
-  background-position: center center;
-  background-size: cover;
 }
 
 /* tabs */
 .tab-pane {
-  .tab-col {
-    width: 100%;
-    height: 180px;
-    border-radius: 25px;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-
   h5 {
     font-size: 26px;
     font-weight: 700;
