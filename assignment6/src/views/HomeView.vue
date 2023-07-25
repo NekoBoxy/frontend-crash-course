@@ -24,27 +24,27 @@
         </div>
       </div>
       <!-- tabs -->
-      <ul class="nav nav-tabs d-flex justify-content-center" id="myTab" role="tablist">
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
-          <button class="nav-link active" id="recreation-tab" data-bs-toggle="tab" data-bs-target="#recreation-card"
+          <button class="nav-link active" id="recreation-tab" data-bs-toggle="tab" data-bs-target="#view-point-card"
             type="button" role="tab" aria-controls="recreation" aria-selected="true">出門走走吧</button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link" id="nature-tab" data-bs-toggle="tab" data-bs-target="#nature-card" type="button"
+          <button class="nav-link" id="nature-tab" data-bs-toggle="tab" data-bs-target="#food-card" type="button"
             role="tab" aria-controls="nature" aria-selected="false">享受美食吧</button>
         </li>
       </ul>
       <!-- (網格)卡片內容 -->
       <div class="tab-content" id="myTabContent">
         <!-- 出門走走吧 -->
-        <div class="tab-pane fade show active" id="recreation-card" role="tabpanel" aria-labelledby="recreation">
+        <div class="tab-pane fade show active" id="view-point-card" role="tabpanel" aria-labelledby="各縣市遊玩景點">
           <div class="row row-cols-1 row-cols-md-3 g-4">
-            <div class="col-3 viewCards" v-for="site in viewPointCards" :key="site.cityEn">
+            <div class="col-3 view-cards" v-for="site in viewPointCards" :key="site.cityEn">
               <RouterLink :to="`/points/${site.cityEn}`" @click="handleCityClick(site)">
                 <div class="card">
                   <img :src="site.img" class="card-img" alt="縣市圖片">
                   <div class="card-img-overlay">
-                    <h5 class="card-title" :title="site.cityZhTW">{{ site.cityZhTW }}</h5>
+                    <span class="card-title" :title="site.cityZhTW">{{ site.cityZhTW }}</span>
                   </div>
                 </div>
               </RouterLink>
@@ -52,19 +52,17 @@
           </div>
         </div>
         <!-- 享用美食吧 -->
-        <div class="tab-pane fade" id="nature-card" role="tabpanel" aria-labelledby="nature">
-          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-            <div class="row row-cols-1 row-cols-md-3 g-4">
-              <div class="col-3 viewCards" v-for="site in foodCards" :key="site.cityEn">
-                <RouterLink :to="`/points/${site.cityEn}`" @click="handleFoodClick(site)">
-                  <div class="card">
-                    <img :src="site.img" class="card-img" alt="縣市圖片">
-                    <div class="card-img-overlay">
-                      <h5 class="card-title" :title="site.cityZhTW">{{ site.cityZhTW }}</h5>
-                    </div>
+        <div class="tab-pane fade" id="food-card" role="tabpanel" aria-labelledby="各縣市美食餐廳">
+          <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col-3 view-cards" v-for="site in foodCards" :key="site.cityEn">
+              <RouterLink :to="`/points/${site.cityEn}`" @click="handleFoodClick(site)">
+                <div class="card">
+                  <img :src="site.img" class="card-img" alt="縣市圖片">
+                  <div class="card-img-overlay">
+                    <span class="card-title" :title="site.cityZhTW">{{ site.cityZhTW }}</span>
                   </div>
-                </RouterLink>
-              </div>
+                </div>
+              </RouterLink>
             </div>
           </div>
         </div>
@@ -88,7 +86,6 @@
         <div class="col-3 hot-spot" v-for="food in hotFoods" :key="food.name">
           <RouterLink :to="`/food/${food.location}/${food.id}`" @click="handleShopClick(food)">
             <div class="card">
-              <!-- <div class="hot-spot-tag">{{ food.cityZhtw }}</div> -->
               <img :src="food.img" class="card-img-top" alt="美食圖片">
               <div class="card-body hot-spot-text">
                 <span class="card-title" :title="food.name">{{ food.restaurantName }}</span>
@@ -126,7 +123,7 @@ import 'swiper/css/bundle';
 import { RouterLink, useRouter, useRoute } from 'vue-router';
 
 const router = useRouter();
-// const route = useRoute();
+const route = useRoute();
 
 // init Swiper:
 const mySwiper = ref(null);
@@ -347,13 +344,13 @@ main {
   margin-bottom: -300px;
 }
 
-.landing-swiper {
-  width: 100%;
-
-
-}
 
 /* landing swiper */
+.landing-swiper {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
 .my-Swiper {
   width: 100%;
   height: 100%;
@@ -369,9 +366,9 @@ main {
     border-radius: 25px;
     width: 1000px;
     height: 500px;
-    position: relative;
     background-position: center center;
     background-size: cover;
+    position: relative;
   }
 }
 
@@ -389,9 +386,7 @@ main {
   span,
   button {
     color: #fff;
-    font-size: 36px;
     font-weight: 700;
-
   }
 
   span {
@@ -403,6 +398,7 @@ main {
 
   button {
     border-radius: 15px;
+    font-size: 30px;
     padding: 10px;
     border: none;
     background-color: #4633B4;
@@ -416,27 +412,41 @@ main {
 
 /* tabs */
 .nav-tabs {
-  button {
-    color: #392A93;
-    font-weight: 700;
+  display: flex;
+  justify-content: center;
+  border-bottom: none;
+  margin-bottom: 30px;
+}
 
-    &:active {
-      border-color: none;
-    }
-  }
+.nav-link {
+  color: #76b7fc;
+}
+
+.nav-item .active {
+  font-weight: 700;
+  box-shadow: 0px 5px 0px 0px #392A93;
 }
 
 .tab-pane {
-  h5 {
+  margin-bottom: 30px;
+
+  .card-img-overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  span {
     font-size: 26px;
     font-weight: 700;
     color: #FEFEFE;
+    backdrop-filter: blur(1px);
   }
 }
 
 /* 熱門景點、人氣美食 */
 .hot-spot,
-.viewCards {
+.view-cards {
 
   .card {
     position: relative;
@@ -450,11 +460,6 @@ main {
 
 .hot-spot-text {
   text-align: center;
-
-  span,
-  p {
-    text-align: center;
-  }
 
   span {
     color: #392A93;
