@@ -51,7 +51,7 @@
                   <div class="circle-label">
                     {{ (10 + index).toString(36).toUpperCase() }}
                   </div>
-                  <h5 class="card-title">{{ site.ScenicSpotName }}</h5>
+                  <h5 class="card-title" :title="site.ScenicSpotName">{{ site.ScenicSpotName }}</h5>
                   <p class="card-text">
                     <span class="badge rounded-pill bg-success text-white" v-for="(tag, index) in site.tags" :key="index">
                       {{ tag }}
@@ -243,13 +243,12 @@ async function handleSiteClick(site) {
 
 .card {
   cursor: pointer;
+  height: 100%;
 
   &:hover {
     /* offset-x | offset-y | blur-radius | spread-radius | color */
     box-shadow: 5px 5px 5px 1px rgba(0, 0, 0, 0.2);
   }
-
-  height: 100%;
 
   img {
     height: 200px;
