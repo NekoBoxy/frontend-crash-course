@@ -27,11 +27,15 @@
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
           <button class="nav-link active" id="recreation-tab" data-bs-toggle="tab" data-bs-target="#view-point-card"
-            type="button" role="tab" aria-controls="recreation" aria-selected="true">出門走走吧</button>
+            type="button" role="tab" aria-controls="recreation" aria-selected="true">
+            <span>出門走走吧</span>
+          </button>
         </li>
         <li class="nav-item" role="presentation">
           <button class="nav-link" id="nature-tab" data-bs-toggle="tab" data-bs-target="#food-card" type="button"
-            role="tab" aria-controls="nature" aria-selected="false">享受美食吧</button>
+            role="tab" aria-controls="nature" aria-selected="false">
+            <span>享受美食吧</span>
+          </button>
         </li>
       </ul>
       <!-- (網格)卡片內容 -->
@@ -416,10 +420,15 @@ main {
   justify-content: center;
   border-bottom: none;
   margin-bottom: 30px;
+
+  span {
+    font-size: 24px;
+  }
 }
 
 .nav-link {
-  color: #76b7fc;
+  color: #907df7;
+
 }
 
 .nav-item .active {
