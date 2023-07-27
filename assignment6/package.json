@@ -16,6 +16,7 @@
     "pinia": "^2.0.36",
     "swiper": "^9.3.2",
     "vue": "^3.3.2",
+    "vue-multiselect": "^2.1.7",
     "vue-router": "^4.2.0"
   },
   "devDependencies": {
