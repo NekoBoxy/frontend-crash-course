@@ -11,6 +11,7 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
       "~bootstrap": "./node_modules/bootstrap",
+      "~multiselect": "./node_modules/vue-multiselect",
     }
   },
   base: process.env.NODE_ENV === 'production'
