@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import * as bootstrap from 'bootstrap';
 // 載入自定義的 css
-import './assets/all.css';
+import './assets/all.scss';
 
 import { createApp } from 'vue';
 // import { createPinia } from 'pinia';
@@ -12,6 +12,4 @@ const app = createApp(App);
 
 // app.use(createPinia());
 app.use(router);
-
-
 app.mount('#app');
