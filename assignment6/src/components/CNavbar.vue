@@ -29,8 +29,8 @@
             </div>
           </li>
           <div class="d-flex">
-            <VueMultiselect v-model="selectStr" :options="compareData" @search-change="callApi" placeholder="想去哪玩呢？"
-              label="value" :loading="isLoading" :show-labels="false">
+            <VueMultiselect v-model="selected" :options="options" @search-change="handleSearch" placeholder="想去哪玩呢？"
+              label="title" :loading="isLoading" :show-labels="false">
               <template #noResult>
                 查無結果，請更換關鍵字。
               </template>
@@ -51,7 +51,7 @@
 
 <script setup>
 import "~multiselect/dist/vue-multiselect.css";
-import { ref, watch } from 'vue';
+import { ref, watch, onMounted } from 'vue';
 import { RouterLink, useRouter, } from 'vue-router';
 import axios from 'axios';
 import VueMultiselect from 'vue-multiselect';
@@ -59,8 +59,7 @@ import VueMultiselect from 'vue-multiselect';
 const router = useRouter();
 
 // autocomoplete
-const selectStr = ref("");
-const compareData = ref([]);
+// 本地端 city 比對用資料
 const cityList = ref([
   { title: "基隆市", name: "Keelung" },
   { title: "臺北市", name: "Taipei" },
@@ -85,24 +84,58 @@ const cityList = ref([
   { title: "澎湖縣", name: "PenghuCounty" },
   { title: "連江縣", name: "LienchiangCounty" },
 ]);
-const isLoading = ref(false);
+const selected = ref(""); // 選取或鍵入的搜尋字串
+const options = ref([]); // 存放 api 來的資料
+const isLoading = ref(false); // loading 狀態
+const timer = ref(null);
 
-watch(selectStr, (newValue) => {
+// selected 的值更動時自動存入新字串
+watch(selected, (newValue) => {
   console.log("Selected:", newValue);
+  // 3. 跳轉頁面
+  // { title: "臺北市", name: "Taipei" }
+  // 景點 id
 });
 
-function callApi(query) {
+const handleSearch = async function (query) {
+  // 防止不明原因呼叫 handleSearch
+  if (!query) {
+    return;
+  }
   isLoading.value = true;
-  console.log(query);
-  // let result = [];
-  // result = cityList.value.map();
+  clearTimeout(timer.value);
+  // 執行 timer
+  timer.value = setTimeout(async () => {
+    let pointList = [];
+    try {
+      const res = await axios({
+        method: "get",
+        url: `${import.meta.env.VITE_BASE_URL}/v2/Tourism/ScenicSpot`,
+        params: {
+          "$top": "10",
+          "$filter": `contains(Keyword,'${query}') or contains(ScenicSpotName,'${query}')`,
+          "$format": "JSON"
+        }
+      });
+      // console.log("res", res);
+      pointList = res.data.map((item) => {
+        return {
+          title: item.ScenicSpotName,
+          name: item.ScenicSpotID,
+          url: `/point/Taipei/${item.name}`,
+        };
+      });
+    } catch (e) {
+      console.log(e);
+    }
+    options.value = [...cityList.value, ...pointList];
+    isLoading.value = false;
 
-  // // Call API
-  // // query
-  // result = [...result, apiRes];
+  }, 500);
+  console.log("timer.value", timer.value);
 
-  // compareData.value = result;
 }
+
 
 // call api
 async function getTdxData(str) {
@@ -128,6 +161,14 @@ async function changeRoute(data) {
   await router.push({ path: `/points/${data.cityEn}` });
   await router.go();
 }
+onMounted(async () => {
+  cityList.value = cityList.value.map((item) => {
+    return {
+      ...item,
+      url: `/points/${item.name}`
+    };
+  });
+})
 </script>
 
 <style scoped lang="scss">
