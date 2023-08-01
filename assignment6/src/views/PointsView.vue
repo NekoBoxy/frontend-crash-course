@@ -119,7 +119,6 @@ const currentCityTitle = computed(() => {
 
 // 用 city 切換 router 並重取相關 api 資料
 async function getSelect() {
-  // console.log("city.value", city.value);
   router.push({ path: `/points/${city.value}/` });
   await getScenicSpot();
   await getMap();
@@ -136,8 +135,6 @@ async function getScenicSpot() {
         "$format": "JSON"
       }
     });
-    // console.log(response.data);
-
     tdxSpot.value = response.data.map((item) => {
       return {
         ScenicSpotID: item.ScenicSpotID,
@@ -155,8 +152,6 @@ async function getScenicSpot() {
         Position: item.Position,
       }
     });
-
-    // console.log("tdxSpot.value", tdxSpot.value);
   } catch (error) {
     alert(error);
   }
@@ -216,7 +211,6 @@ onMounted(async () => {
 
 // 點擊切換至細節頁
 async function handleSiteClick(site) {
-  // console.log("site.ScenicSpotID", site.ScenicSpotID);
   await router.push({ path: `/point/${city.value}/${site.ScenicSpotID}` });
   await router.go();
 }

@@ -177,12 +177,8 @@ async function getTargetFood() {
         "$format": "JSON"
       }
     });
-    console.log("response.data", response.data);
     const foods = await transformResult(response.data);
-    // console.log("foods", foods);
     foodData.value = foods[0];
-    // console.log("foodData.value", foodData.value);
-    console.log("foodData.value.Picture", foodData.value.Picture);
   } catch (error) {
     alert(error);
   }
@@ -200,7 +196,6 @@ async function getOtherFoods() {
         "$Top": 4
       }
     });
-    console.log("getOtherFoods.data", response.data);
     spots.value = response.data;
   } catch (error) {
     alert(error);
@@ -275,23 +270,18 @@ async function transformResult(list) {
 
 // 點擊切換至指定餐廳細節頁
 async function handleSiteClick(spot) {
-  console.log("spot.RestaurantID", spot.RestaurantID);
-  console.log("city.value", city.value);
   await router.push({ path: `/food/${city.value}/${spot.RestaurantID}` });
   await router.go();
 }
 
 // 為了取得 city 的英文值，在 onmounted 時要得到變數
 onMounted(async () => {
-  // console.log("route.params", route.params);
   const currentCity = cityList.value.find(
     // 從 path: '/points/:city?' 取得 route.params.city 的值，比對符合後轉成全小寫
     item => item.name.toLowerCase() === route.params.city.toLowerCase()
   );
   city.value = currentCity?.name || city.value;
   id.value = route.params.id;
-  // console.log("city.value", city.value);
-  // console.log("id.value", id.value);
   router.replace(`/food/${city.value}/${id.value}/`);
   await getTargetFood();
   await getMap();

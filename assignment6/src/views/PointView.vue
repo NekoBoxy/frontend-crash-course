@@ -214,7 +214,6 @@ async function getSite() {
         "$format": "JSON"
       }
     });
-    console.log("response.data[0]", response.data[0]);
     targetSpot.value = response.data[0];
   } catch (error) {
     alert(error);
@@ -233,7 +232,6 @@ async function getOtherSpots() {
         "$Top": 4
       }
     });
-    console.log("getOtherSpots data", response.data);
     spots.value = response.data;
   } catch (error) {
     alert(error);
@@ -298,8 +296,6 @@ async function getMap() {
 
 // 點擊切換至細節頁
 async function handleSiteClick(spot) {
-  console.log("spot.ScenicSpotID", spot.ScenicSpotID);
-  console.log("city.value", city.value);
   await router.push({ path: `/point/${city.value}/${spot.ScenicSpotID}` });
   await router.go();
 }

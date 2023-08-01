@@ -116,7 +116,6 @@ const currentCityTitle = computed(() => {
 
 // 用 city 切換 router 並重取相關 api 資料
 async function getSelect() {
-  // console.log("city.value", city.value);
   router.push({ path: `/foods/${city.value}/` });
   await getRestaurants();
   await getMap();
@@ -133,7 +132,6 @@ async function getRestaurants() {
         "$format": "JSON"
       }
     });
-    // console.log(response.data);
     tdxSpot.value = response.data.map((item) => {
       return {
         City: item.City,
@@ -191,8 +189,6 @@ async function getMap() {
 
 // 點擊切換至細節頁
 async function handleSiteClick(site) {
-  console.log("site.RestaurantID", site.RestaurantID);
-  console.log(city.value);
   await router.push({ path: `/food/${city.value}/${site.RestaurantID}` });
   await router.go();
 }

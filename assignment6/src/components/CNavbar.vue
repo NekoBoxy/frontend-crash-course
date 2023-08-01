@@ -90,11 +90,10 @@ const isLoading = ref(false); // loading 狀態
 const timer = ref(null);
 
 // selected 的值更動時自動存入新字串
-watch(selected, (newValue) => {
-  console.log("Selected:", newValue);
+watch(selected, async (newValue) => {
   // 3. 跳轉頁面
-  // { title: "臺北市", name: "Taipei" }
-  // 景點 id
+  await router.push({ path: newValue.url });
+  await router.go();
 });
 
 const handleSearch = async function (query) {
@@ -117,50 +116,23 @@ const handleSearch = async function (query) {
           "$format": "JSON"
         }
       });
-      // console.log("res", res);
-      pointList = res.data.map((item) => {
+      pointList = res.data.map((point) => {
+        // item.city 是中文字串，想與 cityList 的 title(中文) 比對，相符的話給我 name (英文城市名)
+        const city = cityList.value.find(item => item.title === point.City);
         return {
-          title: item.ScenicSpotName,
-          name: item.ScenicSpotID,
-          url: `/point/Taipei/${item.name}`,
+          title: point.ScenicSpotName,
+          name: point.ScenicSpotID,
+          url: `/point/${city.name}/${point.ScenicSpotID}`,
         };
       });
-    } catch (e) {
-      console.log(e);
+    } catch (err) {
+      console.log("err", err);
     }
     options.value = [...cityList.value, ...pointList];
     isLoading.value = false;
-
   }, 500);
-  console.log("timer.value", timer.value);
-
 }
 
-
-// call api
-async function getTdxData(str) {
-  try {
-    const response = await axios({
-      method: "get",
-      url: `${import.meta.env.VITE_BASE_URL}/v2/Tourism/ScenicSpot`,
-      params: {
-        "$top": "5",
-        "$filter": `City eq '${str}' or Keyword eq '${str}' or ScenicSpotName eq '${str}'`,
-        "$format": "JSON"
-      }
-    });
-    console.log("response.data", response.data);
-
-  } catch (error) {
-    alert(error);
-  }
-}
-
-// 路由跳轉
-async function changeRoute(data) {
-  await router.push({ path: `/points/${data.cityEn}` });
-  await router.go();
-}
 onMounted(async () => {
   cityList.value = cityList.value.map((item) => {
     return {
