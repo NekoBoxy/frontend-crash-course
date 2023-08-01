@@ -117,7 +117,7 @@ const handleSearch = async function (query) {
         }
       });
       pointList = res.data.map((point) => {
-        // item.city 是中文字串，想與 cityList 的 title(中文) 比對，相符的話給我 name (英文城市名)
+        // point.city 是中文字串，想與 cityList 的 title(中文) 比對，相符的話給我整組 item; { title: xx, name: aa },
         const city = cityList.value.find(item => item.title === point.City);
         return {
           title: point.ScenicSpotName,
