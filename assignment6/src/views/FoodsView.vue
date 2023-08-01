@@ -133,7 +133,7 @@ async function getRestaurants() {
         "$format": "JSON"
       }
     });
-    console.log(response.data);
+    // console.log(response.data);
     tdxSpot.value = response.data.map((item) => {
       return {
         City: item.City,

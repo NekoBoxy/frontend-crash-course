@@ -136,7 +136,7 @@ async function getScenicSpot() {
         "$format": "JSON"
       }
     });
-    console.log(response.data);
+    // console.log(response.data);
 
     tdxSpot.value = response.data.map((item) => {
       return {
@@ -156,7 +156,7 @@ async function getScenicSpot() {
       }
     });
 
-    console.log("tdxSpot.value", tdxSpot.value);
+    // console.log("tdxSpot.value", tdxSpot.value);
   } catch (error) {
     alert(error);
   }
