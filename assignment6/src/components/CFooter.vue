@@ -16,9 +16,9 @@
         <div class="col-6 d-flex mt-5">
           <div class="footer-list">
             <h5>關於島遊</h5>
-            <div>我們是誰</div>
-            <div>加入我們</div>
-            <div>聯繫我們</div>
+            <div><a href="https://github.com/NekoBoxy" target="_blank">我們是誰</a></div>
+            <div><a href="https://github.com/NekoBoxy" target="_blank">加入我們</a></div>
+            <div><a href="https://github.com/NekoBoxy" target="_blank">聯繫我們</a></div>
           </div>
           <div class="footer-list">
             <h5>服務條款</h5>
