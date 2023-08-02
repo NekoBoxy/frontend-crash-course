@@ -440,6 +440,11 @@ main {
 .tab-pane {
   margin-bottom: 30px;
 
+  .card img {
+    /* 替圖片加上亮度 0.75 的濾鏡 */
+    filter: brightness(0.75);
+  }
+
   .card-img-overlay {
     display: flex;
     align-items: center;
@@ -463,8 +468,6 @@ main {
     img {
       height: 213px;
       object-fit: cover;
-      filter: brightness(0.75);
-      /* 替圖片加上亮度0.75的濾鏡 */
     }
   }
 }
