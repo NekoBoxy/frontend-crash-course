@@ -28,21 +28,25 @@
               <RouterLink to="/foods/NewTaipei">美食餐廳</RouterLink>
             </div>
           </li>
-          <div class="d-flex">
-            <VueMultiselect v-model="selected" :options="options" @search-change="handleSearch" placeholder="想去哪玩呢？"
-              label="title" :loading="isLoading" :show-labels="false">
+          <!-- label 指的是在 options 中判斷的基準值/字串 -->
+          <li class="nav-item d-flex" style="align-items: center; width: 300px;">
+            <VueMultiselect v-model="selected" :options="options" @search-change="handleSearch" label="title"
+              placeholder="想去哪玩呢？" :loading="isLoading" :show-labels="false">
+              <template #noOptions>
+                請輸入景點或縣市名稱
+              </template>
               <template #noResult>
-                查無結果，請更換關鍵字。
+                請更換關鍵字
               </template>
             </VueMultiselect>
-            <button class="btn btn-outline-success" type="submit" @click="handleSearchClick(el)">
+            <button class="btn btn-outline-success" style="border: none;" type="submit" @click="handleSearchClick">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd"
                   d="M10.6798 4C7.01399 4 4.0423 6.91015 4.0423 10.5C4.0423 14.0899 7.01399 17 10.6798 17C14.3455 17 17.3172 14.0899 17.3172 10.5C17.3172 6.91015 14.3455 4 10.6798 4ZM2 10.5C2 5.80558 5.88606 2 10.6798 2C15.4735 2 19.3595 5.80558 19.3595 10.5C19.3595 12.5926 18.5873 14.5087 17.3067 15.9897L21.7009 20.2929C22.0997 20.6834 22.0997 21.3166 21.7009 21.7071C21.3021 22.0976 20.6556 22.0976 20.2568 21.7071L15.8127 17.3551C14.3751 18.3892 12.6003 19 10.6798 19C5.88606 19 2 15.1944 2 10.5Z"
                   fill="#392A93" />
               </svg>
             </button>
-          </div>
+          </li>
         </ul>
       </div>
     </div>
@@ -87,15 +91,7 @@ const cityList = ref([
 const selected = ref(""); // 選取或鍵入的搜尋字串
 const options = ref([]); // 存放 api 來的資料
 const isLoading = ref(false); // loading 狀態
-const timer = ref(null);
-
-// selected 的值更動時自動存入新字串
-watch(selected, async (newValue) => {
-  // 3. 跳轉頁面
-  await router.push({ path: newValue.url });
-  await router.go();
-});
-
+const timer = ref(null); // 計時器
 const handleSearch = async function (query) {
   // 防止不明原因呼叫 handleSearch
   if (!query) {
@@ -117,7 +113,7 @@ const handleSearch = async function (query) {
         }
       });
       pointList = res.data.map((point) => {
-        // point.city 是中文字串，想與 cityList 的 title(中文) 比對，相符的話給我整組 item; { title: xx, name: aa },
+        // point.city 是中文字串，想與 cityList 的 title(中文) 比對，相符的話給我整組 item: { title: xx, name: aa }
         const city = cityList.value.find(item => item.title === point.City);
         return {
           title: point.ScenicSpotName,
@@ -133,6 +129,21 @@ const handleSearch = async function (query) {
   }, 500);
 }
 
+// 如果按了搜尋的 btn，預設選擇 options 的第一筆，並自動跳轉
+async function handleSearchClick() {
+  const select = options.value[0];
+  await router.push({ path: select.url });
+  await router.go();
+}
+
+//  v-model="selected"，當 VueMultiselect 選取的值更動時自動將值存入 selected
+watch(selected, async (newValue) => {
+  // 3. 跳轉頁面
+  await router.push({ path: newValue.url });
+  await router.go();
+});
+
+// 畫面生成時重新給予 cityList 值為 { 原有的資訊 + url }
 onMounted(async () => {
   cityList.value = cityList.value.map((item) => {
     return {
