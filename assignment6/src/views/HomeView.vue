@@ -5,7 +5,7 @@
     <div class="container">
       <div class="row">
         <div class="landing-swiper">
-          <div ref="mySwiper" class="swiper my-Swiper" style="padding-bottom: 50px;">
+          <div ref="mySwiper" class="swiper my-Swiper">
             <div class="swiper-wrapper">
               <div class="swiper-slide" v-for="(site, index) in landingData" v-bind:key="index">
                 <RouterLink :to="`/point/${site.cityEn}/${site.id}`" @click="handleSiteClick(site)">
@@ -358,6 +358,7 @@ main {
 .my-Swiper {
   width: 100%;
   height: 100%;
+  padding-bottom: 50px;
 
   .swiper-slide {
     display: flex;
@@ -449,7 +450,6 @@ main {
     font-size: 26px;
     font-weight: 700;
     color: #FEFEFE;
-    backdrop-filter: blur(1px);
   }
 }
 
@@ -463,6 +463,8 @@ main {
     img {
       height: 213px;
       object-fit: cover;
+      filter: brightness(0.75);
+      /* 替圖片加上亮度0.75的濾鏡 */
     }
   }
 }
