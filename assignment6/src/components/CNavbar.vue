@@ -36,7 +36,7 @@
                 請輸入景點或縣市名稱
               </template>
               <template #noResult>
-                請更換關鍵字
+                查無結果，請更換關鍵字
               </template>
             </VueMultiselect>
             <button class="btn btn-outline-success" style="border: none;" type="submit" @click="handleSearchClick">
