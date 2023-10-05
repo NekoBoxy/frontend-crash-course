@@ -4,7 +4,7 @@
     <div class="container">
       <!-- 麵包屑 -->
       <div class="row">
-        <div class="col">
+        <div class="col-6">
           <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item">
@@ -17,9 +17,16 @@
             </ol>
           </nav>
         </div>
+        <div class="col-6">
+          <select id="selectedCity" v-on:change="getSelect()" v-model="city">
+            <option v-for="city in cityList" :value="city.name" :key="city.name" :selected="city.name === city.value">
+              {{ city.title }}
+            </option>
+          </select>
+        </div>
       </div>
       <!-- 主標題 -->
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-6">
           <h5>美食餐廳</h5>
         </div>
@@ -30,9 +37,9 @@
             </option>
           </select>
         </div>
-      </div>
+      </div> -->
     </div>
-    <div class="container-fluid">
+    <div class="container">
       <div class="row" style="margin-right: 0;">
         <!-- 地圖區 -->
         <div ref="areaMap" class="col-6 area-map"></div>
@@ -214,12 +221,12 @@ onMounted(async () => {
 } */
 
 .area-map {
-  height: 70vh;
+  height: 73vh;
 }
 
 .area-site {
   width: 50%;
-  height: 70vh;
+  height: 73vh;
   overflow-y: scroll;
 
   .card {
